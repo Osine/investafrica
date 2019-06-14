@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="">
 </head>
 
-<div class="topnav">
+<?php include_once("/Applications/MAMP/htdocs/Doingbusinessinafrica/header.php"); ?>
+<!-- <div class="topnav">
     <input type="text" placeholder="Opportunity awaits...">
     <a class="active" href="/Users/osine/Documents/Doingbusinessinafrica/index.html">Home</a>
     <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact">Contact</a> -->
 
     <body>
         <div class="content">
