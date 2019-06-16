@@ -49,7 +49,7 @@
                     </div>
                 </li>
 
-                <li class="Accra" style="background: url(accra.jpg)">
+                <li class="Accra" style="background: url(accra.jpeg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="cities/Accra.php" title="Invest in Accra, Ghana">Accra, Ghana</a>
