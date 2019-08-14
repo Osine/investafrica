@@ -19,9 +19,9 @@
 
 <body>
 
-    <div class="filter">
+    <!-- <div class="filter">
         <button>Filter</button>
-    </div>
+    </div> -->
     <div class="hero">
         <div class="cities">
             <div class="gridview">
