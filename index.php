@@ -17,8 +17,6 @@
 
 <?php include_once("/Applications/MAMP/htdocs/Doingbusinessinafrica/header.php"); ?>
 
-</div>
-
 <body>
 
     <div class="filter">

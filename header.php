@@ -1,3 +1,4 @@
+
 <div class="topnav">
     <input type="text" placeholder="Opportunity awaits...">
     <a class="active" href="index.php">Home</a>
