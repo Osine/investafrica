@@ -26,7 +26,7 @@
             <h1>Lagos</h1>
         </div>
         <div class="city_img">
-            <img src="lagos.jpeg" alt="picture of lagos">
+            <img src="background: url(/Applications/MAMP/htdocs/Doingbusinessinafrica/lagos.jpeg)"alt="picture of lagos">
         </div>
         <div class="attributes">
             <h2>What is lorem ipsum</h2>
