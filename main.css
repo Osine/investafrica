@@ -1,6 +1,6 @@
 .topnav {
     overflow: hidden;
-    background-color: white;
+    background-color: #109D58;
 }
 
 .topnav a {
@@ -19,7 +19,7 @@
 }
 
 .topnav a.active {
-    color: #69f0ae
+    color: #fff
 }
 
 .topnav input[type=text] {
