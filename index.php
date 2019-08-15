@@ -47,7 +47,7 @@
                     </div>
                 </li>
 
-                <li class="Accra" style="background: url(accra.jpeg)">
+                <li class="Accra" style="background: url(images/accra.jpeg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="Accra.php" title="Invest in Accra, Ghana">Accra, Ghana</a>
@@ -59,7 +59,7 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Kigali" style="background: url(kigali.jpg)">
+                <li class="Kigali" style="background: url(images/kigali.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="Kigali.php" title="Invest in Kigali, Rwanda">Kigali, Rwanda</a>

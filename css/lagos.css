@@ -1,6 +1,6 @@
     .title {
-        height: 200px;
-        color: #69f0ae;
+        height: 50px;
+        color: #3c795b;
         font: outline;
         outline-color: black;
         font-family: Arial, Helvetica, sans-serif;
@@ -8,6 +8,10 @@
         text-align: center;
         background-repeat: no-repeat;
         background-size: 20%;
+    }
+    
+    .city_img {
+        align-self: center;
     }
     
     .attributes {

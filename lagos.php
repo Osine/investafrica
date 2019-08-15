@@ -14,25 +14,49 @@
 
 <?php include_once("/Applications/MAMP/htdocs/Doingbusinessinafrica/header.php"); ?>
 
-<!-- <div class="topnav">
-    <input type="text" placeholder="Opportunity awaits...">
-    <a class="active" href="/Users/osine/Documents/Doingbusinessinafrica/index.html">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a> -->
-
 <body>
     <div class="content">
         <div class="title">
-            <h1>Lagos</h1>
+            <h1>Lagos, Nigeria</h1>
         </div>
         <div class="city_img">
-            <img src="background: url(/Applications/MAMP/htdocs/Doingbusinessinafrica/lagos.jpeg)"alt="picture of lagos">
+            <img src="images/lagos.jpeg" alt="picture of lagos">
         </div>
         <div class="attributes">
-            <h2>What is lorem ipsum</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
+            <div class="population">
+                <h2>Population</h2>
+                <p>180,000,000</p>
+            </div>
+            <div class="taxes">
+                <h2>Taxes</h2>
+                <p>54</p>
+            </div>
+            <div class="permits">
+                <h2>Ease of getting permits</h2>
+                <p>58</p>
+            </div>
+            <div class="propertyreg">
+                <h2>Property registration costs</h2>
+                <p>29/p>
+            </div>
+            <div class="startingup">
+                <h2>Starting up Business</h2>
+                <p>82</p>
+            </div>
+            <div class="electricity">
+                <h2>Access to electricity</h2>
+                <p>44</p>
+            </div>
+            <div class="contracts">
+                <h2>Honoring contracts</h2>
+                <p>58</p>
+            </div>
+            <div class="credit">
+                <h2>Acces to credit</h2>
+                <p>85</p>
+            </div>
         </div>
+        <h3>All scores on InvestAfrica.com are scored out of a hunderd and data is sourced from doingbusiness.org</h3>
     </div>
 </body>
 
