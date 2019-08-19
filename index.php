@@ -71,7 +71,7 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Abuja" style="background: url(abuja.jpg)">
+                <li class="Abuja" style="background: url(images/abuja.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="Abuja.php" title="Invest in Abuja, Nigeria">Abuja, Nigeria</a>
@@ -83,7 +83,7 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Nairobi" style="background: url(nairobi.jpg)">
+                <li class="Nairobi" style="background: url(images/nairobi.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="Nairobi.php" title="Invest in Nairobi, Kenya">Nairobi, Kenya</a>
@@ -95,7 +95,7 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Cairo" style="background: url(cairo.jpg)">
+                <li class="Cairo" style="background: url(images/cairo.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="Cairo.php" title="Invest in Cairo, Egypt">Cairo, Egypt</a>
@@ -107,7 +107,7 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Johannesburg" style="background: url(joburg.jpg)">
+                <li class="Johannesburg" style="background: url(images/joburg.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="Johannesburg.php" title="Invest in Johannesburg, South Africa">Johannesburg, South Africa</a>
@@ -119,7 +119,7 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Abidjan" style="background: url(abidjan.jpg)">
+                <li class="Abidjan" style="background: url(images/abidjan.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="Abidjan.php" title="Invest in Abidjan, Ivory Coast">Abidjan, Ivory Coast</a>
