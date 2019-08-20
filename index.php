@@ -34,7 +34,7 @@ $result = mysqli_query($query, 'mixed');
                 <li class="Lagos" style="background: url(images/lagos.jpeg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a onclick="popup" itemprop="url" href="Lagos.php" title="Invest in Lagos, Nigeria">Lagos</a>
+                            <a onclick="popup" itemprop="url" href="Lagos.php" title="Invest in Nigeria">Nigeria</a>
                         </h2>
                         <!-- <img title="Lagos" src="lagos.jpeg"> -->
                     </div>
