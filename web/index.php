@@ -64,7 +64,7 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Rwanda" style="background: url(images/kigali.jpg)">
+                <li class="Rwanda" style="background: url(images/Kigali.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a itemprop="url" href="Rwanda.php" title="Invest in Rwanda">Rwanda</a>
