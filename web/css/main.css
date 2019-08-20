@@ -2,8 +2,8 @@
     height: 80px;
     width: 100%;
     overflow: hidden;
-    background-image: linear-gradient(#109D58, #3c795b);
-    /* background-color: #109D58; */
+    /* background-image: linear-gradient(#109D58, #3c795b); */
+    background-color: #109D58;
 }
 
 .topnav img {
