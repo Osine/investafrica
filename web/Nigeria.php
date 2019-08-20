@@ -37,7 +37,7 @@
             </div>
             <div class="propertyreg">
                 <h2>Property registration costs</h2>
-                <p>29/p>
+                <p>29</p>
             </div>
             <div class="startingup">
                 <h2>Starting up Business</h2>

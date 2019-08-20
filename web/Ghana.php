@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/ghana.css">
     <link rel="stylesheet" href="">
 </head>
 
@@ -37,7 +37,7 @@
             </div>
             <div class="propertyreg">
                 <h2>Property registration costs</h2>
-                <p>56/p>
+                <p>56</p>
             </div>
             <div class="startingup">
                 <h2>Starting up Business</h2>

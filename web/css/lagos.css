@@ -16,4 +16,64 @@
     
     .attributes {
         text-align: left;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-row-gap: 1em;
+        margin: 30px;
+    }
+    
+    .startingup p {
+        color: #00ff55;
+        font-weight: bold;
+        font-family: 'Segoe UI';
+        font-size: 30px;
+        align-self: center
+    }
+    
+    .taxes p {
+        color: #c5ba1c;
+        font-weight: bold;
+        font-family: 'Segoe UI';
+        font-size: 30px;
+        align-self: center
+    }
+    
+    .propertyreg p {
+        color: #ff0033;
+        font-weight: bold;
+        font-family: 'Segoe UI';
+        font-size: 30px;
+        align-self: center
+    }
+    
+    .permits p {
+        color: #c5ba1c;
+        font-weight: bold;
+        font-family: 'Segoe UI';
+        font-size: 30px;
+        align-self: center
+    }
+    
+    .electricity p {
+        color: #c5ba1c;
+        font-weight: bold;
+        font-family: 'Segoe UI';
+        font-size: 30px;
+        align-self: center
+    }
+    
+    .contracts p {
+        color: #c5ba1c;
+        font-weight: bold;
+        font-family: 'Segoe UI';
+        font-size: 30px;
+        align-self: center
+    }
+    
+    .credit p {
+        color: #00ff55;
+        font-weight: bold;
+        font-family: 'Segoe UI';
+        font-size: 30px;
+        align-self: center
     }
