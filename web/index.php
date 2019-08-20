@@ -31,10 +31,10 @@
         <div class="cities">
             <div class="gridview">
 
-                <li class="Lagos" style="background: url(images/lagos.jpeg)">
+                <li class="Nigeria" style="background: url(images/lagos.jpeg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a onclick="popup" itemprop="url" href="/Lagos.php" title="Invest in Nigeria">Nigeria</a>
+                            <a onclick="popup" itemprop="url" href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
                         </h2>
                         <!-- <img title="Lagos" src="lagos.jpeg"> -->
                     </div>
@@ -52,10 +52,10 @@
                     </div>
                 </li>
 
-                <li class="Accra" style="background: url(images/accra.jpeg)">
+                <li class="Ghana" style="background: url(images/accra.jpeg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="/Accra.php" title="Invest in Accra, Ghana">Accra, Ghana</a>
+                            <a itemprop="url" href="Ghana.php" title="Invest in Ghana">Ghana</a>
                         </h2>
                         <!-- <img title="Accra" src="accra.jpg"> -->
                     </div>
@@ -64,10 +64,10 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Kigali" style="background: url(images/kigali.jpg)">
+                <li class="Rwanda" style="background: url(images/kigali.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="Kigali.php" title="Invest in Kigali, Rwanda">Kigali, Rwanda</a>
+                            <a itemprop="url" href="Rwanda.php" title="Invest in Rwanda">Rwanda</a>
                         </h2>
                         <!-- <img title="Kigali" src="kigali.jpg"> -->
                     </div>
@@ -76,22 +76,21 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Abuja" style="background: url(images/abuja.jpg)">
+                <li class="Angola" style="background: url(images/angola.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="Abuja.php" title="Invest in Abuja, Nigeria">Abuja, Nigeria</a>
+                            <a itemprop="url" href="Abuja.php" title="Invest in Angola">Angola</a>
                         </h2>
-                        <!-- <img title="Abuja" src="abuja.jpg"> -->
                     </div>
                     <div class="action">
                     </div>
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Nairobi" style="background: url(images/nairobi.jpg)">
+                <li class="Kenya" style="background: url(images/nairobi.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="Nairobi.php" title="Invest in Nairobi, Kenya">Nairobi, Kenya</a>
+                            <a itemprop="url" href="Kenya.php" title="Invest in Kenya">Kenya</a>
                         </h2>
                         <!-- <img title="Nairobi" src="nairobi.jpg"> -->
                     </div>
@@ -100,10 +99,10 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Cairo" style="background: url(images/cairo.jpg)">
+                <li class="Egypt" style="background: url(images/cairo.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="Cairo.php" title="Invest in Cairo, Egypt">Cairo, Egypt</a>
+                            <a itemprop="url" href="Egypt.php" title="Invest in Egypt">Egypt</a>
                         </h2>
                         <!-- <img title="Cairo" src="cairo.jpg"> -->
                     </div>
@@ -112,10 +111,10 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Johannesburg" style="background: url(images/joburg.jpg)">
+                <li class="South Africa" style="background: url(images/joburg.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="Johannesburg.php" title="Invest in Johannesburg, South Africa">Johannesburg, South Africa</a>
+                            <a itemprop="url" href="SouthAfrica.php" title="Invest in South Africa">South Africa</a>
                         </h2>
                         <!-- <img title="Johannesburg" src="joburg.jpg"> -->
                     </div>
@@ -124,10 +123,10 @@
                     <div class="attributes"></div>
                 </li>
 
-                <li class="Abidjan" style="background: url(images/abidjan.jpg)">
+                <li class="IvoryCoast" style="background: url(images/abidjan.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="Abidjan.php" title="Invest in Abidjan, Ivory Coast">Abidjan, Ivory Coast</a>
+                            <a itemprop="url" href="IvoryCoast.php" title="Invest in Ivory Coast">Ivory Coast</a>
                         </h2>
                         <!-- <img title="Abidjan" src="abidjan.jpg"> -->
                     </div>
