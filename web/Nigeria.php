@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Lagos | Doing Business in Africa</title>
+    <title>Nigeria | Doing Business in Africa</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
@@ -17,7 +17,7 @@
 <body>
     <div class="content">
         <div class="title">
-            <h1>Lagos, Nigeria</h1>
+            <h1>Nigeria</h1>
         </div>
         <div class="city_img">
             <img src="images/lagos.jpeg" alt="picture of lagos">

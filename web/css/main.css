@@ -113,6 +113,7 @@ li {
     border-radius: 8px;
     list-style-type: none;
     padding: 2px 16px;
+    background-repeat: no-repeat;
     margin-left: 16px;
     margin-bottom: 10px;
 }

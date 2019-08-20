@@ -31,7 +31,7 @@
         <div class="cities">
             <div class="gridview">
 
-                <li class="Nigeria" style="background: url(images/lagos.jpeg)">
+                <li class="Nigeria" style="background: url(images/lagos.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
                             <a onclick="popup" itemprop="url" href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
@@ -79,7 +79,7 @@
                 <li class="Angola" style="background: url(images/angola.jpg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="Abuja.php" title="Invest in Angola">Angola</a>
+                            <a itemprop="url" href="Angola.php" title="Invest in Angola">Angola</a>
                         </h2>
                     </div>
                     <div class="action">
