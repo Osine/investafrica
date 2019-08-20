@@ -1,0 +1,83 @@
+.title {
+    height: 50px;
+    color: #3c795b;
+    font: outline;
+    outline-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 4em;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: 20%;
+}
+
+h2 {
+    font-family: 'Segoe UI';
+}
+
+.city_img {
+    align-self: center;
+}
+
+.attributes {
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-row-gap: 1em;
+    margin: 30px;
+}
+
+.startingup p {
+    color: #00ff55;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    align-self: center
+}
+
+.taxes p {
+    color: #c5ba1c;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    align-self: center
+}
+
+.propertyreg p {
+    color: #c5ba1c;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    align-self: center
+}
+
+.permits p {
+    color: #7cdd2d;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    align-self: center
+}
+
+.electricity p {
+    color: #7cdd2d;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    align-self: center
+}
+
+.contracts p {
+    color: #c5ba1c;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    align-self: center
+}
+
+.credit p {
+    color: #a9ff62;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    align-self: center
+}
