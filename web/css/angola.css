@@ -1,6 +1,7 @@
 .title {
     height: 50px;
-    color: #3c795b;
+    color: rgb(205, 2, 42);
+    text-shadow: 1px 1px rgb(250, 200, 2);
     font: outline;
     outline-color: black;
     font-family: Arial, Helvetica, sans-serif;
