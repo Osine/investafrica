@@ -34,7 +34,7 @@
                 <li class="Lagos" style="background: url(images/lagos.jpeg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a onclick="popup" itemprop="url" href="Lagos.php" title="Invest in Nigeria">Nigeria</a>
+                            <a onclick="popup" itemprop="url" href="/Lagos.php" title="Invest in Nigeria">Nigeria</a>
                         </h2>
                         <!-- <img title="Lagos" src="lagos.jpeg"> -->
                     </div>
@@ -55,7 +55,7 @@
                 <li class="Accra" style="background: url(images/accra.jpeg)">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="Accra.php" title="Invest in Accra, Ghana">Accra, Ghana</a>
+                            <a itemprop="url" href="/Accra.php" title="Invest in Accra, Ghana">Accra, Ghana</a>
                         </h2>
                         <!-- <img title="Accra" src="accra.jpg"> -->
                     </div>
