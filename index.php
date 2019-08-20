@@ -1,4 +1,5 @@
 <?php
+require_once 'vendor/autoload.php';
 include_once('connection.php');
 // int $result = mixed;
 $query="select from TBL_NAME";
