@@ -28,6 +28,7 @@ body {
     margin-top: 10px;
     margin-right: 30px;
     padding: 14px 16px;
+    text-shadow: 0px 0px #3c795b;
     text-decoration: none;
     font-size: 14px;
     font-family: 'Segoe UI';
@@ -91,6 +92,7 @@ body {
 
 a {
     color: #fff;
+    text-shadow: 2px 2px #3c795b;
     text-align: center;
     text-decoration: none;
 }
