@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="">
 </head>
 
-<?php include_once("/Applications/MAMP/htdocs/Doingbusinessinafrica/header.php"); ?>
+<?php include_once("header.php"); ?>
 
 <body>
     <div class="content">

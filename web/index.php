@@ -1,5 +1,4 @@
 <?php
-require_once 'vendor/autoload.php';
 // include_once('connection.php');
 // int $result = mixed;
 // $query="select from TBL_NAME";
@@ -21,7 +20,7 @@ require_once 'vendor/autoload.php';
 
 </head>
 
-<?php include_once("/Applications/MAMP/htdocs/Doingbusinessinafrica/header.php"); ?>
+<?php include_once("header.php"); ?>
 
 <body>
 
