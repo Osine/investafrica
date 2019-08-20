@@ -1,4 +1,4 @@
 <?php
-mysql_connect('localhost','root','');
-mysql_select_db('countries');
+mysqli_connect('localhost', 'osine', '');
+mysqli_select_db('Countries', 'TBL_NAME');
 ?>

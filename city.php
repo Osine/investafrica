@@ -21,8 +21,8 @@
 
     <body>
         <div class="content">
-            <div class="title">
-                <h1>Lagos</h1>
+            <div class="country_name">
+                <h1></h1>
             </div>
             <div class="city_img">
                 <img src="lagos.jpeg" alt="picture of lagos">

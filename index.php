@@ -1,11 +1,16 @@
+<?php
+include_once('connection.php');
+// int $result = mixed;
+$query="select from TBL_NAME";
+$result = mysqli_query($query, 'mixed');
+?>
 <!DOCTYPE html>
 <html class="no-js">
 
 <head>
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Doing Business in Africa</title>
-    <meta name="description" content="">
+    <title>Invest in Africa</title>
+    <meta name="description" content="Find the nest countries to start your new business in africa.">
     <link rel="javascript" href="javascript/autoscroll.js">
     <link rel="javascript" href="javascript/expand_retract.js">
     <meta name="viewport" content="width=device-width, initial-scale=1">
