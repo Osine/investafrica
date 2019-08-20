@@ -25,7 +25,7 @@
         <div class="attributes">
             <div class="population">
                 <h2>Population</h2>
-                <p>29784193</p>
+                <p>29,784,193</p>
             </div>
             <div class="taxes">
                 <h2>Taxes</h2>
