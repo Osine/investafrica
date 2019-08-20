@@ -10,6 +10,10 @@
     background-size: 20%;
 }
 
+h2 {
+    font-family: 'Segoe UI';
+}
+
 .city_img {
     align-self: center;
 }
