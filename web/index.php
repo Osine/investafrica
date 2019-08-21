@@ -11,12 +11,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Invest in Africa</title>
     <meta name="description" content="Find the nest countries to start your new business in africa.">
+    <script src="javascript/autoscroll.js"></script>
+    <script src="javascript/expand_retract.js"></script>
     <link rel="javascript" href="javascript/autoscroll.js">
     <link rel="javascript" href="javascript/expand_retract.js">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="">
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="javascript" href="javascript/myFunction.js">
+    <meta name="apple-mobile-web-app-capable " content="yes " />
+    <meta name="apple-mobile-web-app-status-bar-style " content="black " />
+    <meta name="apple-mobile-web-app-title " content="Invest in Africa">
+    <meta name="apple-mobile-web-app-capable " content="yes ">
+    <meta name="apple-mobile-web-app-status-bar-style " content="white " />
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+
 
 </head>
 
