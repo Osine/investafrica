@@ -20,7 +20,7 @@
             <h1>South Africa</h1>
         </div>
         <div class="city_img">
-            <img src="images/lagos.jpeg" alt="picture of lagos">
+            <!-- <img src="images/lagos.jpeg" alt="picture of lagos"> -->
         </div>
         <div class="attributes">
             <div class="population">

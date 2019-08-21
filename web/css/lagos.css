@@ -99,8 +99,9 @@
         }
         p {
             text-align: center;
+            text-decoration: underline;
         }
         h2 {
-            text-decoration: underline;
+            /* text-decoration: underline; */
         }
     }
