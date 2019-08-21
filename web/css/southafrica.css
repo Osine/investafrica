@@ -86,3 +86,21 @@ h2 {
     font-size: 30px;
     align-self: center
 }
+
+@media screen and (max-width: 600px) {
+    .title {
+        height: 20px;
+        font-family: 'Segoe UI';
+        margin-top: 1em;
+        margin-right: 90px;
+    }
+    .attributes {
+        grid-template-columns: auto;
+    }
+    p {
+        text-align: center;
+    }
+    h2 {
+        text-decoration: underline;
+    }
+}
