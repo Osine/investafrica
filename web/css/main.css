@@ -131,6 +131,7 @@ a {
 img {
     height: 300px;
     width: 300px;
+    margin: 10px;
     border-radius: 15px;
 }
 
