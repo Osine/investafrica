@@ -1,5 +1,5 @@
 .topnav {
-    height: 500px;
+    height: 590px;
     width: 100%;
     overflow: hidden;
     display: flexbox;
@@ -184,10 +184,10 @@ button {
     height: 4em;
     color: #fff;
     font-size: 15px;
-    margin-left: 10px;
-    margin-top: 1em;
+    margin-left: 350px;
+    margin-top: 30em;
     font-family: 'Segoe UI';
-    border-radius: 8px;
+    border-radius: 25px;
 }
 
 button:hover {
@@ -209,15 +209,23 @@ button:hover {
     position: absolute;
     width: 812px;
     height: 550px;
-    /* left: 64px; */
-    padding-left: 10px;
+    left: 64px;
+    padding-left: 40px;
     top: 201px;
     font-family: Segoe UI;
-    font-size: 48px;
+    font-size: 34px;
     /* line-height: 64px; */
     color: #000000;
 }
 
 .hero-box {
     height: 100%;
+}
+
+.hero-image {
+    position: absolute;
+    width: 245px;
+    height: 178px;
+    left: 803px;
+    top: 45px;
 }
