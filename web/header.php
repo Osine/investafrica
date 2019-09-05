@@ -5,6 +5,7 @@
 
         <!-- <input type="text" placeholder="Opportunity awaits..."> -->
         <a class="active" href="index.php">Home</a>
+        <a class="forum" href="forum.php">Forum</a>
         <!-- <a href="#about">About</a>
     <a class="login" href="#contact">Contact</a> -->
 
@@ -13,7 +14,7 @@
         <p>Do Business across African Countries. Connect to African entrepreneurs and expand your business across Africa. </p>
     </div>
     <div class="hero-image">
-        <svg width="805" height="408" viewBox="-400 -80 745 678" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="805" height="408" viewBox="-200 -80 745 678" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0)">
                 <g opacity="0.5">
                 <path opacity="0.5" d="M455.768 0.00930425L63.2412 168.289L310.633 678.014L703.16 509.734L455.768 0.00930425Z" fill="url(#paint0_linear)"/>

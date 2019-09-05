@@ -43,21 +43,9 @@
                     <li class="Nigeria" style="background: url(images/lagos.jpg)">
                         <div class="text">
                             <h2 class="name" itemprop="name">
-                                <a onclick="popup" itemprop="url" href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
+                                <a data-toggle="modal" data-target="#myModal" itemprop="url" href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
                             </h2>
                             <!-- <img title="Lagos" src="lagos.jpeg"> -->
-                        </div>
-                        <div class="action">
-                            <div class="main-score-rating">
-                                <div class="filling " style="width:100%">
-                                    <div itemprop="aggregateRating " itemscope itemtype="http://schema.org/aggregateRating ">
-                                        <meta itemprop="name " content="Rating " />
-                                        <!-- <meta itemprop="worstRating " value="0 " /><span itemprop="ratingValue ">5</span> <span itemprop="bestRating ">5</span><br /><span class="reviewCount "><span itemprop="reviewCount ">209</span> reviews</span> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="attributes">
                         </div>
                     </li>
 
@@ -69,9 +57,6 @@
                                 </h2>
                                 <!-- <img title="Accra" src="accra.jpg"> -->
                             </div>
-                            <div class="action">
-                            </div>
-                            <div class="attributes"></div>
                         </a>
                     </li>
 
@@ -82,9 +67,6 @@
                             </h2>
                             <!-- <img title="Kigali" src="kigali.jpg"> -->
                         </div>
-                        <div class="action">
-                        </div>
-                        <div class="attributes"></div>
                     </li>
 
                     <li class="Angola" style="background: url(images/angola.jpg)">
@@ -93,9 +75,6 @@
                                 <a itemprop="url" href="Angola.php" title="Invest in Angola">Angola</a>
                             </h2>
                         </div>
-                        <div class="action">
-                        </div>
-                        <div class="attributes"></div>
                     </li>
 
                     <li class="Kenya" style="background: url(images/nairobi.jpg)">
@@ -105,9 +84,6 @@
                             </h2>
                             <!-- <img title="Nairobi" src="nairobi.jpg"> -->
                         </div>
-                        <div class="action">
-                        </div>
-                        <div class="attributes"></div>
                     </li>
 
                     <li class="Egypt" style="background: url(images/cairo.jpg)">
@@ -117,9 +93,6 @@
                             </h2>
                             <!-- <img title="Cairo" src="cairo.jpg"> -->
                         </div>
-                        <div class="action">
-                        </div>
-                        <div class="attributes"></div>
                     </li>
 
 
@@ -130,9 +103,6 @@
                             </h2>
                             <!-- <img title="Johannesburg" src="joburg.jpg"> -->
                         </div>
-                        <div class="action">
-                        </div>
-                        <div class="attributes"></div>
                     </li>
 
                     <li class="IvoryCoast" style="background: url(images/abidjan.jpg)">
@@ -142,9 +112,6 @@
                             </h2>
                             <!-- <img title="Abidjan" src="abidjan.jpg"> -->
                         </div>
-                        <div class="action">
-                        </div>
-                        <div class="attributes"></div>
                     </li>
 
                     <!-- <li class="Casablanca">
