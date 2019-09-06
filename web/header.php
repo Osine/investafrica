@@ -5,7 +5,7 @@
 
         <!-- <input type="text" placeholder="Opportunity awaits..."> -->
         <a class="active" href="index.php">Home</a>
-        <a class="forum" href="forum.php">Forum</a>
+        <a class="forum" href="404.php">Forum</a>
         <!-- <a href="#about">About</a>
     <a class="login" href="#contact">Contact</a> -->
 
@@ -94,9 +94,9 @@
                 </defs>
                 </svg>
     </div>
-    <div class="cta-box">
+    <!-- <div class="cta-box">
         <button> INVEST NOW </button>
-    </div>
+    </div> -->
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>

@@ -136,7 +136,7 @@ body {
     }
 }
 
-a {
+.hero a {
     color: #fff;
     text-shadow: 2px 2px #3c795b;
     text-align: center;
@@ -228,4 +228,9 @@ button:hover {
     height: 178px;
     left: 803px;
     top: 45px;
+}
+
+h1 {
+    margin-top: 90px;
+    margin-left: 200px;
 }

@@ -17,7 +17,10 @@
         <link rel="javascript" href="javascript/expand_retract.js">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/main.css">
-        <!-- <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <script src="jquery/colorbox.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
         <link rel="javascript" href="javascript/myFunction.js">
         <meta name="apple-mobile-web-app-capable " content="yes " />
         <meta name="apple-mobile-web-app-status-bar-style " content="black " />
@@ -43,7 +46,7 @@
                     <li class="Nigeria" style="background: url(images/lagos.jpg)">
                         <div class="text">
                             <h2 class="name" itemprop="name">
-                                <a data-toggle="modal" data-target="#myModal" itemprop="url" href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
+                                <a class="iframe cbox Element" href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
                             </h2>
                             <!-- <img title="Lagos" src="lagos.jpeg"> -->
                         </div>
