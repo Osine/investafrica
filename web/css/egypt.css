@@ -1,5 +1,5 @@
 .title {
-    height: 50px;
+    height: 180px;
     color: rgb(207, 8, 32);
     font: outline;
     outline-color: black;
@@ -8,6 +8,32 @@
     text-align: center;
     background-repeat: no-repeat;
     background-size: 20%;
+}
+
+img {
+    height: 300px;
+    width: auto;
+    /* margin: 10px;
+    border-radius: 15px; */
+}
+
+button {
+    background-color: rgb(207, 8, 32);
+    width: 10em;
+    height: 4em;
+    color: #fff;
+    font-size: 15px;
+    align-content: center;
+    font-family: 'Segoe UI';
+    border-radius: 25px;
+}
+
+button:hover {
+    background: #fff;
+    border-color: rgb(207, 8, 32);
+    border-width: 1.2px;
+    border: solid;
+    color: #000;
 }
 
 h2 {

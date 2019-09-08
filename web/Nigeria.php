@@ -16,8 +16,15 @@
 
 <body>
     <div class="content">
-        <div class="title">
+        <img src="images/flag_nigeria.png" />
+
+        <div class="title" style="background: url('lagos.jpg')">
             <h1>Nigeria</h1>
+            <h3>GDP: 397.30bn USD</h3>
+            <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+            <div class="investnow">
+                <button>Start a Business</button>
+            </div>
         </div>
         <div class="city_img">
             <!-- <img src="images/lagos.jpeg" alt="picture of lagos"> -->
@@ -56,8 +63,10 @@
                 <p>85</p>
             </div>
         </div>
-        <h3>All scores on InvestAfrica.com are scored out of a hunderd and data is sourced from doingbusiness.org</h3>
-    </div>
+
+        <div class="footer">
+            <h3>All scores on InvestAfrica.com are scored out of a hunderd and data is sourced from doingbusiness.org</h3>
+        </div>
 </body>
 
 </div>

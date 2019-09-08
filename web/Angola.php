@@ -18,6 +18,11 @@
     <div class="content">
         <div class="title">
             <h1>Angola</h1>
+            <h3>GDP: 397.30bn USD</h3>
+            <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+            <div class="investnow">
+                <button>Start a Business</button>
+            </div>
         </div>
         <div class="city_img">
             <!-- <img src="images/lagos.jpeg" alt="picture of lagos"> -->

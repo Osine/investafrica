@@ -16,8 +16,14 @@
 
 <body>
     <div class="content">
+    <img src="images/flag_ghana.png" />
         <div class="title">
             <h1>Ghana</h1>
+            <h3>GDP: 65.56bn USD</h3>
+            <h4>Major cities: Accra, Kumasi, Sekondi-Takoradi</h4>
+            <div class="investnow">
+                <button>Start a Business</button>
+            </div>
         </div>
         <div class="city_img">
             <!-- <img src="images/lagos.jpeg" alt="picture of lagos"> -->
