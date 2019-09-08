@@ -18,8 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>Rwanda</h1>
-            <h3>GDP: 397.30bn USD</h3>
-            <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+            <h3>GDP: 9.501bn USD</h3>
+            <h4>Major cities: Kigali, Butare, Gitarama</h4>
             <div class="investnow">
                 <button>Start a Business</button>
             </div>

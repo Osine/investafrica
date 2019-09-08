@@ -17,9 +17,9 @@
 <body>
     <div class="content">
         <div class="title">
-            <h1>Ivory Coast</h1>
-            <h3>GDP: 397.30bn USD</h3>
-            <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+            <h1>Cote d'Ivoire</h1>
+            <h3>GDP: 43.007bn USD</h3>
+            <h4>Major cities: Abidjan, Abobo, Bouaké</h4>
             <div class="investnow">
                 <button>Start a Business</button>
             </div>

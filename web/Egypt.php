@@ -18,8 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>Egypt</h1>
-            <h3>GDP: 397.30bn USD</h3>
-            <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+            <h3>GDP: 250.895bn USD</h3>
+            <h4>Major cities: Cairo, Alexandria, Giza</h4>
             <div class="investnow">
                 <button>Start a Business</button>
             </div>
@@ -30,7 +30,7 @@
         <div class="attributes">
             <div class="population">
                 <h2>Population</h2>
-                <p>97,553,151</p>
+                <p>98,423,595</p>
             </div>
             <div class="taxes">
                 <h2>Taxes</h2>

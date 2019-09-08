@@ -18,8 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>South Africa</h1>
-            <h3>GDP: 397.30bn USD</h3>
-            <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+            <h3>GDP: 366.298bn USD</h3>
+            <h4>Major cities: Johannesburg, Cape Town, Ethekwini</h4>
             <div class="investnow">
                 <button>Start a Business</button>
             </div>

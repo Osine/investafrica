@@ -18,8 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>Kenya</h1>
-            <h3>GDP: 397.30bn USD</h3>
-            <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+            <h3>GDP: 87.90bn USD</h3>
+            <h4>Major cities: Nairobi, Mombasa</h4>
             <div class="investnow">
                 <button>Start a Business</button>
             </div>
