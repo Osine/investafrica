@@ -46,7 +46,7 @@
                     <li class="Nigeria" style="background: url(images/lagos.jpg)">
                         <div class="text">
                             <h2 class="name" itemprop="name">
-                                <a class="iframe cbox Element" href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
+                                <a href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
                             </h2>
                             <!-- <img title="Lagos" src="lagos.jpeg"> -->
                         </div>

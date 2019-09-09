@@ -12,7 +12,7 @@
 
 img {
     height: 300px;
-    width: auto;
+    width: 100%;
     /* margin: 10px;
     border-radius: 15px; */
 }
@@ -115,7 +115,7 @@ h2 {
 
 @media screen and (max-width: 600px) {
     .title {
-        height: 20px;
+        height: 200px;
         font-family: 'Segoe UI';
         margin-top: 1em;
         text-align: center;
