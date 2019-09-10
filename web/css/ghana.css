@@ -29,11 +29,11 @@ button {
 }
 
 button:hover {
-    background: #fff;
+    background: rgb(207, 8, 32);
     border-color: rgb(0, 153, 0);
     border-width: 1.2px;
     border: solid;
-    color: #000;
+    color: #fff;
 }
 
 h2 {
