@@ -117,17 +117,29 @@
                         </div>
                     </li>
 
-                    <!-- <li class="Casablanca">
+                    <li class="Mauritius" style="background: #00E">
                     <div class="text">
                         <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="cities/Casablanca.html" title="Invest in Casablanca, Morocco">Casablanca, Morocco</a>
+                            <a itemprop="url" href="cities/Casablanca.html" title="Invest in Casablanca, Morocco">Mauritius</a>
                         </h2>
                         <img title="Casablanca">
                     </div>
                     <div class="action">
                     </div>
                     <div class="attributes"></div>
-                </li> -->
+                </li>
+
+                <li class="Gabon" style="background: #00E">
+                    <div class="text">
+                        <h2 class="name" itemprop="name">
+                            <a itemprop="url" href="cities/Casablanca.html" title="Invest in Gabon">Gabon</a>
+                        </h2>
+                        <img title="Casablanca">
+                    </div>
+                    <div class="action">
+                    </div>
+                    <div class="attributes"></div>
+                </li>
                 </div>
             </div>
         </div>
