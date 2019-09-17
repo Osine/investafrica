@@ -175,7 +175,7 @@ INSERT INTO `config` (`conf_name`, `conf_value`) VALUES
 ('o_avatars_height', '60'),
 ('o_avatars_size', '10240'),
 ('o_search_all_forums', '1'),
-('o_base_url', 'http://localhost:8888/Doingbusinessinafrica/web/forum'),
+('o_base_url', 'https://warm-retreat-96463.herokuapp.com/forum'),
 ('o_admin_email', 'osikhianosime@gmail.com'),
 ('o_webmaster_email', 'osikhianosime@gmail.com'),
 ('o_forum_subscriptions', '1'),
