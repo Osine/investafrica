@@ -21,7 +21,9 @@
             <h3>GDP: 250.895bn USD</h3>
             <h4>Major cities: Cairo, Alexandria, Giza</h4>
             <div class="investnow">
-                <button>Start a Business</button>
+                <a href="https://www.justlanded.com/english/Egypt/Egypt-Guide/Business/Starting-a-business">
+                    <button>Start a Business</button>
+                </a>
             </div>
         </div>
         <div class="city_img">

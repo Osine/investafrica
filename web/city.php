@@ -24,6 +24,14 @@
             <div class="country_name">
                 <h1></h1>
             </div>
+            <div class="investnow">
+                <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/">
+                    <button>Start a Business</button>
+                </a>
+                <!-- <button>
+                    <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/"></a>
+                </button> -->
+            </div>
             <div class="city_img">
                 <img src="lagos.jpeg" alt="picture of lagos">
             </div>

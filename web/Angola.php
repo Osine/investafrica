@@ -21,7 +21,12 @@
             <h3>GDP: 105.75bn USD</h3>
             <h4>Major city: Luanda</h4>
             <div class="investnow">
-                <button>Start a Business</button>
+                <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/">
+                    <button>Start a Business</button>
+                </a>
+                <!-- <button>
+                    <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/"></a>
+                </button> -->
             </div>
         </div>
         <div class="city_img">

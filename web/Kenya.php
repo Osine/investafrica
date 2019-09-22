@@ -21,7 +21,12 @@
             <h3>GDP: 87.90bn USD</h3>
             <h4>Major cities: Nairobi, Mombasa</h4>
             <div class="investnow">
-                <button>Start a Business</button>
+                <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/">
+                    <button>Start a Business</button>
+                </a>
+                <!-- <button>
+                    <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/"></a>
+                </button> -->
             </div>
         </div>
         <div class="city_img">

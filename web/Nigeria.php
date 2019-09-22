@@ -23,7 +23,9 @@
             <h3>GDP: 397.30bn USD</h3>
             <h4>Major cities: Lagos, Abuja, Ibadan</h4>
             <div class="investnow">
-                <button>Start a Business</button>
+                <a href="https://services.cac.gov.ng/">
+                    <button>Start a Business</button>
+                </a>
             </div>
         </div>
         <div class="city_img">

@@ -21,7 +21,9 @@
             <h3>GDP: 43.007bn USD</h3>
             <h4>Major cities: Abidjan, Abobo, Bouaké</h4>
             <div class="investnow">
-                <button>Start a Business</button>
+                <a href="http://www.cepici.gouv.ci/en/?tmp=images-articles&p=the-one-stop-shop">
+                    <button>Start a Business</button>
+                </a>
             </div>
         </div>
         <div class="city_img">

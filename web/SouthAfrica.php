@@ -21,7 +21,9 @@
             <h3>GDP: 366.298bn USD</h3>
             <h4>Major cities: Johannesburg, Cape Town, Ethekwini</h4>
             <div class="investnow">
-                <button>Start a Business</button>
+                <a href="https://www.gov.za/issues/starting-your-own-business-0">
+                    <button>Start a Business</button>
+                </a>
             </div>
         </div>
         <div class="city_img">
