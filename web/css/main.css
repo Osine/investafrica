@@ -207,3 +207,8 @@ filter {
     left: 803px;
     top: 45px;
 }
+
+#disqus_thread {
+    padding: 3em;
+    display: block;
+}
