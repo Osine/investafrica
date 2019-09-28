@@ -5,7 +5,7 @@
 
         <!-- <input type="text" placeholder="Opportunity awaits..."> -->
         <a class="active" href="index.php">Home</a>
-        <!-- <a class="forum" href="forum/index.php">Forum</a> -->
+        <a class="forum" href="forum/index.php">Forum</a>
         <!-- <a href="#about">About</a>
     <a class="login" href="#contact">Contact</a> -->
 
