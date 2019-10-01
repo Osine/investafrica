@@ -1,4 +1,4 @@
-# FluxBB 1.5 Readme
+# FluxBB 1.5 Read me
 
 ## About
 
