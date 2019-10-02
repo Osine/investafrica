@@ -1,414 +1,1078 @@
 <?php
-
 /**
- * Copyright (C) 2008-2012 FluxBB
- * based on code by Rickard Andersson copyright (C) 2002-2008 PunBB
- * License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
+ * MyBB 1.8
+ * Copyright 2014 MyBB Group, All Rights Reserved
+ *
+ * Website: http://www.mybb.com
+ * License: http://www.mybb.com/about/license
+ *
  */
 
-if (isset($_GET['action']))
-	define('PUN_QUIET_VISIT', 1);
+define("IN_MYBB", 1);
+define("IGNORE_CLEAN_VARS", "sid");
+define('THIS_SCRIPT', 'misc.php');
 
-define('PUN_ROOT', dirname(__FILE__).'/');
-require PUN_ROOT.'include/common.php';
+$templatelist = "misc_rules_forum,misc_help_helpdoc,misc_whoposted_poster,misc_whoposted,misc_smilies_popup_smilie,misc_smilies_popup,misc_smilies_popup_empty,misc_smilies_popup_row,multipage_start";
+$templatelist .= ",misc_buddypopup,misc_buddypopup_user,misc_buddypopup_user_none,misc_buddypopup_user_online,misc_buddypopup_user_offline,misc_buddypopup_user_sendpm,misc_syndication_forumlist";
+$templatelist .= ",misc_smilies,misc_smilies_smilie,misc_help_section_bit,misc_help_section,misc_help,forumdisplay_password_wrongpass,forumdisplay_password,misc_helpresults,misc_helpresults_bit";
+$templatelist .= ",multipage,multipage_end,multipage_jump_page,multipage_nextpage,multipage_page,multipage_page_current,multipage_page_link_current,multipage_prevpage,misc_imcenter_error";
+$templatelist .= ",misc_smilies_popup_no_smilies,misc_smilies_no_smilies,misc_syndication,misc_help_search,misc_helpresults_noresults,misc_syndication_forumlist_forum,misc_syndication_feedurl,misc_whoposted_page";
 
+require_once "./global.php";
+require_once MYBB_ROOT."inc/functions_post.php";
 
-// Load the misc.php language file
-require PUN_ROOT.'lang/'.$pun_user['language'].'/misc.php';
+// Load global language phrases
+$lang->load("misc");
 
-$action = isset($_GET['action']) ? $_GET['action'] : null;
+$plugins->run_hooks("misc_start");
 
-
-if ($action == 'rules')
+$mybb->input['action'] = $mybb->get_input('action');
+if($mybb->input['action'] == "dstswitch" && $mybb->request_method == "post" && $mybb->user['uid'] > 0)
 {
-	if ($pun_config['o_rules'] == '0' || ($pun_user['is_guest'] && $pun_user['g_read_board'] == '0' && $pun_config['o_regs_allow'] == '0'))
-		message($lang_common['Bad request'], false, '404 Not Found');
-
-	// Load the register.php language file
-	require PUN_ROOT.'lang/'.$pun_user['language'].'/register.php';
-
-	$page_title = array(pun_htmlspecialchars($pun_config['o_board_title']), $lang_register['Forum rules']);
-	define('PUN_ACTIVE_PAGE', 'rules');
-	require PUN_ROOT.'header.php';
-
-?>
-<div id="rules" class="block">
-	<div class="hd"><h2><span><?php echo $lang_register['Forum rules'] ?></span></h2></div>
-	<div class="box">
-		<div id="rules-block" class="inbox">
-			<div class="usercontent"><?php echo $pun_config['o_rules_message'] ?></div>
-		</div>
-	</div>
-</div>
-<?php
-
-	require PUN_ROOT.'footer.php';
-}
-
-
-else if ($action == 'markread')
-{
-	if ($pun_user['is_guest'])
-		message($lang_common['No permission'], false, '403 Forbidden');
-
-	check_csrf($_GET['csrf_token']);
-
-	$db->query('UPDATE '.$db->prefix.'users SET last_visit='.$pun_user['logged'].' WHERE id='.$pun_user['id']) or error('Unable to update user last visit data', __FILE__, __LINE__, $db->error());
-
-	// Reset tracked topics
-	set_tracked_topics(null);
-
-	redirect('index.php', $lang_misc['Mark read redirect']);
-}
-
-
-// Mark the topics/posts in a forum as read?
-else if ($action == 'markforumread')
-{
-	if ($pun_user['is_guest'])
-		message($lang_common['No permission'], false, '403 Forbidden');
-
-	check_csrf($_GET['csrf_token']);
-
-	$fid = isset($_GET['fid']) ? intval($_GET['fid']) : 0;
-	if ($fid < 1)
-		message($lang_common['Bad request'], false, '404 Not Found');
-
-	$tracked_topics = get_tracked_topics();
-	$tracked_topics['forums'][$fid] = time();
-	set_tracked_topics($tracked_topics);
-
-	redirect('viewforum.php?id='.$fid, $lang_misc['Mark forum read redirect']);
-}
-
-
-else if (isset($_GET['email']))
-{
-	if ($pun_user['is_guest'] || $pun_user['g_send_email'] == '0')
-		message($lang_common['No permission'], false, '403 Forbidden');
-
-	$recipient_id = intval($_GET['email']);
-	if ($recipient_id < 2)
-		message($lang_common['Bad request'], false, '404 Not Found');
-
-	$result = $db->query('SELECT username, email, email_setting FROM '.$db->prefix.'users WHERE id='.$recipient_id) or error('Unable to fetch user info', __FILE__, __LINE__, $db->error());
-	if (!$db->num_rows($result))
-		message($lang_common['Bad request'], false, '404 Not Found');
-
-	list($recipient, $recipient_email, $email_setting) = $db->fetch_row($result);
-
-	if ($email_setting == 2 && !$pun_user['is_admmod'])
-		message($lang_misc['Form email disabled']);
-
-
-	if (isset($_POST['form_sent']))
+	if($mybb->user['dstcorrection'] == 2)
 	{
-		confirm_referrer('misc.php');
-
-		// Clean up message and subject from POST
-		$subject = pun_trim($_POST['req_subject']);
-		$message = pun_trim($_POST['req_message']);
-
-		if ($subject == '')
-			message($lang_misc['No email subject']);
-		else if ($message == '')
-			message($lang_misc['No email message']);
-		// Here we use strlen() not pun_strlen() as we want to limit the post to PUN_MAX_POSTSIZE bytes, not characters
-		else if (strlen($message) > PUN_MAX_POSTSIZE)
-			message($lang_misc['Too long email message']);
-
-		if ($pun_user['last_email_sent'] != '' && (time() - $pun_user['last_email_sent']) < $pun_user['g_email_flood'] && (time() - $pun_user['last_email_sent']) >= 0)
-			message(sprintf($lang_misc['Email flood'], $pun_user['g_email_flood'], $pun_user['g_email_flood'] - (time() - $pun_user['last_email_sent'])));
-
-		// Load the "form email" template
-		$mail_tpl = trim(file_get_contents(PUN_ROOT.'lang/'.$pun_user['language'].'/mail_templates/form_email.tpl'));
-
-		// The first row contains the subject
-		$first_crlf = strpos($mail_tpl, "\n");
-		$mail_subject = pun_trim(substr($mail_tpl, 8, $first_crlf-8));
-		$mail_message = pun_trim(substr($mail_tpl, $first_crlf));
-
-		$mail_subject = str_replace('<mail_subject>', $subject, $mail_subject);
-		$mail_message = str_replace('<sender>', $pun_user['username'], $mail_message);
-		$mail_message = str_replace('<board_title>', $pun_config['o_board_title'], $mail_message);
-		$mail_message = str_replace('<mail_message>', $message, $mail_message);
-		$mail_message = str_replace('<board_mailer>', $pun_config['o_board_title'], $mail_message);
-
-		require_once PUN_ROOT.'include/email.php';
-
-		pun_mail($recipient_email, $mail_subject, $mail_message, $pun_user['email'], $pun_user['username']);
-
-		$db->query('UPDATE '.$db->prefix.'users SET last_email_sent='.time().' WHERE id='.$pun_user['id']) or error('Unable to update user', __FILE__, __LINE__, $db->error());
-
-		// Try to determine if the data in redirect_url is valid (if not, we redirect to index.php after the email is sent)
-		$redirect_url = validate_redirect($_POST['redirect_url'], 'index.php');
-
-		redirect(pun_htmlspecialchars($redirect_url), $lang_misc['Email sent redirect']);
+		if($mybb->user['dst'] == 1)
+		{
+			$update_array = array("dst" => 0);
+		}
+		else
+		{
+			$update_array = array("dst" => 1);
+		}
+	}
+	$db->update_query("users", $update_array, "uid='{$mybb->user['uid']}'");
+	if(!isset($mybb->input['ajax']))
+	{
+		redirect("index.php", $lang->dst_settings_updated);
+	}
+	else
+	{
+		echo "done";
+		exit;
+	}
+}
+elseif($mybb->input['action'] == "markread")
+{
+	if($mybb->user['uid'] && verify_post_check($mybb->get_input('my_post_key'), true) !== true)
+	{
+		// Protect our user's unread forums from CSRF
+		error($lang->invalid_post_code);
 	}
 
-
-	// Try to determine if the data in HTTP_REFERER is valid (if not, we redirect to the user's profile after the email is sent)
-	if (!empty($_SERVER['HTTP_REFERER']))
-		$redirect_url = validate_redirect($_SERVER['HTTP_REFERER'], null);
-
-	if (!isset($redirect_url))
-		$redirect_url = get_base_url(true).'/profile.php?id='.$recipient_id;
-	else if (preg_match('%viewtopic\.php\?pid=(\d+)$%', $redirect_url, $matches))
-		$redirect_url .= '#p'.$matches[1];
-
-	$page_title = array(pun_htmlspecialchars($pun_config['o_board_title']), $lang_misc['Send email to'].' '.pun_htmlspecialchars($recipient));
-	$required_fields = array('req_subject' => $lang_misc['Email subject'], 'req_message' => $lang_misc['Email message']);
-	$focus_element = array('email', 'req_subject');
-	define('PUN_ACTIVE_PAGE', 'index');
-	require PUN_ROOT.'header.php';
-
-?>
-<div id="emailform" class="blockform">
-	<h2><span><?php echo $lang_misc['Send email to'] ?> <?php echo pun_htmlspecialchars($recipient) ?></span></h2>
-	<div class="box">
-		<form id="email" method="post" action="misc.php?email=<?php echo $recipient_id ?>" onsubmit="this.submit.disabled=true;if(process_form(this)){return true;}else{this.submit.disabled=false;return false;}">
-			<div class="inform">
-				<fieldset>
-					<legend><?php echo $lang_misc['Write email'] ?></legend>
-					<div class="infldset txtarea">
-						<input type="hidden" name="form_sent" value="1" />
-						<input type="hidden" name="redirect_url" value="<?php echo pun_htmlspecialchars($redirect_url) ?>" />
-						<label class="required"><strong><?php echo $lang_misc['Email subject'] ?> <span><?php echo $lang_common['Required'] ?></span></strong><br />
-						<input class="longinput" type="text" name="req_subject" size="75" maxlength="70" tabindex="1" /><br /></label>
-						<label class="required"><strong><?php echo $lang_misc['Email message'] ?> <span><?php echo $lang_common['Required'] ?></span></strong><br />
-						<textarea name="req_message" rows="10" cols="75" tabindex="2"></textarea><br /></label>
-						<p><?php echo $lang_misc['Email disclosure note'] ?></p>
-					</div>
-				</fieldset>
-			</div>
-			<p class="buttons"><input type="submit" name="submit" value="<?php echo $lang_common['Submit'] ?>" tabindex="3" accesskey="s" /> <a href="javascript:history.go(-1)"><?php echo $lang_common['Go back'] ?></a></p>
-		</form>
-	</div>
-</div>
-<?php
-
-	require PUN_ROOT.'footer.php';
-}
-
-
-else if (isset($_GET['report']))
-{
-	if ($pun_user['is_guest'])
-		message($lang_common['No permission'], false, '403 Forbidden');
-
-	$post_id = intval($_GET['report']);
-	if ($post_id < 1)
-		message($lang_common['Bad request'], false, '404 Not Found');
-
-	if (isset($_POST['form_sent']))
+	if(isset($mybb->input['fid']))
 	{
-		// Make sure they got here from the site
-		confirm_referrer('misc.php');
-		
-		// Clean up reason from POST
-		$reason = pun_linebreaks(pun_trim($_POST['req_reason']));
-		if ($reason == '')
-			message($lang_misc['No reason']);
-		else if (strlen($reason) > 65535) // TEXT field can only hold 65535 bytes
-			message($lang_misc['Reason too long']);
-
-		if ($pun_user['last_report_sent'] != '' && (time() - $pun_user['last_report_sent']) < $pun_user['g_report_flood'] && (time() - $pun_user['last_report_sent']) >= 0)
-			message(sprintf($lang_misc['Report flood'], $pun_user['g_report_flood'], $pun_user['g_report_flood'] - (time() - $pun_user['last_report_sent'])));
-
-		// Get the topic ID
-		$result = $db->query('SELECT topic_id FROM '.$db->prefix.'posts WHERE id='.$post_id) or error('Unable to fetch post info', __FILE__, __LINE__, $db->error());
-		if (!$db->num_rows($result))
-			message($lang_common['Bad request'], false, '404 Not Found');
-
-		$topic_id = $db->result($result);
-
-		// Get the subject and forum ID
-		$result = $db->query('SELECT subject, forum_id FROM '.$db->prefix.'topics WHERE id='.$topic_id) or error('Unable to fetch topic info', __FILE__, __LINE__, $db->error());
-		if (!$db->num_rows($result))
-			message($lang_common['Bad request'], false, '404 Not Found');
-
-		list($subject, $forum_id) = $db->fetch_row($result);
-
-		// Should we use the internal report handling?
-		if ($pun_config['o_report_method'] == '0' || $pun_config['o_report_method'] == '2')
-			$db->query('INSERT INTO '.$db->prefix.'reports (post_id, topic_id, forum_id, reported_by, created, message) VALUES('.$post_id.', '.$topic_id.', '.$forum_id.', '.$pun_user['id'].', '.time().', \''.$db->escape($reason).'\')' ) or error('Unable to create report', __FILE__, __LINE__, $db->error());
-
-		// Should we email the report?
-		if ($pun_config['o_report_method'] == '1' || $pun_config['o_report_method'] == '2')
+		$validforum = get_forum($mybb->input['fid']);
+		if(!$validforum)
 		{
-			// We send it to the complete mailing-list in one swoop
-			if ($pun_config['o_mailing_list'] != '')
+			if(!isset($mybb->input['ajax']))
 			{
-				// Load the "new report" template
-				$mail_tpl = trim(file_get_contents(PUN_ROOT.'lang/'.$pun_user['language'].'/mail_templates/new_report.tpl'));
-
-				// The first row contains the subject
-				$first_crlf = strpos($mail_tpl, "\n");
-				$mail_subject = trim(substr($mail_tpl, 8, $first_crlf-8));
-				$mail_message = trim(substr($mail_tpl, $first_crlf));
-
-				$mail_subject = str_replace('<forum_id>', $forum_id, $mail_subject);
-				$mail_subject = str_replace('<topic_subject>', $subject, $mail_subject);
-				$mail_message = str_replace('<username>', $pun_user['username'], $mail_message);
-				$mail_message = str_replace('<post_url>', get_base_url().'/viewtopic.php?pid='.$post_id.'#p'.$post_id, $mail_message);
-				$mail_message = str_replace('<reason>', $reason, $mail_message);
-				$mail_message = str_replace('<board_mailer>', $pun_config['o_board_title'], $mail_message);
-
-				require PUN_ROOT.'include/email.php';
-
-				pun_mail($pun_config['o_mailing_list'], $mail_subject, $mail_message);
+				error($lang->error_invalidforum);
+			}
+			else
+			{
+				echo 0;
+				exit;
 			}
 		}
 
-		$db->query('UPDATE '.$db->prefix.'users SET last_report_sent='.time().' WHERE id='.$pun_user['id']) or error('Unable to update user', __FILE__, __LINE__, $db->error());
+		require_once MYBB_ROOT."/inc/functions_indicators.php";
+		mark_forum_read($mybb->input['fid']);
 
-		redirect('viewforum.php?id='.$forum_id, $lang_misc['Report redirect']);
+		$plugins->run_hooks("misc_markread_forum");
+
+		if(!isset($mybb->input['ajax']))
+		{
+			redirect(get_forum_link($mybb->input['fid']), $lang->redirect_markforumread);
+		}
+		else
+		{
+			echo 1;
+			exit;
+		}
 	}
+	else
+	{
 
-	// Fetch some info about the post, the topic and the forum
-	$result = $db->query('SELECT f.id AS fid, f.forum_name, t.id AS tid, t.subject FROM '.$db->prefix.'posts AS p INNER JOIN '.$db->prefix.'topics AS t ON t.id=p.topic_id INNER JOIN '.$db->prefix.'forums AS f ON f.id=t.forum_id LEFT JOIN '.$db->prefix.'forum_perms AS fp ON (fp.forum_id=f.id AND fp.group_id='.$pun_user['g_id'].') WHERE (fp.read_forum IS NULL OR fp.read_forum=1) AND p.id='.$post_id) or error('Unable to fetch post info', __FILE__, __LINE__, $db->error());
-	if (!$db->num_rows($result))
-		message($lang_common['Bad request'], false, '404 Not Found');
-
-	$cur_post = $db->fetch_assoc($result);
-
-	if ($pun_config['o_censoring'] == '1')
-		$cur_post['subject'] = censor_words($cur_post['subject']);
-
-	$page_title = array(pun_htmlspecialchars($pun_config['o_board_title']), $lang_misc['Report post']);
-	$required_fields = array('req_reason' => $lang_misc['Reason']);
-	$focus_element = array('report', 'req_reason');
-	define('PUN_ACTIVE_PAGE', 'index');
-	require PUN_ROOT.'header.php';
-
-?>
-<div class="linkst">
-	<div class="inbox">
-		<ul class="crumbs">
-			<li><a href="index.php"><?php echo $lang_common['Index'] ?></a></li>
-			<li><span>»&#160;</span><a href="viewforum.php?id=<?php echo $cur_post['fid'] ?>"><?php echo pun_htmlspecialchars($cur_post['forum_name']) ?></a></li>
-			<li><span>»&#160;</span><a href="viewtopic.php?pid=<?php echo $post_id ?>#p<?php echo $post_id ?>"><?php echo pun_htmlspecialchars($cur_post['subject']) ?></a></li>
-			<li><span>»&#160;</span><strong><?php echo $lang_misc['Report post'] ?></strong></li>
-		</ul>
-	</div>
-</div>
-
-<div id="reportform" class="blockform">
-	<h2><span><?php echo $lang_misc['Report post'] ?></span></h2>
-	<div class="box">
-		<form id="report" method="post" action="misc.php?report=<?php echo $post_id ?>" onsubmit="this.submit.disabled=true;if(process_form(this)){return true;}else{this.submit.disabled=false;return false;}">
-			<div class="inform">
-				<fieldset>
-					<legend><?php echo $lang_misc['Reason desc'] ?></legend>
-					<div class="infldset txtarea">
-						<input type="hidden" name="form_sent" value="1" />
-						<label class="required"><strong><?php echo $lang_misc['Reason'] ?> <span><?php echo $lang_common['Required'] ?></span></strong><br /><textarea name="req_reason" rows="5" cols="60"></textarea><br /></label>
-					</div>
-				</fieldset>
-			</div>
-			<p class="buttons"><input type="submit" name="submit" value="<?php echo $lang_common['Submit'] ?>" accesskey="s" /> <a href="javascript:history.go(-1)"><?php echo $lang_common['Go back'] ?></a></p>
-		</form>
-	</div>
-</div>
-<?php
-
-	require PUN_ROOT.'footer.php';
+		$plugins->run_hooks("misc_markread_end");
+		require_once MYBB_ROOT."/inc/functions_indicators.php";
+		mark_all_forums_read();
+		redirect("index.php", $lang->redirect_markforumsread);
+	}
 }
-
-
-else if ($action == 'subscribe')
+elseif($mybb->input['action'] == "clearpass")
 {
-	if ($pun_user['is_guest'])
-		message($lang_common['No permission'], false, '403 Forbidden');
+	$plugins->run_hooks("misc_clearpass");
 
-	check_csrf($_GET['csrf_token']);
-
-	$topic_id = isset($_GET['tid']) ? intval($_GET['tid']) : 0;
-	$forum_id = isset($_GET['fid']) ? intval($_GET['fid']) : 0;
-	if ($topic_id < 1 && $forum_id < 1)
-		message($lang_common['Bad request'], false, '404 Not Found');
-
-	if ($topic_id)
+	if(isset($mybb->input['fid']))
 	{
-		if ($pun_config['o_topic_subscriptions'] != '1')
-			message($lang_common['No permission'], false, '403 Forbidden');
+		if(!verify_post_check($mybb->get_input('my_post_key')))
+		{
+			error($lang->invalid_post_code);
+		}
 
-		// Make sure the user can view the topic
-		$result = $db->query('SELECT 1 FROM '.$db->prefix.'topics AS t LEFT JOIN '.$db->prefix.'forum_perms AS fp ON (fp.forum_id=t.forum_id AND fp.group_id='.$pun_user['g_id'].') WHERE (fp.read_forum IS NULL OR fp.read_forum=1) AND t.id='.$topic_id.' AND t.moved_to IS NULL') or error('Unable to fetch topic info', __FILE__, __LINE__, $db->error());
-		if (!$db->num_rows($result))
-			message($lang_common['Bad request'], false, '404 Not Found');
-
-		$result = $db->query('SELECT 1 FROM '.$db->prefix.'topic_subscriptions WHERE user_id='.$pun_user['id'].' AND topic_id='.$topic_id) or error('Unable to fetch subscription info', __FILE__, __LINE__, $db->error());
-		if ($db->num_rows($result))
-			message($lang_misc['Already subscribed topic']);
-
-		$db->query('INSERT INTO '.$db->prefix.'topic_subscriptions (user_id, topic_id) VALUES('.$pun_user['id'].' ,'.$topic_id.')') or error('Unable to add subscription', __FILE__, __LINE__, $db->error());
-
-		redirect('viewtopic.php?id='.$topic_id, $lang_misc['Subscribe redirect']);
-	}
-
-	if ($forum_id)
-	{
-		if ($pun_config['o_forum_subscriptions'] != '1')
-			message($lang_common['No permission'], false, '403 Forbidden');
-
-		// Make sure the user can view the forum
-		$result = $db->query('SELECT 1 FROM '.$db->prefix.'forums AS f LEFT JOIN '.$db->prefix.'forum_perms AS fp ON (fp.forum_id=f.id AND fp.group_id='.$pun_user['g_id'].') WHERE (fp.read_forum IS NULL OR fp.read_forum=1) AND f.id='.$forum_id) or error('Unable to fetch forum info', __FILE__, __LINE__, $db->error());
-		if (!$db->num_rows($result))
-			message($lang_common['Bad request'], false, '404 Not Found');
-
-		$result = $db->query('SELECT 1 FROM '.$db->prefix.'forum_subscriptions WHERE user_id='.$pun_user['id'].' AND forum_id='.$forum_id) or error('Unable to fetch subscription info', __FILE__, __LINE__, $db->error());
-		if ($db->num_rows($result))
-			message($lang_misc['Already subscribed forum']);
-
-		$db->query('INSERT INTO '.$db->prefix.'forum_subscriptions (user_id, forum_id) VALUES('.$pun_user['id'].' ,'.$forum_id.')') or error('Unable to add subscription', __FILE__, __LINE__, $db->error());
-
-		redirect('viewforum.php?id='.$forum_id, $lang_misc['Subscribe redirect']);
+		my_unsetcookie("forumpass[".$mybb->get_input('fid', MyBB::INPUT_INT)."]");
+		redirect("index.php", $lang->redirect_forumpasscleared);
 	}
 }
-
-
-else if ($action == 'unsubscribe')
+elseif($mybb->input['action'] == "rules")
 {
-	if ($pun_user['is_guest'])
-		message($lang_common['No permission'], false, '403 Forbidden');
-
-	check_csrf($_GET['csrf_token']);
-
-	$topic_id = isset($_GET['tid']) ? intval($_GET['tid']) : 0;
-	$forum_id = isset($_GET['fid']) ? intval($_GET['fid']) : 0;
-	if ($topic_id < 1 && $forum_id < 1)
-		message($lang_common['Bad request'], false, '404 Not Found');
-
-	if ($topic_id)
+	if(isset($mybb->input['fid']))
 	{
-		if ($pun_config['o_topic_subscriptions'] != '1')
-			message($lang_common['No permission'], false, '403 Forbidden');
+		$plugins->run_hooks("misc_rules_start");
 
-		$result = $db->query('SELECT 1 FROM '.$db->prefix.'topic_subscriptions WHERE user_id='.$pun_user['id'].' AND topic_id='.$topic_id) or error('Unable to fetch subscription info', __FILE__, __LINE__, $db->error());
-		if (!$db->num_rows($result))
-			message($lang_misc['Not subscribed topic']);
+		$fid = $mybb->input['fid'];
 
-		$db->query('DELETE FROM '.$db->prefix.'topic_subscriptions WHERE user_id='.$pun_user['id'].' AND topic_id='.$topic_id) or error('Unable to remove subscription', __FILE__, __LINE__, $db->error());
+		$forum = get_forum($fid);
+		if(!$forum || $forum['type'] != "f" || $forum['rules'] == '')
+		{
+			error($lang->error_invalidforum);
+		}
 
-		redirect('viewtopic.php?id='.$topic_id, $lang_misc['Unsubscribe redirect']);
+		$forumpermissions = forum_permissions($forum['fid']);
+		if($forumpermissions['canview'] != 1)
+		{
+			error_no_permission();
+		}
+
+		if(!$forum['rulestitle'])
+		{
+			$forum['rulestitle'] = $lang->sprintf($lang->forum_rules, $forum['name']);
+		}
+
+		require_once MYBB_ROOT."inc/class_parser.php";
+		$parser = new postParser();
+		$parser_options = array(
+			"allow_html" => 1,
+			"allow_mycode" => 1,
+			"allow_smilies" => 1,
+			"allow_imgcode" => 1,
+			"filter_badwords" => 1
+		);
+
+		$forum['rules'] = $parser->parse_message($forum['rules'], $parser_options);
+
+		// Make navigation
+		build_forum_breadcrumb($mybb->input['fid']);
+		add_breadcrumb($forum['rulestitle']);
+
+		$plugins->run_hooks("misc_rules_end");
+
+		eval("\$rules = \"".$templates->get("misc_rules_forum")."\";");
+		output_page($rules);
 	}
 
-	if ($forum_id)
+}
+elseif($mybb->input['action'] == "do_helpsearch" && $mybb->request_method == "post")
+{
+	$plugins->run_hooks("misc_do_helpsearch_start");
+
+	if($mybb->settings['helpsearch'] != 1)
 	{
-		if ($pun_config['o_forum_subscriptions'] != '1')
-			message($lang_common['No permission'], false, '403 Forbidden');
+		error($lang->error_helpsearchdisabled);
+	}
 
-		$result = $db->query('SELECT 1 FROM '.$db->prefix.'forum_subscriptions WHERE user_id='.$pun_user['id'].' AND forum_id='.$forum_id) or error('Unable to fetch subscription info', __FILE__, __LINE__, $db->error());
-		if (!$db->num_rows($result))
-			message($lang_misc['Not subscribed forum']);
+	// Check if search flood checking is enabled and user is not admin
+	if($mybb->settings['searchfloodtime'] > 0 && $mybb->usergroup['cancp'] != 1)
+	{
+		// Fetch the time this user last searched
+		$timecut = TIME_NOW-$mybb->settings['searchfloodtime'];
+		$query = $db->simple_select("searchlog", "*", "uid='{$mybb->user['uid']}' AND dateline > '$timecut'", array('order_by' => "dateline", 'order_dir' => "DESC"));
+		$last_search = $db->fetch_array($query);
+		// Users last search was within the flood time, show the error
+		if($last_search['sid'])
+		{
+			$remaining_time = $mybb->settings['searchfloodtime']-(TIME_NOW-$last_search['dateline']);
+			if($remaining_time == 1)
+			{
+				$lang->error_searchflooding = $lang->sprintf($lang->error_searchflooding_1, $mybb->settings['searchfloodtime']);
+			}
+			else
+			{
+				$lang->error_searchflooding = $lang->sprintf($lang->error_searchflooding, $mybb->settings['searchfloodtime'], $remaining_time);
+			}
+			error($lang->error_searchflooding);
+		}
+	}
 
-		$db->query('DELETE FROM '.$db->prefix.'forum_subscriptions WHERE user_id='.$pun_user['id'].' AND forum_id='.$forum_id) or error('Unable to remove subscription', __FILE__, __LINE__, $db->error());
+	if($mybb->get_input('name', MyBB::INPUT_INT) != 1 && $mybb->get_input('document', MyBB::INPUT_INT) != 1)
+	{
+		error($lang->error_nosearchresults);
+	}
 
-		redirect('viewforum.php?id='.$forum_id, $lang_misc['Unsubscribe redirect']);
+	if($mybb->get_input('document', MyBB::INPUT_INT) == 1)
+	{
+		$resulttype = "helpdoc";
+	}
+	else
+	{
+		$resulttype = "helpname";
+	}
+
+	$search_data = array(
+		"keywords" => $mybb->get_input('keywords'),
+		"name" => $mybb->get_input('name', MyBB::INPUT_INT),
+		"document" => $mybb->get_input('document', MyBB::INPUT_INT),
+	);
+
+	if($db->can_search == true)
+	{
+		require_once MYBB_ROOT."inc/functions_search.php";
+
+		$search_results = helpdocument_perform_search_mysql($search_data);
+	}
+	else
+	{
+		error($lang->error_no_search_support);
+	}
+	$sid = md5(uniqid(microtime(), true));
+	$searcharray = array(
+		"sid" => $db->escape_string($sid),
+		"uid" => $mybb->user['uid'],
+		"dateline" => TIME_NOW,
+		"ipaddress" => $db->escape_binary($session->packedip),
+		"threads" => '',
+		"posts" => '',
+		"resulttype" => $resulttype,
+		"querycache" => $search_results['querycache'],
+		"keywords" => $db->escape_string($mybb->get_input('keywords')),
+	);
+	$plugins->run_hooks("misc_do_helpsearch_process");
+
+	$db->insert_query("searchlog", $searcharray);
+
+	$plugins->run_hooks("misc_do_helpsearch_end");
+	redirect("misc.php?action=helpresults&sid={$sid}", $lang->redirect_searchresults);
+}
+elseif($mybb->input['action'] == "helpresults")
+{
+	if($mybb->settings['helpsearch'] != 1)
+	{
+		error($lang->error_helpsearchdisabled);
+	}
+
+	$sid = $mybb->get_input('sid');
+	$query = $db->simple_select("searchlog", "*", "sid='".$db->escape_string($sid)."' AND uid='{$mybb->user['uid']}'");
+	$search = $db->fetch_array($query);
+
+	if(!$search)
+	{
+		error($lang->error_invalidsearch);
+	}
+
+	$plugins->run_hooks("misc_helpresults_start");
+
+	add_breadcrumb($lang->nav_helpdocs, "misc.php?action=help");
+	add_breadcrumb($lang->search_results, "misc.php?action=helpresults&sid={$sid}");
+
+	if(!$mybb->settings['threadsperpage'] || (int)$mybb->settings['threadsperpage'] < 1)
+	{
+		$mybb->settings['threadsperpage'] = 20;
+	}
+
+	$query = $db->simple_select("helpdocs", "COUNT(*) AS total", "hid IN(".$db->escape_string($search['querycache']).")");
+	$helpcount = $db->fetch_field($query, "total");
+
+	// Work out pagination, which page we're at, as well as the limits.
+	$perpage = $mybb->settings['threadsperpage'];
+	$page = $mybb->get_input('page', MyBB::INPUT_INT);
+	if($page > 0)
+	{
+		$start = ($page-1) * $perpage;
+		$pages = ceil($helpcount / $perpage);
+		if($pages > $page)
+		{
+			$start = 0;
+			$page = 1;
+		}
+	}
+	else
+	{
+		$start = 0;
+		$page = 1;
+	}
+	$end = $start + $perpage;
+	$lower = $start+1;
+	$upper = $end;
+
+	// Work out if we have terms to highlight
+	$highlight = "";
+	if($search['keywords'])
+	{
+		$highlight = "&amp;highlight=".urlencode($search['keywords']);
+	}
+
+	// Do Multi Pages
+	if($upper > $helpcount)
+	{
+		$upper = $helpcount;
+	}
+	$multipage = multipage($helpcount, $perpage, $page, "misc.php?action=helpresults&amp;sid='".htmlspecialchars_uni($mybb->get_input('sid'))."'");
+	$helpdoclist = '';
+
+	require_once MYBB_ROOT."inc/class_parser.php";
+	$parser = new postParser();
+
+	$query = $db->query("
+		SELECT h.*, s.enabled
+		FROM ".TABLE_PREFIX."helpdocs h
+		LEFT JOIN ".TABLE_PREFIX."helpsections s ON (s.sid=h.sid)
+		WHERE h.hid IN(".$db->escape_string($search['querycache']).") AND h.enabled='1' AND s.enabled='1'
+		LIMIT {$start}, {$perpage}
+	");
+	while($helpdoc = $db->fetch_array($query))
+	{
+		$bgcolor = alt_trow();
+
+		if(my_strlen($helpdoc['name']) > 50)
+		{
+			$helpdoc['name'] = htmlspecialchars_uni(my_substr($helpdoc['name'], 0, 50)."...");
+		}
+		else
+		{
+			$helpdoc['name'] = htmlspecialchars_uni($helpdoc['name']);
+		}
+
+		$parser_options = array(
+			'allow_html' => 1,
+			'allow_mycode' => 0,
+			'allow_smilies' => 0,
+			'allow_imgcode' => 0,
+			'filter_badwords' => 1
+		);
+		$helpdoc['helpdoc'] = $parser->parse_message($helpdoc['document'], $parser_options);
+
+		if(my_strlen($helpdoc['helpdoc']) > 350)
+		{
+			$prev = my_substr($helpdoc['helpdoc'], 0, 350)."...";
+		}
+		else
+		{
+			$prev = $helpdoc['helpdoc'];
+		}
+
+		$plugins->run_hooks("misc_helpresults_bit");
+
+		eval("\$helpdoclist .= \"".$templates->get("misc_helpresults_bit")."\";");
+	}
+
+	if($db->num_rows($query) == 0)
+	{
+		eval("\$helpdoclist = \"".$templates->get("misc_helpresults_noresults")."\";");
+	}
+
+	$plugins->run_hooks("misc_helpresults_end");
+
+	eval("\$helpresults = \"".$templates->get("misc_helpresults")."\";");
+	output_page($helpresults);
+}
+elseif($mybb->input['action'] == "help")
+{
+	$lang->load("helpdocs");
+	$lang->load("helpsections");
+	$lang->load("customhelpdocs");
+	$lang->load("customhelpsections");
+
+	$hid = $mybb->get_input('hid', MyBB::INPUT_INT);
+	add_breadcrumb($lang->nav_helpdocs, "misc.php?action=help");
+
+	if($hid)
+	{
+		$query = $db->query("
+			SELECT h.*, s.enabled AS section
+			FROM ".TABLE_PREFIX."helpdocs h
+			LEFT JOIN ".TABLE_PREFIX."helpsections s ON (s.sid=h.sid)
+			WHERE h.hid='{$hid}'
+		");
+
+		$helpdoc = $db->fetch_array($query);
+		if($helpdoc['section'] != 0 && $helpdoc['enabled'] != 0)
+		{
+			$plugins->run_hooks("misc_help_helpdoc_start");
+
+			// If we have incoming search terms to highlight - get it done (only if not using translation).
+			if(!empty($mybb->input['highlight']) && $helpdoc['usetranslation'] != 1)
+			{
+				require_once MYBB_ROOT."inc/class_parser.php";
+				$parser = new postParser();
+
+				$highlight = $mybb->input['highlight'];
+				$helpdoc['name'] = $parser->highlight_message($helpdoc['name'], $highlight);
+				$helpdoc['document'] = $parser->highlight_message($helpdoc['document'], $highlight);
+			}
+
+			if($helpdoc['usetranslation'] == 1)
+			{
+				$langnamevar = "d".$helpdoc['hid']."_name";
+				$langdescvar = "d".$helpdoc['hid']."_desc";
+				$langdocvar = "d".$helpdoc['hid']."_document";
+				if($lang->$langnamevar)
+				{
+					$helpdoc['name'] = $lang->$langnamevar;
+				}
+				if($lang->$langdescvar)
+				{
+					$helpdoc['description'] = $lang->$langdescvar;
+				}
+				if($lang->$langdocvar)
+				{
+					$helpdoc['document'] = $lang->$langdocvar;
+				}
+			}
+
+			if($helpdoc['hid'] == 3)
+			{
+				$helpdoc['document'] = $lang->sprintf($helpdoc['document'], $mybb->post_code);
+			}
+
+			add_breadcrumb($helpdoc['name']);
+
+			$plugins->run_hooks("misc_help_helpdoc_end");
+
+			eval("\$helppage = \"".$templates->get("misc_help_helpdoc")."\";");
+			output_page($helppage);
+		}
+		else
+		{
+			error($lang->error_invalidhelpdoc);
+		}
+	}
+	else
+	{
+		$plugins->run_hooks("misc_help_section_start");
+
+		$query = $db->simple_select("helpdocs", "*", "", array('order_by' => 'sid, disporder'));
+		while($helpdoc = $db->fetch_array($query))
+		{
+			$helpdocs[$helpdoc['sid']][$helpdoc['disporder']][$helpdoc['hid']] = $helpdoc;
+		}
+		unset($helpdoc);
+		$sections = '';
+		$query = $db->simple_select("helpsections", "*", "enabled != 0", array('order_by' => 'disporder'));
+		while($section = $db->fetch_array($query))
+		{
+			if($section['usetranslation'] == 1)
+			{
+				$langnamevar = "s".$section['sid']."_name";
+				$langdescvar = "s".$section['sid']."_desc";
+				if($lang->$langnamevar)
+				{
+					$section['name'] = $lang->$langnamevar;
+				}
+				if($lang->$langdescvar)
+				{
+					$section['description'] = $lang->$langdescvar;
+				}
+			}
+			if(is_array($helpdocs[$section['sid']]))
+			{
+				$helpbits = '';
+				foreach($helpdocs[$section['sid']] as $key => $bit)
+				{
+					foreach($bit as $key => $helpdoc)
+					{
+						if($helpdoc['enabled'] != 0)
+						{
+							if($helpdoc['usetranslation'] == 1)
+							{
+								$langnamevar = "d".$helpdoc['hid'].'_name';
+								$langdescvar = "d".$helpdoc['hid'].'_desc';
+								if($lang->$langnamevar)
+								{
+									$helpdoc['name'] = $lang->$langnamevar;
+								}
+								if($lang->$langdescvar)
+								{
+									$helpdoc['description'] = $lang->$langdescvar;
+								}
+							}
+							$altbg = alt_trow();
+							eval("\$helpbits .= \"".$templates->get("misc_help_section_bit")."\";");
+						}
+					}
+					$expdisplay = '';
+					$sname = "sid_".$section['sid']."_c";
+					if(isset($collapsed[$sname]) && $collapsed[$sname] == "display: show;")
+					{
+						$expcolimage = "collapse_collapsed.png";
+						$expdisplay = "display: none;";
+						$expthead = " thead_collapsed";
+						$expaltext = "[+]";
+					}
+					else
+					{
+						$expcolimage = "collapse.png";
+						$expthead = "";
+						$expaltext = "[-]";
+					}
+				}
+				eval("\$sections .= \"".$templates->get("misc_help_section")."\";");
+			}
+		}
+
+		if($mybb->settings['helpsearch'] == 1)
+		{
+			eval("\$search = \"".$templates->get("misc_help_search")."\";");
+		}
+
+		$plugins->run_hooks("misc_help_section_end");
+
+		eval("\$help = \"".$templates->get("misc_help")."\";");
+		output_page($help);
 	}
 }
+elseif($mybb->input['action'] == "buddypopup")
+{
+	$plugins->run_hooks("misc_buddypopup_start");
 
+	if($mybb->user['uid'] == 0)
+	{
+		error_no_permission();
+	}
 
-else
-	message($lang_common['Bad request'], false, '404 Not Found');
+	if(isset($mybb->input['removebuddy']) && verify_post_check($mybb->input['my_post_key']))
+	{
+		$buddies = $mybb->user['buddylist'];
+		$namesarray = explode(",", $buddies);
+		$mybb->input['removebuddy'] = $mybb->get_input('removebuddy', MyBB::INPUT_INT);
+		if(is_array($namesarray))
+		{
+			foreach($namesarray as $key => $buddyid)
+			{
+				if($buddyid == $mybb->input['removebuddy'])
+				{
+					unset($namesarray[$key]);
+				}
+			}
+			$buddylist = implode(',', $namesarray);
+			$db->update_query("users", array('buddylist' => $buddylist), "uid='".$mybb->user['uid']."'");
+			$mybb->user['buddylist'] = $buddylist;
+		}
+	}
+
+	// Load Buddies
+	$buddies = '';
+	if($mybb->user['buddylist'] != "")
+	{
+		$buddys = array('online' => '', 'offline' => '');
+		$timecut = TIME_NOW - $mybb->settings['wolcutoff'];
+
+		$query = $db->simple_select("users", "*", "uid IN ({$mybb->user['buddylist']})", array('order_by' => 'lastactive'));
+
+		while($buddy = $db->fetch_array($query))
+		{
+			$buddy['username'] = htmlspecialchars_uni($buddy['username']);
+			$buddy_name = format_name($buddy['username'], $buddy['usergroup'], $buddy['displaygroup']);
+			$profile_link = build_profile_link($buddy_name, $buddy['uid'], '_blank', 'if(window.opener) { window.opener.location = this.href; return false; }');
+
+			$send_pm = '';
+			if($mybb->user['receivepms'] != 0 && $buddy['receivepms'] != 0 && $groupscache[$buddy['usergroup']]['canusepms'] != 0)
+			{
+				eval("\$send_pm = \"".$templates->get("misc_buddypopup_user_sendpm")."\";");
+			}
+
+			if($buddy['lastactive'])
+			{
+				$last_active = $lang->sprintf($lang->last_active, my_date('relative', $buddy['lastactive']));
+			}
+			else
+			{
+				$last_active = $lang->sprintf($lang->last_active, $lang->never);
+			}
+
+			$buddy['avatar'] = format_avatar($buddy['avatar'], $buddy['avatardimensions'], '44x44');
+
+			if($buddy['lastactive'] > $timecut && ($buddy['invisible'] == 0 || $mybb->user['usergroup'] == 4) && $buddy['lastvisit'] != $buddy['lastactive'])
+			{
+				$bonline_alt = alt_trow();
+				eval("\$buddys['online'] .= \"".$templates->get("misc_buddypopup_user_online")."\";");
+			}
+			else
+			{
+				$boffline_alt = alt_trow();
+				eval("\$buddys['offline'] .= \"".$templates->get("misc_buddypopup_user_offline")."\";");
+			}
+		}
+
+		$colspan = ' colspan="2"';
+		if(empty($buddys['online']))
+		{
+			$error = $lang->online_none;
+			eval("\$buddys['online'] = \"".$templates->get("misc_buddypopup_user_none")."\";");
+		}
+
+		if(empty($buddys['offline']))
+		{
+			$error = $lang->offline_none;
+			eval("\$buddys['offline'] = \"".$templates->get("misc_buddypopup_user_none")."\";");
+		}
+
+		eval("\$buddies = \"".$templates->get("misc_buddypopup_user")."\";");
+	}
+	else
+	{
+		// No buddies? :(
+		$colspan = '';
+		$error = $lang->no_buddies;
+		eval("\$buddies = \"".$templates->get("misc_buddypopup_user_none")."\";");
+	}
+
+	$plugins->run_hooks("misc_buddypopup_end");
+
+	eval("\$buddylist = \"".$templates->get("misc_buddypopup", 1, 0)."\";");
+	echo $buddylist;
+	exit;
+}
+elseif($mybb->input['action'] == "whoposted")
+{
+	$numposts = 0;
+	$altbg = alt_trow();
+	$whoposted = '';
+	$tid = $mybb->get_input('tid', MyBB::INPUT_INT);
+	$thread = get_thread($tid);
+	$modal = $mybb->get_input('modal', MyBB::INPUT_INT);
+
+	// Make sure we are looking at a real thread here.
+	if(!$thread)
+	{
+		error($lang->error_invalidthread);
+	}
+
+	// Make sure we are looking at a real thread here.
+	if(($thread['visible'] == -1 && !is_moderator($thread['fid'], "canviewdeleted")) || ($thread['visible'] == 0 && !is_moderator($thread['fid'], "canviewunapprove")) || $thread['visible'] > 1)
+	{
+		error($lang->error_invalidthread);
+	}
+
+	if(is_moderator($thread['fid'], "canviewdeleted") || is_moderator($thread['fid'], "canviewunapprove"))
+	{
+		if(is_moderator($thread['fid'], "canviewunapprove") && !is_moderator($thread['fid'], "canviewdeleted"))
+		{
+			$show_posts = "p.visible IN (0,1)";
+		}
+		elseif(is_moderator($thread['fid'], "canviewdeleted") && !is_moderator($thread['fid'], "canviewunapprove"))
+		{
+			$show_posts = "p.visible IN (-1,1)";
+		}
+		else
+		{
+			$show_posts = "p.visible IN (-1,0,1)";
+		}
+	}
+	else
+	{
+		$show_posts = "p.visible = 1";
+	}
+
+	// Does the thread belong to a valid forum?
+	$forum = get_forum($thread['fid']);
+	if(!$forum || $forum['type'] != "f")
+	{
+		error($lang->error_invalidforum);
+	}
+
+	// Does the user have permission to view this thread?
+	$forumpermissions = forum_permissions($forum['fid']);
+
+	if($forumpermissions['canview'] == 0 || $forumpermissions['canviewthreads'] == 0 || (isset($forumpermissions['canonlyviewownthreads']) && $forumpermissions['canonlyviewownthreads'] != 0 && $thread['uid'] != $mybb->user['uid']))
+	{
+		error_no_permission();
+	}
+
+	// Check if this forum is password protected and we have a valid password
+	check_forum_password($forum['fid']);
+
+	if($mybb->get_input('sort') != 'username')
+	{
+		$sortsql = ' ORDER BY posts DESC';
+	}
+	else
+	{
+		$sortsql = ' ORDER BY p.username ASC';
+	}
+	$whoposted = '';
+	$query = $db->query("
+		SELECT COUNT(p.pid) AS posts, p.username AS postusername, u.uid, u.username, u.usergroup, u.displaygroup
+		FROM ".TABLE_PREFIX."posts p
+		LEFT JOIN ".TABLE_PREFIX."users u ON (u.uid=p.uid)
+		WHERE tid='".$tid."' AND $show_posts
+		GROUP BY u.uid, p.username, u.uid, u.username, u.usergroup, u.displaygroup
+		".$sortsql."
+	");
+	while($poster = $db->fetch_array($query))
+	{
+		if($poster['username'] == '')
+		{
+			$poster['username'] = $poster['postusername'];
+		}
+		$poster['username'] = htmlspecialchars_uni($poster['username']);
+		$poster['postusername'] = htmlspecialchars_uni($poster['postusername']);
+		$poster_name = format_name($poster['username'], $poster['usergroup'], $poster['displaygroup']);
+		if($modal)
+		{
+			$onclick = '';
+			if($poster['uid'])
+			{
+				$onclick = "opener.location.href='".get_profile_link($poster['uid'])."'; return false;";
+			}
+			$profile_link = build_profile_link($poster_name, $poster['uid'], '_blank', $onclick);
+		}
+		else
+		{
+			$profile_link = build_profile_link($poster_name, $poster['uid']);
+		}
+		$numposts += $poster['posts'];
+		eval("\$whoposted .= \"".$templates->get("misc_whoposted_poster")."\";");
+		$altbg = alt_trow();
+	}
+	$numposts = my_number_format($numposts);
+	$poster['posts'] = my_number_format($poster['posts']);
+	if($modal)
+	{
+		eval("\$whop = \"".$templates->get("misc_whoposted", 1, 0)."\";");
+		echo $whop;
+		exit;
+	}
+	else
+	{
+		require_once MYBB_ROOT."inc/class_parser.php";
+		$parser = new postParser;
+
+		// Get thread prefix
+		$breadcrumbprefix = '';
+		$threadprefix = array('prefix' => '');
+		if($thread['prefix'])
+		{
+			$threadprefix = build_prefixes($thread['prefix']);
+			if(!empty($threadprefix['displaystyle']))
+			{
+				$breadcrumbprefix = $threadprefix['displaystyle'].'&nbsp;';
+			}
+		}
+
+		$thread['subject'] = htmlspecialchars_uni($parser->parse_badwords($thread['subject']));
+
+		// Build the navigation.
+		build_forum_breadcrumb($forum['fid']);
+		add_breadcrumb($breadcrumbprefix.$thread['subject'], get_thread_link($thread['tid']));
+		add_breadcrumb($lang->who_posted);
+
+		eval("\$whoposted = \"".$templates->get("misc_whoposted_page")."\";");
+		output_page($whoposted);
+	}
+}
+elseif($mybb->input['action'] == "smilies")
+{
+	$smilies = '';
+	if(!empty($mybb->input['popup']) && !empty($mybb->input['editor']))
+	{ // make small popup list of smilies
+		$editor = preg_replace('#([^a-zA-Z0-9_-]+)#', '', $mybb->get_input('editor'));
+		$e = 1;
+		$smile_icons = '';
+		$class = alt_trow(1);
+		$smilies_cache = $cache->read("smilies");
+
+		if(is_array($smilies_cache))
+		{
+			$extra_class = ' smilie_pointer';
+			foreach($smilies_cache as $smilie)
+			{
+				$smilie['image'] = str_replace("{theme}", $theme['imgdir'], $smilie['image']);
+				$smilie['image'] = htmlspecialchars_uni($mybb->get_asset_url($smilie['image']));
+				$smilie['name'] = htmlspecialchars_uni($smilie['name']);
+
+				// Only show the first text to replace in the box
+				$temp = explode("\n", $smilie['find']); // use temporary variable for php 5.3 compatibility
+				$smilie['find'] = $temp[0];
+
+				$smilie['find'] = htmlspecialchars_uni($smilie['find']);
+				$smilie_insert = str_replace(array('\\', "'"), array('\\\\', "\'"), $smilie['find']);
+
+				$onclick = " onclick=\"MyBBEditor.insertText(' $smilie_insert ');\"";
+				eval('$smilie_image = "'.$templates->get('smilie', 1, 0).'";');
+				eval("\$smile_icons .= \"".$templates->get("misc_smilies_popup_smilie")."\";");
+				if($e == 2)
+				{
+					eval("\$smilies .= \"".$templates->get("misc_smilies_popup_row")."\";");
+					$smile_icons = '';
+					$e = 1;
+					$class = alt_trow();
+				}
+				else
+				{
+					$e = 2;
+				}
+			}
+		}
+
+		if($e == 2)
+		{
+			eval("\$smilies .= \"".$templates->get("misc_smilies_popup_empty")."\";");
+		}
+
+		if(!$smilies)
+		{
+			eval("\$smilies = \"".$templates->get("misc_smilies_popup_no_smilies")."\";");
+		}
+
+		eval("\$smiliespage = \"".$templates->get("misc_smilies_popup", 1, 0)."\";");
+		output_page($smiliespage);
+	}
+	else
+	{
+		add_breadcrumb($lang->nav_smilies);
+		$class = "trow1";
+		$smilies_cache = $cache->read("smilies");
+
+		if(is_array($smilies_cache))
+		{
+			$extra_class = $onclick = '';
+			foreach($smilies_cache as $smilie)
+			{
+				$smilie['image'] = str_replace("{theme}", $theme['imgdir'], $smilie['image']);
+				$smilie['image'] = htmlspecialchars_uni($mybb->get_asset_url($smilie['image']));
+				$smilie['name'] = htmlspecialchars_uni($smilie['name']);
+
+				$smilie['find'] = nl2br(htmlspecialchars_uni($smilie['find']));
+				eval('$smilie_image = "'.$templates->get('smilie').'";');
+				eval("\$smilies .= \"".$templates->get("misc_smilies_smilie")."\";");
+				$class = alt_trow();
+			}
+		}
+
+		if(!$smilies)
+		{
+			eval("\$smilies = \"".$templates->get("misc_smilies_no_smilies")."\";");
+		}
+
+		eval("\$smiliespage = \"".$templates->get("misc_smilies")."\";");
+		output_page($smiliespage);
+	}
+}
+elseif($mybb->input['action'] == "imcenter")
+{
+	$mybb->input['imtype'] = $mybb->get_input('imtype');
+	if($mybb->input['imtype'] != "skype" && $mybb->input['imtype'] != "yahoo")
+	{
+		$message = $lang->error_invalidimtype;
+		eval("\$error = \"".$templates->get("misc_imcenter_error", 1, 0)."\";");
+		echo $error;
+		exit;
+	}
+
+	$uid = $mybb->get_input('uid', MyBB::INPUT_INT);
+	$user = get_user($uid);
+
+	if(!$user)
+	{
+		$message = $lang->error_invaliduser;
+		eval("\$error = \"".$templates->get("misc_imcenter_error", 1, 0)."\";");
+		echo $error;
+		exit;
+	}
+
+	if(empty($user[$mybb->input['imtype']]))
+	{
+		$message = $lang->error_invalidimtype;
+		eval("\$error = \"".$templates->get("misc_imcenter_error", 1, 0)."\";");
+		echo $error;
+		exit;
+	}
+
+	$settingkey = 'allow'.$mybb->input['imtype'].'field';
+	if(!is_member($mybb->settings[$settingkey], $user))
+	{
+		$message = $lang->error_nopermission_user_ajax;
+		eval("\$error = \"".$templates->get("misc_imcenter_error", 1, 0)."\";");
+		echo $error;
+		exit;
+	}
+
+	// Build IM navigation bar
+	$navigationbar = $navsep = $imtype = $imtype_lang = '';
+	if(!empty($user['skype']) && is_member($mybb->settings['allowskypefield'], array('usergroup' => $user['usergroup'], 'additionalgroups' => $user['additionalgroups'])))
+	{
+		$imtype = "skype";
+		$imtype_lang = $lang->skype;
+		eval("\$navigationbar .= \"".$templates->get("misc_imcenter_nav")."\";");
+		$navsep = ' - ';
+	}
+	if(!empty($user['yahoo']) && is_member($mybb->settings['allowyahoofield'], array('usergroup' => $user['usergroup'], 'additionalgroups' => $user['additionalgroups'])))
+	{
+		$imtype = "yahoo";
+		$imtype_lang = $lang->yahoo_im;
+		eval("\$navigationbar .= \"".$templates->get("misc_imcenter_nav")."\";");
+	}
+
+	$user['skype'] = htmlspecialchars_uni($user['skype']);
+	$user['yahoo'] = htmlspecialchars_uni($user['yahoo']);
+
+	$user['username'] = htmlspecialchars_uni($user['username']);
+
+	$lang->chat_on_skype = $lang->sprintf($lang->chat_on_skype, $user['username']);
+	$lang->call_on_skype = $lang->sprintf($lang->call_on_skype, $user['username']);
+
+	$imtemplate = "misc_imcenter_".$mybb->input['imtype'];
+	eval("\$imcenter = \"".$templates->get($imtemplate, 1, 0)."\";");
+	echo $imcenter;
+	exit;
+}
+elseif($mybb->input['action'] == "syndication")
+{
+	$plugins->run_hooks("misc_syndication_start");
+
+	$fid = $mybb->get_input('fid', MyBB::INPUT_INT);
+	$version = $mybb->get_input('version');
+	$forums = $mybb->get_input('forums', MyBB::INPUT_ARRAY);
+	$limit = $mybb->get_input('limit', MyBB::INPUT_INT);
+	$url = $mybb->settings['bburl']."/syndication.php";
+	$syndicate = $urlquery = array();
+
+	add_breadcrumb($lang->nav_syndication);
+	$unviewable = get_unviewable_forums();
+	$inactiveforums = get_inactive_forums();
+	$unexp = explode(',', $unviewable . ',' . $inactiveforums);
+
+	if(is_array($forums) && !in_array('all', $forums))
+	{
+		foreach($forums as $fid)
+		{
+			if(ctype_digit($fid) && !in_array($fid, $unexp))
+			{
+				$syndicate[] = $fid;
+				$flist[$fid] = true;
+			}
+		}
+
+		if(!empty($syndicate))
+		{
+			$urlquery[] = "fid=". implode(",", $syndicate);
+		}
+	}
+
+	// If there is no version in the input, check the default (RSS2.0).
+	$json1check = $atom1check = $rss2check = "";
+	if($version == "json")
+	{
+		$json1check = "checked=\"checked\"";
+		$urlquery[] = "type=".$version;
+	}
+	elseif($version == "atom1.0")
+	{
+		$atom1check = "checked=\"checked\"";
+		$urlquery[] = "type=".$version;
+	}
+	else
+	{
+		$rss2check = "checked=\"checked\"";
+	}
+	// Evaluate, reset and set limit (Drive through settings?)
+	$limit = empty($limit) ? 15 : (($limit > 50) ? 50 : $limit);
+	$urlquery[] = "limit=" . $limit;
+
+	// Generate feed url
+	if(!empty($urlquery)){
+		$url .= "?" . implode('&', $urlquery);
+	}
+	eval("\$feedurl = \"".$templates->get("misc_syndication_feedurl")."\";");
+
+	unset($GLOBALS['forumcache']);
+
+	$forumselect = makesyndicateforums();
+
+	$plugins->run_hooks("misc_syndication_end");
+
+	eval("\$syndication = \"".$templates->get("misc_syndication")."\";");
+	output_page($syndication);
+}
+elseif($mybb->input['action'] == "clearcookies")
+{
+	verify_post_check($mybb->get_input('my_post_key'));
+
+	$plugins->run_hooks("misc_clearcookies");
+
+	$remove_cookies = array('mybbuser', 'mybb[announcements]', 'mybb[lastvisit]', 'mybb[lastactive]', 'collapsed', 'mybb[forumread]', 'mybb[threadsread]', 'mybbadmin',
+							'mybblang', 'mybbtheme', 'multiquote', 'mybb[readallforums]', 'coppauser', 'coppadob', 'mybb[referrer]');
+
+	foreach($remove_cookies as $name)
+	{
+		my_unsetcookie($name);
+	}
+	redirect("index.php", $lang->redirect_cookiescleared);
+}
+
+/**
+ * Build a list of forums for RSS multiselect.
+ *
+ * @param int $pid Parent forum ID.
+ * @param string $selitem deprecated
+ * @param boolean $addselect Whether to add selected attribute or not.
+ * @param string $depth HTML for the depth of the forum.
+ * @return string HTML of the list of forums for CSS.
+ */
+function makesyndicateforums($pid=0, $selitem="", $addselect=true, $depth="")
+{
+	global $db, $forumcache, $permissioncache, $mybb, $forumlist, $forumlistbits, $flist, $lang, $unexp, $templates;
+
+	$pid = (int)$pid;
+	$forumlist = '';
+
+	if(!is_array($forumcache))
+	{
+		// Get Forums
+		$query = $db->simple_select("forums", "*", "linkto = '' AND active!=0", array('order_by' => 'pid, disporder'));
+		while($forum = $db->fetch_array($query))
+		{
+			$forumcache[$forum['pid']][$forum['disporder']][$forum['fid']] = $forum;
+		}
+	}
+
+	if(!is_array($permissioncache))
+	{
+		$permissioncache = forum_permissions();
+	}
+
+	if(is_array($forumcache[$pid]))
+	{
+		foreach($forumcache[$pid] as $key => $main)
+		{
+			foreach($main as $key => $forum)
+			{
+				$perms = $permissioncache[$forum['fid']];
+				if($perms['canview'] == 1 || $mybb->settings['hideprivateforums'] == 0)
+				{
+					$optionselected = '';
+					if(isset($flist[$forum['fid']]))
+					{
+						$optionselected = 'selected="selected"';
+					}
+
+					if($forum['password'] == '' && !in_array($forum['fid'], $unexp) || $forum['password'] && isset($mybb->cookies['forumpass'][$forum['fid']]) && my_hash_equals($mybb->cookies['forumpass'][$forum['fid']], md5($mybb->user['uid'].$forum['password'])))
+					{
+						eval("\$forumlistbits .= \"".$templates->get("misc_syndication_forumlist_forum")."\";");
+					}
+
+					if(!empty($forumcache[$forum['fid']]))
+					{
+						$newdepth = $depth."&nbsp;&nbsp;&nbsp;&nbsp;";
+						$forumlistbits .= makesyndicateforums($forum['fid'], '', 0, $newdepth);
+					}
+				}
+				else
+				{
+					if(isset($flist[$forum['fid']]))
+					{
+						unset($flist[$forum['fid']]);
+					}
+				}
+			}
+		}
+	}
+
+	if($addselect)
+	{
+		$addsel = empty($flist) ? ' selected="selected"' : '';
+		eval("\$forumlist = \"".$templates->get("misc_syndication_forumlist")."\";");
+	}
+
+	return $forumlist;
+}

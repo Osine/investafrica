@@ -1,278 +1,415 @@
 <?php
-
 /**
- * Copyright (C) 2008-2012 FluxBB
- * based on code by Rickard Andersson copyright (C) 2002-2008 PunBB
- * License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
+ * MyBB 1.8
+ * Copyright 2014 MyBB Group, All Rights Reserved
+ *
+ * Website: http://www.mybb.com
+ * License: http://www.mybb.com/about/license
+ *
  */
 
-define('PUN_ROOT', dirname(__FILE__).'/');
-require PUN_ROOT.'include/common.php';
+define('IN_MYBB', 1);
+define('THIS_SCRIPT', 'index.php');
 
+$templatelist = "index,index_whosonline,index_whosonline_memberbit,forumbit_depth1_cat,forumbit_depth2_cat,forumbit_depth2_forum,forumbit_depth1_forum_lastpost,forumbit_depth2_forum_lastpost,forumbit_moderators";
+$templatelist .= ",index_birthdays_birthday,index_birthdays,index_logoutlink,index_statspage,index_stats,forumbit_depth3,forumbit_depth3_statusicon,index_boardstats,forumbit_depth2_forum_lastpost_never,forumbit_depth2_forum_viewers";
+$templatelist .= ",forumbit_moderators_group,forumbit_moderators_user,forumbit_depth2_forum_lastpost_hidden,forumbit_subforums,forumbit_depth2_forum_unapproved_posts,forumbit_depth2_forum_unapproved_threads";
 
-if ($pun_user['g_read_board'] == '0')
-	message($lang_common['No view'], false, '403 Forbidden');
+require_once './global.php';
+require_once MYBB_ROOT.'inc/functions_forumlist.php';
+require_once MYBB_ROOT.'inc/class_parser.php';
+$parser = new postParser;
 
+$plugins->run_hooks('index_start');
 
-// Load the index.php language file
-require PUN_ROOT.'lang/'.$pun_user['language'].'/index.php';
+// Load global language phrases
+$lang->load('index');
 
-// Get list of forums and topics with new posts since last visit
-if (!$pun_user['is_guest'])
+$logoutlink = '';
+if($mybb->user['uid'] != 0)
 {
-	$result = $db->query('SELECT f.id, f.last_post FROM '.$db->prefix.'forums AS f LEFT JOIN '.$db->prefix.'forum_perms AS fp ON (fp.forum_id=f.id AND fp.group_id='.$pun_user['g_id'].') WHERE (fp.read_forum IS NULL OR fp.read_forum=1) AND f.last_post>'.$pun_user['last_visit']) or error('Unable to fetch forum list', __FILE__, __LINE__, $db->error());
+	eval('$logoutlink = "'.$templates->get('index_logoutlink').'";');
+}
 
-	if ($db->num_rows($result))
+$statspage = '';
+if($mybb->settings['statsenabled'] != 0)
+{
+	if(!empty($logoutlink))
 	{
-		$forums = $new_topics = array();
-		$tracked_topics = get_tracked_topics();
+		$stats_page_separator = $lang->board_stats_link_separator;
+	}
+	eval('$statspage = "'.$templates->get('index_statspage').'";');
+}
 
-		while ($cur_forum = $db->fetch_assoc($result))
+$whosonline = '';
+if($mybb->settings['showwol'] != 0 && $mybb->usergroup['canviewonline'] != 0)
+{
+	// Get the online users.
+	if($mybb->settings['wolorder'] == 'username')
+	{
+		$order_by = 'u.username ASC';
+		$order_by2 = 's.time DESC';
+	}
+	else
+	{
+		$order_by = 's.time DESC';
+		$order_by2 = 'u.username ASC';
+	}
+
+	$timesearch = TIME_NOW - (int)$mybb->settings['wolcutoff'];
+	$query = $db->query("
+		SELECT s.sid, s.ip, s.uid, s.time, s.location, s.location1, u.username, u.invisible, u.usergroup, u.displaygroup
+		FROM ".TABLE_PREFIX."sessions s
+		LEFT JOIN ".TABLE_PREFIX."users u ON (s.uid=u.uid)
+		WHERE s.time > '".$timesearch."'
+		ORDER BY {$order_by}, {$order_by2}
+	");
+
+	$forum_viewers = $doneusers = $onlinemembers = $onlinebots = array();
+	$membercount = $guestcount = $anoncount = $botcount = 0;
+
+	// Fetch spiders
+	$spiders = $cache->read('spiders');
+
+	// Loop through all users.
+	while($user = $db->fetch_array($query))
+	{
+		// Create a key to test if this user is a search bot.
+		$botkey = my_strtolower(str_replace('bot=', '', $user['sid']));
+
+		// Decide what type of user we are dealing with.
+		if($user['uid'] > 0)
 		{
-			if (!isset($tracked_topics['forums'][$cur_forum['id']]) || $tracked_topics['forums'][$cur_forum['id']] < $cur_forum['last_post'])
-				$forums[$cur_forum['id']] = $cur_forum['last_post'];
+			// The user is registered.
+			if(empty($doneusers[$user['uid']]) || $doneusers[$user['uid']] < $user['time'])
+			{
+				// If the user is logged in anonymously, update the count for that.
+				if($user['invisible'] == 1)
+				{
+					++$anoncount;
+				}
+				++$membercount;
+				if($user['invisible'] != 1 || $mybb->usergroup['canviewwolinvis'] == 1 || $user['uid'] == $mybb->user['uid'])
+				{
+					// If this usergroup can see anonymously logged-in users, mark them.
+					if($user['invisible'] == 1)
+					{
+						$invisiblemark = '*';
+					}
+					else
+					{
+						$invisiblemark = '';
+					}
+
+					// Properly format the username and assign the template.
+					$user['username'] = format_name(htmlspecialchars_uni($user['username']), $user['usergroup'], $user['displaygroup']);
+					$user['profilelink'] = build_profile_link($user['username'], $user['uid']);
+					eval('$onlinemembers[] = "'.$templates->get('index_whosonline_memberbit', 1, 0).'";');
+				}
+				// This user has been handled.
+				$doneusers[$user['uid']] = $user['time'];
+			}
 		}
-
-		if (!empty($forums))
+		elseif(my_strpos($user['sid'], 'bot=') !== false && $spiders[$botkey])
 		{
-			if (empty($tracked_topics['topics']))
-				$new_topics = $forums;
+			if($mybb->settings['wolorder'] == 'username')
+			{
+				$key = $spiders[$botkey]['name'];
+			}
 			else
 			{
-				$result = $db->query('SELECT forum_id, id, last_post FROM '.$db->prefix.'topics WHERE forum_id IN('.implode(',', array_keys($forums)).') AND last_post>'.$pun_user['last_visit'].' AND moved_to IS NULL') or error('Unable to fetch new topics', __FILE__, __LINE__, $db->error());
+				$key = $user['time'];
+			}
 
-				while ($cur_topic = $db->fetch_assoc($result))
+			// The user is a search bot.
+			$onlinebots[$key] = format_name($spiders[$botkey]['name'], $spiders[$botkey]['usergroup']);
+			++$botcount;
+		}
+		else
+		{
+			// The user is a guest.
+			++$guestcount;
+		}
+
+		if($user['location1'])
+		{
+			++$forum_viewers[$user['location1']];
+		}
+	}
+
+	if($mybb->settings['wolorder'] == 'activity')
+	{
+		// activity ordering is DESC, username is ASC
+		krsort($onlinebots);
+	}
+	else
+	{
+		ksort($onlinebots);
+	}
+
+	$onlinemembers = array_merge($onlinebots, $onlinemembers);
+	if(!empty($onlinemembers))
+	{
+		$comma = $lang->comma." ";
+		$onlinemembers = implode($comma, $onlinemembers);
+	}
+	else
+	{
+		$onlinemembers = "";
+	}
+
+	// Build the who's online bit on the index page.
+	$onlinecount = $membercount + $guestcount + $botcount;
+
+	if($onlinecount != 1)
+	{
+		$onlinebit = $lang->online_online_plural;
+	}
+	else
+	{
+		$onlinebit = $lang->online_online_singular;
+	}
+	if($membercount != 1)
+	{
+		$memberbit = $lang->online_member_plural;
+	}
+	else
+	{
+		$memberbit = $lang->online_member_singular;
+	}
+	if($anoncount != 1)
+	{
+		$anonbit = $lang->online_anon_plural;
+	}
+	else
+	{
+		$anonbit = $lang->online_anon_singular;
+	}
+	if($guestcount != 1)
+	{
+		$guestbit = $lang->online_guest_plural;
+	}
+	else
+	{
+		$guestbit = $lang->online_guest_singular;
+	}
+	$lang->online_note = $lang->sprintf($lang->online_note, my_number_format($onlinecount), $onlinebit, $mybb->settings['wolcutoffmins'], my_number_format($membercount), $memberbit, my_number_format($anoncount), $anonbit, my_number_format($guestcount), $guestbit);
+	eval('$whosonline = "'.$templates->get('index_whosonline').'";');
+}
+
+// Build the birthdays for to show on the index page.
+$bdays = $birthdays = '';
+if($mybb->settings['showbirthdays'] != 0)
+{
+	// First, see what day this is.
+	$bdaycount = $bdayhidden = 0;
+	$bdaydate = my_date('j-n', TIME_NOW, '', 0);
+	$year = my_date('Y', TIME_NOW, '', 0);
+
+	$bdaycache = $cache->read('birthdays');
+
+	if(!is_array($bdaycache))
+	{
+		$cache->update_birthdays();
+		$bdaycache = $cache->read('birthdays');
+	}
+
+	$hiddencount = $today_bdays = 0;
+	if(isset($bdaycache[$bdaydate]))
+	{
+		$hiddencount = $bdaycache[$bdaydate]['hiddencount'];
+		$today_bdays = $bdaycache[$bdaydate]['users'];
+	}
+
+	$comma = '';
+	if(!empty($today_bdays))
+	{
+		if((int)$mybb->settings['showbirthdayspostlimit'] > 0)
+		{
+			$bdayusers = array();
+			foreach($today_bdays as $key => $bdayuser_pc)
+			{
+				$bdayusers[$bdayuser_pc['uid']] = $key;
+			}
+
+			if(!empty($bdayusers))
+			{
+				// Find out if our users have enough posts to be seen on our birthday list
+				$bday_sql = implode(',', array_keys($bdayusers));
+				$query = $db->simple_select('users', 'uid, postnum', "uid IN ({$bday_sql})");
+
+				while($bdayuser = $db->fetch_array($query))
 				{
-					if (!isset($new_topics[$cur_topic['forum_id']]) && (!isset($tracked_topics['forums'][$cur_topic['forum_id']]) || $tracked_topics['forums'][$cur_topic['forum_id']] < $forums[$cur_topic['forum_id']]) && (!isset($tracked_topics['topics'][$cur_topic['id']]) || $tracked_topics['topics'][$cur_topic['id']] < $cur_topic['last_post']))
-						$new_topics[$cur_topic['forum_id']] = $forums[$cur_topic['forum_id']];
+					if($bdayuser['postnum'] < $mybb->settings['showbirthdayspostlimit'])
+					{
+						unset($today_bdays[$bdayusers[$bdayuser['uid']]]);
+					}
 				}
 			}
 		}
-	}
-}
 
-if ($pun_config['o_feed_type'] == '1')
-	$page_head = array('feed' => '<link rel="alternate" type="application/rss+xml" href="extern.php?action=feed&amp;type=rss" title="'.$lang_common['RSS active topics feed'].'" />');
-else if ($pun_config['o_feed_type'] == '2')
-	$page_head = array('feed' => '<link rel="alternate" type="application/atom+xml" href="extern.php?action=feed&amp;type=atom" title="'.$lang_common['Atom active topics feed'].'" />');
-
-$forum_actions = array();
-
-// Display a "mark all as read" link
-if (!$pun_user['is_guest'])
-	$forum_actions[] = '<a href="misc.php?action=markread&amp;csrf_token='.pun_csrf_token().'">'.$lang_common['Mark all as read'].'</a>';
-
-$page_title = array(pun_htmlspecialchars($pun_config['o_board_title']));
-define('PUN_ALLOW_INDEX', 1);
-define('PUN_ACTIVE_PAGE', 'index');
-require PUN_ROOT.'header.php';
-
-// Print the categories and forums
-$result = $db->query('SELECT c.id AS cid, c.cat_name, f.id AS fid, f.forum_name, f.forum_desc, f.redirect_url, f.moderators, f.num_topics, f.num_posts, f.last_post, f.last_post_id, f.last_poster FROM '.$db->prefix.'categories AS c INNER JOIN '.$db->prefix.'forums AS f ON c.id=f.cat_id LEFT JOIN '.$db->prefix.'forum_perms AS fp ON (fp.forum_id=f.id AND fp.group_id='.$pun_user['g_id'].') WHERE fp.read_forum IS NULL OR fp.read_forum=1 ORDER BY c.disp_position, c.id, f.disp_position', true) or error('Unable to fetch category/forum list', __FILE__, __LINE__, $db->error());
-
-$cur_category = 0;
-$cat_count = 0;
-$forum_count = 0;
-while ($cur_forum = $db->fetch_assoc($result))
-{
-	$moderators = '';
-
-	if ($cur_forum['cid'] != $cur_category) // A new category since last iteration?
-	{
-		if ($cur_category != 0)
-			echo "\t\t\t".'</tbody>'."\n\t\t\t".'</table>'."\n\t\t".'</div>'."\n\t".'</div>'."\n".'</div>'."\n\n";
-
-		++$cat_count;
-		$forum_count = 0;
-
-?>
-<div id="idx<?php echo $cat_count ?>" class="blocktable">
-	<h2><span><?php echo pun_htmlspecialchars($cur_forum['cat_name']) ?></span></h2>
-	<div class="box">
-		<div class="inbox">
-			<table>
-			<thead>
-				<tr>
-					<th class="tcl" scope="col"><?php echo $lang_common['Forum'] ?></th>
-					<th class="tc2" scope="col"><?php echo $lang_index['Topics'] ?></th>
-					<th class="tc3" scope="col"><?php echo $lang_common['Posts'] ?></th>
-					<th class="tcr" scope="col"><?php echo $lang_common['Last post'] ?></th>
-				</tr>
-			</thead>
-			<tbody>
-<?php
-
-		$cur_category = $cur_forum['cid'];
-	}
-
-	++$forum_count;
-	$item_status = ($forum_count % 2 == 0) ? 'roweven' : 'rowodd';
-	$forum_field_new = '';
-	$icon_type = 'icon';
-
-	// Are there new posts since our last visit?
-	if (isset($new_topics[$cur_forum['fid']]))
-	{
-		$item_status .= ' inew';
-		$forum_field_new = '<span class="newtext">[ <a href="search.php?action=show_new&amp;fid='.$cur_forum['fid'].'">'.$lang_common['New posts'].'</a> ]</span>';
-		$icon_type = 'icon icon-new';
-	}
-
-	// Is this a redirect forum?
-	if ($cur_forum['redirect_url'] != '')
-	{
-		$forum_field = '<h3><span class="redirtext">'.$lang_index['Link to'].'</span> <a href="'.pun_htmlspecialchars($cur_forum['redirect_url']).'" title="'.$lang_index['Link to'].' '.pun_htmlspecialchars($cur_forum['redirect_url']).'">'.pun_htmlspecialchars($cur_forum['forum_name']).'</a></h3>';
-		$num_topics = $num_posts = '-';
-		$item_status .= ' iredirect';
-		$icon_type = 'icon';
-	}
-	else
-	{
-		$forum_field = '<h3><a href="viewforum.php?id='.$cur_forum['fid'].'">'.pun_htmlspecialchars($cur_forum['forum_name']).'</a>'.(!empty($forum_field_new) ? ' '.$forum_field_new : '').'</h3>';
-		$num_topics = $cur_forum['num_topics'];
-		$num_posts = $cur_forum['num_posts'];
-	}
-
-	if ($cur_forum['forum_desc'] != '')
-		$forum_field .= "\n\t\t\t\t\t\t\t\t".'<div class="forumdesc">'.$cur_forum['forum_desc'].'</div>';
-
-	// If there is a last_post/last_poster
-	if ($cur_forum['last_post'] != '')
-		$last_post = '<a href="viewtopic.php?pid='.$cur_forum['last_post_id'].'#p'.$cur_forum['last_post_id'].'">'.format_time($cur_forum['last_post']).'</a> <span class="byuser">'.$lang_common['by'].' '.pun_htmlspecialchars($cur_forum['last_poster']).'</span>';
-	else if ($cur_forum['redirect_url'] != '')
-		$last_post = '- - -';
-	else
-		$last_post = $lang_common['Never'];
-
-	if ($cur_forum['moderators'] != '')
-	{
-		$mods_array = unserialize($cur_forum['moderators']);
-		$moderators = array();
-
-		foreach ($mods_array as $mod_username => $mod_id)
+		// We still have birthdays - display them in our list!
+		if(!empty($today_bdays))
 		{
-			if ($pun_user['g_view_users'] == '1')
-				$moderators[] = '<a href="profile.php?id='.$mod_id.'">'.pun_htmlspecialchars($mod_username).'</a>';
-			else
-				$moderators[] = pun_htmlspecialchars($mod_username);
+			foreach($today_bdays as $bdayuser)
+			{
+				if($bdayuser['displaygroup'] == 0)
+				{
+					$bdayuser['displaygroup'] = $bdayuser['usergroup'];
+				}
+
+				// If this user's display group can't be seen in the birthday list, skip it
+				if($groupscache[$bdayuser['displaygroup']] && $groupscache[$bdayuser['displaygroup']]['showinbirthdaylist'] != 1)
+				{
+					continue;
+				}
+
+				$age = '';
+				$bday = explode('-', $bdayuser['birthday']);
+				if($year > $bday['2'] && $bday['2'] != '')
+				{
+					$age = ' ('.($year - $bday['2']).')';
+				}
+
+				$bdayuser['username'] = format_name(htmlspecialchars_uni($bdayuser['username']), $bdayuser['usergroup'], $bdayuser['displaygroup']);
+				$bdayuser['profilelink'] = build_profile_link($bdayuser['username'], $bdayuser['uid']);
+				eval('$bdays .= "'.$templates->get('index_birthdays_birthday', 1, 0).'";');
+				++$bdaycount;
+				$comma = $lang->comma;
+			}
+		}
+	}
+
+	if($hiddencount > 0)
+	{
+		if($bdaycount > 0)
+		{
+			$bdays .= ' - ';
 		}
 
-		$moderators = "\t\t\t\t\t\t\t\t".'<p class="modlist">(<em>'.$lang_common['Moderated by'].'</em> '.implode(', ', $moderators).')</p>'."\n";
+		$bdays .= "{$hiddencount} {$lang->birthdayhidden}";
 	}
 
-?>
-				<tr class="<?php echo $item_status ?>">
-					<td class="tcl">
-						<div class="<?php echo $icon_type ?>"><div class="nosize"><?php echo forum_number_format($forum_count) ?></div></div>
-						<div class="tclcon">
-							<div>
-								<?php echo $forum_field."\n".$moderators ?>
-							</div>
-						</div>
-					</td>
-					<td class="tc2"><?php echo forum_number_format($num_topics) ?></td>
-					<td class="tc3"><?php echo forum_number_format($num_posts) ?></td>
-					<td class="tcr"><?php echo $last_post ?></td>
-				</tr>
-<?php
-
-}
-
-// Did we output any categories and forums?
-if ($cur_category > 0)
-	echo "\t\t\t".'</tbody>'."\n\t\t\t".'</table>'."\n\t\t".'</div>'."\n\t".'</div>'."\n".'</div>'."\n\n";
-else
-	echo '<div id="idx0" class="block"><div class="box"><div class="inbox"><p>'.$lang_index['Empty board'].'</p></div></div></div>';
-
-// Collect some statistics from the database
-if (file_exists(FORUM_CACHE_DIR.'cache_users_info.php'))
-	include FORUM_CACHE_DIR.'cache_users_info.php';
-
-if (!defined('PUN_USERS_INFO_LOADED'))
-{
-	if (!defined('FORUM_CACHE_FUNCTIONS_LOADED'))
-		require PUN_ROOT.'include/cache.php';
-
-	generate_users_info_cache();
-	require FORUM_CACHE_DIR.'cache_users_info.php';
-}
-
-$result = $db->query('SELECT SUM(num_topics), SUM(num_posts) FROM '.$db->prefix.'forums') or error('Unable to fetch topic/post count', __FILE__, __LINE__, $db->error());
-list($stats['total_topics'], $stats['total_posts']) = array_map('intval', $db->fetch_row($result));
-
-if ($pun_user['g_view_users'] == '1')
-	$stats['newest_user'] = '<a href="profile.php?id='.$stats['last_user']['id'].'">'.pun_htmlspecialchars($stats['last_user']['username']).'</a>';
-else
-	$stats['newest_user'] = pun_htmlspecialchars($stats['last_user']['username']);
-
-if (!empty($forum_actions))
-{
-
-?>
-<div class="linksb">
-	<div class="inbox crumbsplus">
-		<p class="subscribelink clearb"><?php echo implode(' - ', $forum_actions); ?></p>
-	</div>
-</div>
-<?php
-
-}
-
-?>
-<div id="brdstats" class="block">
-	<h2><span><?php echo $lang_index['Board info'] ?></span></h2>
-	<div class="box">
-		<div class="inbox">
-			<dl class="conr">
-				<dt><strong><?php echo $lang_index['Board stats'] ?></strong></dt>
-				<dd><span><?php printf($lang_index['No of users'], '<strong>'.forum_number_format($stats['total_users']).'</strong>') ?></span></dd>
-				<dd><span><?php printf($lang_index['No of topics'], '<strong>'.forum_number_format($stats['total_topics']).'</strong>') ?></span></dd>
-				<dd><span><?php printf($lang_index['No of posts'], '<strong>'.forum_number_format($stats['total_posts']).'</strong>') ?></span></dd>
-			</dl>
-			<dl class="conl">
-				<dt><strong><?php echo $lang_index['User info'] ?></strong></dt>
-				<dd><span><?php printf($lang_index['Newest user'], $stats['newest_user']) ?></span></dd>
-<?php
-
-if ($pun_config['o_users_online'] == '1')
-{
-	// Fetch users online info and generate strings for output
-	$num_guests = 0;
-	$users = array();
-	$result = $db->query('SELECT user_id, ident FROM '.$db->prefix.'online WHERE idle=0 ORDER BY ident', true) or error('Unable to fetch online list', __FILE__, __LINE__, $db->error());
-
-	while ($pun_user_online = $db->fetch_assoc($result))
+	// If there are one or more birthdays, show them.
+	if($bdaycount > 0 || $hiddencount > 0)
 	{
-		if ($pun_user_online['user_id'] > 1)
-		{
-			if ($pun_user['g_view_users'] == '1')
-				$users[] = "\n\t\t\t\t".'<dd><a href="profile.php?id='.$pun_user_online['user_id'].'">'.pun_htmlspecialchars($pun_user_online['ident']).'</a>';
-			else
-				$users[] = "\n\t\t\t\t".'<dd>'.pun_htmlspecialchars($pun_user_online['ident']);
-		}
-		else
-			++$num_guests;
+		eval('$birthdays = "'.$templates->get('index_birthdays').'";');
+	}
+}
+
+// Build the forum statistics to show on the index page.
+$forumstats = '';
+if($mybb->settings['showindexstats'] != 0)
+{
+	// First, load the stats cache.
+	$stats = $cache->read('stats');
+
+	// Check who's the newest member.
+	if(!$stats['lastusername'])
+	{
+		$newestmember = $lang->nobody;;
+	}
+	else
+	{
+		$newestmember = build_profile_link($stats['lastusername'], $stats['lastuid']);
 	}
 
-	$num_users = count($users);
-	echo "\t\t\t\t".'<dd><span>'.sprintf($lang_index['Users online'], '<strong>'.forum_number_format($num_users).'</strong>').'</span></dd>'."\n\t\t\t\t".'<dd><span>'.sprintf($lang_index['Guests online'], '<strong>'.forum_number_format($num_guests).'</strong>').'</span></dd>'."\n\t\t\t".'</dl>'."\n";
+	// Format the stats language.
+	$lang->stats_posts_threads = $lang->sprintf($lang->stats_posts_threads, my_number_format($stats['numposts']), my_number_format($stats['numthreads']));
+	$lang->stats_numusers = $lang->sprintf($lang->stats_numusers, my_number_format($stats['numusers']));
+	$lang->stats_newestuser = $lang->sprintf($lang->stats_newestuser, $newestmember);
 
+	// Find out what the highest users online count is.
+	$mostonline = $cache->read('mostonline');
+	if($onlinecount > $mostonline['numusers'])
+	{
+		$time = TIME_NOW;
+		$mostonline['numusers'] = $onlinecount;
+		$mostonline['time'] = $time;
+		$cache->update('mostonline', $mostonline);
+	}
+	$recordcount = $mostonline['numusers'];
+	$recorddate = my_date($mybb->settings['dateformat'], $mostonline['time']);
+	$recordtime = my_date($mybb->settings['timeformat'], $mostonline['time']);
 
-	if ($num_users > 0)
-		echo "\t\t\t".'<dl id="onlinelist" class="clearb">'."\n\t\t\t\t".'<dt><strong>'.$lang_index['Online'].' </strong></dt>'."\t\t\t\t".implode(',</dd> ', $users).'</dd>'."\n\t\t\t".'</dl>'."\n";
-	else
-		echo "\t\t\t".'<div class="clearer"></div>'."\n";
+	// Then format that language string.
+	$lang->stats_mostonline = $lang->sprintf($lang->stats_mostonline, my_number_format($recordcount), $recorddate, $recordtime);
 
+	eval('$forumstats = "'.$templates->get('index_stats').'";');
+}
+
+// Show the board statistics table only if one or more index statistics are enabled.
+$boardstats = '';
+if(($mybb->settings['showwol'] != 0 && $mybb->usergroup['canviewonline'] != 0) || $mybb->settings['showindexstats'] != 0 || ($mybb->settings['showbirthdays'] != 0 && $bdaycount > 0))
+{
+	if(!isset($stats) || isset($stats) && !is_array($stats))
+	{
+		// Load the stats cache.
+		$stats = $cache->read('stats');
+	}
+	
+	$expaltext = (in_array("boardstats", $collapse)) ? "[+]" : "[-]";
+	eval('$boardstats = "'.$templates->get('index_boardstats').'";');
+}
+
+if($mybb->user['uid'] == 0)
+{
+	// Build a forum cache.
+	$query = $db->simple_select('forums', '*', 'active!=0', array('order_by' => 'pid, disporder'));
+
+	$forumsread = array();
+	if(isset($mybb->cookies['mybb']['forumread']))
+	{
+		$forumsread = my_unserialize($mybb->cookies['mybb']['forumread']);
+	}
 }
 else
-	echo "\t\t\t".'</dl>'."\n\t\t\t".'<div class="clearer"></div>'."\n";
+{
+	// Build a forum cache.
+	$query = $db->query("
+		SELECT f.*, fr.dateline AS lastread
+		FROM ".TABLE_PREFIX."forums f
+		LEFT JOIN ".TABLE_PREFIX."forumsread fr ON (fr.fid = f.fid AND fr.uid = '{$mybb->user['uid']}')
+		WHERE f.active != 0
+		ORDER BY pid, disporder
+	");
+}
 
+while($forum = $db->fetch_array($query))
+{
+	if($mybb->user['uid'] == 0)
+	{
+		if(!empty($forumsread[$forum['fid']]))
+		{
+			$forum['lastread'] = $forumsread[$forum['fid']];
+		}
+	}
+	$fcache[$forum['pid']][$forum['disporder']][$forum['fid']] = $forum;
+}
+$forumpermissions = forum_permissions();
 
-?>
-		</div>
-	</div>
-</div>
-<?php
+// Get the forum moderators if the setting is enabled.
+$moderatorcache = array();
+if($mybb->settings['modlist'] != 0 && $mybb->settings['modlist'] != 'off')
+{
+	$moderatorcache = $cache->read('moderators');
+}
 
-$footer_style = 'index';
-require PUN_ROOT.'footer.php';
+$excols = 'index';
+$permissioncache['-1'] = '1';
+$bgcolor = 'trow1';
+
+// Decide if we're showing first-level subforums on the index page.
+$showdepth = 2;
+if($mybb->settings['subforumsindex'] != 0)
+{
+	$showdepth = 3;
+}
+
+$forum_list = build_forumbits();
+$forums = $forum_list['forum_list'];
+
+$plugins->run_hooks('index_end');
+
+eval('$index = "'.$templates->get('index').'";');
+output_page($index);
