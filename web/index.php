@@ -48,7 +48,6 @@
                             <h2 class="name" itemprop="name">
                                 <a href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
                             </h2>
-                            <!-- <img title="Lagos" src="lagos.jpeg"> -->
                         </div>
                     </li>
 
@@ -58,7 +57,6 @@
                                 <h2 class="name" itemprop="name">
                                     <a itemprop="url" href="Ghana.php" title="Invest in Ghana">Ghana</a>
                                 </h2>
-                                <!-- <img title="Accra" src="accra.jpg"> -->
                             </div>
                         </a>
                     </li>
@@ -68,7 +66,6 @@
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="Rwanda.php" title="Invest in Rwanda">Rwanda</a>
                             </h2>
-                            <!-- <img title="Kigali" src="kigali.jpg"> -->
                         </div>
                     </li>
 
@@ -85,7 +82,6 @@
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="Kenya.php" title="Invest in Kenya">Kenya</a>
                             </h2>
-                            <!-- <img title="Nairobi" src="nairobi.jpg"> -->
                         </div>
                     </li>
 
@@ -94,7 +90,6 @@
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="Egypt.php" title="Invest in Egypt">Egypt</a>
                             </h2>
-                            <!-- <img title="Cairo" src="cairo.jpg"> -->
                         </div>
                     </li>
 
@@ -104,7 +99,6 @@
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="SouthAfrica.php" title="Invest in South Africa">South Africa</a>
                             </h2>
-                            <!-- <img title="Johannesburg" src="joburg.jpg"> -->
                         </div>
                     </li>
 
@@ -113,7 +107,6 @@
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="IvoryCoast.php" title="Invest in Ivory Coast">Ivory Coast</a>
                             </h2>
-                            <!-- <img title="Abidjan" src="abidjan.jpg"> -->
                         </div>
                     </li>
 
