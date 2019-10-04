@@ -21,7 +21,7 @@
             <h3>GDP: 105.75bn USD</h3>
             <h4>Major city: Luanda</h4>
             <div class="investnow">
-                <a href="404.php">
+                <a href="https://shieldgeo.com/setting-up-a-company-in-angola/">
                     <button>Start a Business</button>
                 </a>
             </div>

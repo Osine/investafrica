@@ -22,16 +22,13 @@
             <h3>GDP: 65.56bn USD</h3>
             <h4>Major cities: Accra, Kumasi, Sekondi-Takoradi</h4>
             <div class="investnow">
-                <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/">
+                <a href="https://www.gipcghana.com/invest-in-ghana/doing-business-in-ghana/starting-a-business.html">
                     <button>Start a Business</button>
                 </a>
-                <!-- <button>
-                    <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/"></a>
-                </button> -->
+
             </div>
         </div>
         <div class="city_img">
-            <!-- <img src="images/lagos.jpeg" alt="picture of lagos"> -->
         </div>
         <div class="attributes">
             <div class="population">

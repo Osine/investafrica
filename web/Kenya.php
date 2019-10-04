@@ -21,14 +21,13 @@
             <h3>GDP: 87.90bn USD</h3>
             <h4>Major cities: Nairobi, Mombasa</h4>
             <div class="investnow">
-                <a href="404.php">
+                <a href="http://www.invest.go.ke/starting-a-business-in-kenya/">
                     <button>Start a Business</button>
                 </a>
 
             </div>
         </div>
         <div class="city_img">
-            <!-- <img src="images/lagos.jpeg" alt="picture of lagos"> -->
         </div>
         <div class="attributes">
             <div class="population">
