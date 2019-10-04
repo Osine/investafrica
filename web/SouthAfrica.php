@@ -85,7 +85,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-        <h3>All scores on investinAfrica.com  are scored out of a hunderd and data is sourced from doingbusiness.org</h3>
+        <h3>All scores on investinafrica.com  are scored out of a hunderd and data is sourced from doingbusiness.org</h3>
     </div>
     </body>
 
