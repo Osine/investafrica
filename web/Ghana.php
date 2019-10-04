@@ -16,7 +16,7 @@
 
 <body>
     <div class="content">
-    <img src="images/flag_ghana.png" />
+    <!-- <img src="images/flag_ghana.png" /> -->
         <div class="title">
             <h1>Ghana</h1>
             <h3>GDP: 65.56bn USD</h3>
