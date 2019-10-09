@@ -1,22 +1,13 @@
 <script src="javascript/myFunction.js"></script>
 <div class="topnav">
-<a href="javascript:void(0);" class="icon" onclick="myFunction()"><img title="investafrica" src="images/investafrica.png" height="30px">
-</a>
-
     <nav id="links">
-        
+        <a href="index.php"><img title="investafrica" src="images/investafrica.png" height="30px"></a>
         <!-- <input type="text" placeholder="Opportunity awaits..."> -->
         <a class="active" href="index.php">Home</a>
-<<<<<<< HEAD
         <a class="chat" href="https://expandafrica.slack.com">Chat</a>
-        <a class="forum" href="">Forum</a>
-=======
-        <a class="chat" href="https://expandafrica.slack.com">Forum</a>
->>>>>>> parent of fafcf5c... newer header text
         <!-- <a href="#about">About</a>
     <a class="login" href="#contact">Contact</a> -->
-
-</nav>
+    </nav>
     <div class="banner-text">
         <p>Do Business across African Countries. Connect to African entrepreneurs and expand your business across Africa. </p>
     </div>
@@ -104,18 +95,7 @@
     <!-- <div class="cta-box">
         <button> INVEST NOW </button>
     </div> -->
-    <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
-    </a> -->
-
-    <script>
-    function myFunction() {
-  var x = document.getElementById("links");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-    </script>
+    </a>
 </div>
