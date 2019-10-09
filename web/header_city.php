@@ -1,5 +1,5 @@
 <script src="javascript/myFunction.js"></script>
-<div class="topnav" style="height: 100px">
+<div class="topnav_city">
     <nav id="links">
         <a href="index.php"><img title="investafrica" src="images/investafrica.png" height="30px"></a>
 
