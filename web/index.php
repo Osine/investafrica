@@ -45,7 +45,7 @@
                 <div class="gridview">
 
                 <li class="Rwanda" style="background: url(images/Kigali.jpg)">
-                <h2 id="rank">1.</h2>
+                <h2 id="rank">1</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="Rwanda.php" title="Invest in Rwanda">Rwanda</a>
@@ -54,7 +54,7 @@
                     </li>
 
                     <li class="South Africa" style="background: url(images/joburg.jpg)">
-                    <h2 id="rank">2.</h2>
+                    <h2 id="rank">2</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="SouthAfrica.php" title="Invest in South Africa">South Africa</a>
@@ -63,7 +63,7 @@
                     </li>
 
                     <li class="Ghana" style="background: url(images/accra.jpeg)">
-                        <h2 id="rank">3.</h2>
+                        <h2 id="rank">3</h2>
                             <div class="text">
                                 <h2 class="name" itemprop="name">
                                     <a itemprop="url" href="Ghana.php" title="Invest in Ghana">Ghana</a>
@@ -73,7 +73,7 @@
                     </li>
 
                     <li class="Kenya" style="background: url(images/nairobi.jpg)">
-                    <h2 id="rank">4.</h2>
+                    <h2 id="rank">4</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="Kenya.php" title="Invest in Kenya">Kenya</a>
@@ -82,7 +82,7 @@
                     </li>
 
                     <li class="Egypt" style="background: url(images/cairo.jpg)">
-                    <h2 id="rank">5.</h2>
+                    <h2 id="rank">5</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="Egypt.php" title="Invest in Egypt">Egypt</a>
@@ -91,7 +91,7 @@
                     </li>
 
                     <li class="IvoryCoast" style="background: url(images/abidjan.jpg)">
-                    <h2 id="rank">6.</h2>
+                    <h2 id="rank">6</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="IvoryCoast.php" title="Invest in Ivory Coast">Ivory Coast</a>
@@ -100,7 +100,7 @@
                     </li>
 
                     <li class="Nigeria" style="background: url(images/lagos.jpg)">
-                    <h2 id="rank">7.</h2>
+                    <h2 id="rank">7</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
