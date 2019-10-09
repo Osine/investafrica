@@ -126,7 +126,7 @@
     
     @media screen and (max-width: 600px) {
         .title {
-            height: 200px;
+            height: 240px;
             font-family: 'Segoe UI';
             margin-top: 1em;
             margin-right: 90px;
@@ -141,6 +141,7 @@
         h2 {
             /* text-decoration: underline; */
         }
+        button {}
     }
     
     #rank {

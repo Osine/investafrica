@@ -62,7 +62,7 @@
                         </div>
                     </li>
 
-                    <li class="Ghana" style="background: url(images/accra.jpeg)">
+                    <li class="Ghana" style="background: url(images/ghana.jpg)">
                         <h2 class="rank">3</h2>
                             <div class="text">
                                 <h2 class="name" itemprop="name">
@@ -94,7 +94,7 @@
                     <h2 class="rank">6</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
-                                <a itemprop="url" href="IvoryCoast.php" title="Invest in Ivory Coast">Ivory Coast</a>
+                                <a itemprop="url" href="IvoryCoast.php" title="Invest in Ivory Coast">Cote d'Ivoire</a>
                             </h2>
                         </div>
                     </li>
