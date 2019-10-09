@@ -16,7 +16,7 @@
 
 <body>
     <div class="content">
-        <img src="images/flag_nigeria.png" />
+        <!-- <img src="images/flag_nigeria.png" /> -->
 
         <div class="title" style="background: url('lagos.jpg')">
             <h1>Nigeria</h1>

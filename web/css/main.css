@@ -8,41 +8,6 @@
     background-color: #fff;
 }
 
-.topnav_city {
-    height: 100px;
-    width: 100%;
-    overflow: hidden;
-    display: flexbox;
-    position: relative;
-    /* background-image: linear-gradient(#109D58, #3c795b); */
-    background-color: #fff;
-}
-
-.topnav_city #links a {
-    float: right;
-    display: block;
-    color: black;
-    text-align: center;
-    margin-top: 10px;
-    margin-right: 30px;
-    padding: 14px 16px;
-    text-shadow: 0px 0px #3c795b;
-    text-decoration: none;
-    font-size: 14px;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.topnav_city img {
-    position: absolute;
-    left: 0.89%;
-    right: 92.65%;
-    top: 1.99%;
-    bottom: 89.54%;
-    height: 55px;
-    margin: 4px;
-    width: 55px;
-}
-
 nav {
     float: right;
     display: block;
@@ -57,13 +22,14 @@ nav {
     font-family: 'Segoe UI', sans-serif;
 }
 
-.topnav #links a {
+.topnav #links.a {
     float: right;
     display: block;
     color: black;
     text-align: center;
     margin-top: 10px;
     margin-right: 30px;
+    padding: 14px 16px;
     text-shadow: 0px 0px #3c795b;
     text-decoration: none;
     font-size: 14px;
@@ -106,14 +72,6 @@ body {
     color: #69f0ae;
 }
 
-.topnav #links a:hover {
-    color: #69f0ae;
-}
-
-.topnav #links a.active {
-    color: #109D58
-}
-
 .topnav a.active {
     color: #109D58
 }
@@ -154,33 +112,17 @@ body {
 @media screen and (max-width: 600px) {
     .topnav {
         height: 90px;
-        overflow: hidden;
-        position: relative;
     }
     .topnav a,
     .topnav input[type=text] {
         position: absolute;
-        left: 45.77%;
-        right: 45.77%;
+        left: 25.77%;
+        right: 25.77%;
         top: 7.15%;
         bottom: 88.37%;
     }
-    .topnav #links a {
-        color: black;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        display: block;
-    }
-    .topnav a.icon {
-        background: transparent;
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
     .topnav #links {
-        display: none;
+        display: block;
     }
     .topnav input[type=text] {
         border: 1px solid #ccc;
@@ -201,15 +143,17 @@ body {
     color: #fff;
     text-shadow: 2px 2px #3c795b;
     text-align: center;
+    height: 60px;
+    margin: auto;
     text-decoration: none;
 }
 
 li {
     width: 270px;
     height: 225px;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5); */
-    /* transition: 0.3s; */
-    /* background: #fff; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    background: #fff;
     text-align: center;
     border-radius: 8px;
     list-style-type: none;
