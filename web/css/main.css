@@ -215,7 +215,7 @@ filter {
     display: block;
 }
 
-h2 #rank {
+#rank {
     text-align: left;
     color: #fff;
     text-shadow: 2px 2px #3c795b;
