@@ -7,8 +7,12 @@
         
         <!-- <input type="text" placeholder="Opportunity awaits..."> -->
         <a class="active" href="index.php">Home</a>
+<<<<<<< HEAD
         <a class="chat" href="https://expandafrica.slack.com">Chat</a>
         <a class="forum" href="">Forum</a>
+=======
+        <a class="chat" href="https://expandafrica.slack.com">Forum</a>
+>>>>>>> parent of fafcf5c... newer header text
         <!-- <a href="#about">About</a>
     <a class="login" href="#contact">Contact</a> -->
 
