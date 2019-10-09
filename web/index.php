@@ -44,16 +44,26 @@
             <div class="cities">
                 <div class="gridview">
 
-                    <li class="Nigeria" style="background: url(images/lagos.jpg)">
+                <li class="Rwanda" style="background: url(images/Kigali.jpg)">
+                <h2 id="rank">1.</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
-                                <a href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
+                                <a itemprop="url" href="Rwanda.php" title="Invest in Rwanda">Rwanda</a>
+                            </h2>
+                        </div>
+                    </li>
+
+                    <li class="South Africa" style="background: url(images/joburg.jpg)">
+                    <h2 id="rank">2.</h2>
+                        <div class="text">
+                            <h2 class="name" itemprop="name">
+                                <a itemprop="url" href="SouthAfrica.php" title="Invest in South Africa">South Africa</a>
                             </h2>
                         </div>
                     </li>
 
                     <li class="Ghana" style="background: url(images/accra.jpeg)">
-                        <a href="Ghana.php">
+                        <h2 id="rank">3.</h2>
                             <div class="text">
                                 <h2 class="name" itemprop="name">
                                     <a itemprop="url" href="Ghana.php" title="Invest in Ghana">Ghana</a>
@@ -62,23 +72,8 @@
                         </a>
                     </li>
 
-                    <li class="Rwanda" style="background: url(images/Kigali.jpg)">
-                        <div class="text">
-                            <h2 class="name" itemprop="name">
-                                <a itemprop="url" href="Rwanda.php" title="Invest in Rwanda">Rwanda</a>
-                            </h2>
-                        </div>
-                    </li>
-
-                    <li class="Angola" style="background: url(images/angola.jpg)">
-                        <div class="text">
-                            <h2 class="name" itemprop="name">
-                                <a itemprop="url" href="Angola.php" title="Invest in Angola">Angola</a>
-                            </h2>
-                        </div>
-                    </li>
-
                     <li class="Kenya" style="background: url(images/nairobi.jpg)">
+                    <h2 id="rank">4.</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="Kenya.php" title="Invest in Kenya">Kenya</a>
@@ -87,6 +82,7 @@
                     </li>
 
                     <li class="Egypt" style="background: url(images/cairo.jpg)">
+                    <h2 id="rank">5.</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="Egypt.php" title="Invest in Egypt">Egypt</a>
@@ -94,22 +90,41 @@
                         </div>
                     </li>
 
-
-                    <li class="South Africa" style="background: url(images/joburg.jpg)">
-                        <div class="text">
-                            <h2 class="name" itemprop="name">
-                                <a itemprop="url" href="SouthAfrica.php" title="Invest in South Africa">South Africa</a>
-                            </h2>
-                        </div>
-                    </li>
-
                     <li class="IvoryCoast" style="background: url(images/abidjan.jpg)">
+                    <h2 id="rank">6.</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
                                 <a itemprop="url" href="IvoryCoast.php" title="Invest in Ivory Coast">Ivory Coast</a>
                             </h2>
                         </div>
                     </li>
+
+                    <li class="Nigeria" style="background: url(images/lagos.jpg)">
+                    <h2 id="rank">7.</h2>
+                        <div class="text">
+                            <h2 class="name" itemprop="name">
+                                <a href="Nigeria.php" title="Invest in Nigeria">Nigeria</a>
+                            </h2>
+                        </div>
+                    </li>
+
+                    <li class="Angola" style="background: url(images/angola.jpg)">
+                    <h2 id="rank">8</h2>
+                        <div class="text">
+                            <h2 class="name" itemprop="name">
+                                <a itemprop="url" href="Angola.php" title="Invest in Angola">Angola</a>
+                            </h2>
+                        </div>
+                    </li>
+
+
+
+
+
+
+
+
+
 
                     <!-- <li class="Mauritius" style="background: #00E">
                     <div class="text">

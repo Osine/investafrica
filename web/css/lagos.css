@@ -113,6 +113,17 @@
         border-radius: 15px; */
     }
     
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: green;
+    }
+    
+    #myProgress {
+        width: 100%;
+        background-color: grey;
+    }
+    
     @media screen and (max-width: 600px) {
         .title {
             height: 200px;

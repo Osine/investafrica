@@ -15,6 +15,7 @@
 <?php include_once("header_city.php"); ?>
 
 <body>
+
     <div class="content">
         <!-- <img src="images/flag_nigeria.png" /> -->
 
@@ -68,6 +69,7 @@
 
         <div class="footer">
         <div id="disqus_thread"></div>
+        
         <script>
             /**
              *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
