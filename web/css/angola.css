@@ -53,65 +53,112 @@ h2 {
     margin: 30px;
 }
 
-.population p {
-    font-family: 'Segoe UI';
-    font-size: 30px;
+.stats {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-row-gap: .5em;
+    margin-top: 100px;
+    margin-left: 20px;
 }
 
-.startingup p {
-    color: #00ff55;
+.stats h2 {
+    text-align: left;
+}
+
+.business p {
+    color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.taxes p {
-    color: #7cdd2d;
+.innovation p {
+    color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.propertyreg p {
+.marketsize p {
     color: #c5ba1c;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.permits p {
-    color: #a9ff62;
+.financialsystem p {
+    color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.electricity p {
-    color: #c5ba1c;
+.labourmarket p {
+    color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.contracts p {
-    color: #ff0000;
+.productmarket p {
+    color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.credit p {
-    color: #ff0000;
+.skills p {
+    color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
+}
+
+.health p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.marcoeconomicstability p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.ictadoption p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.infrastructure p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.institutions p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
 }
 
 @media screen and (max-width: 600px) {
@@ -122,6 +169,9 @@ h2 {
         margin-right: 90px;
     }
     .attributes {
+        grid-template-columns: auto;
+    }
+    .stats {
         grid-template-columns: auto;
     }
     p {

@@ -52,75 +52,125 @@ h2 {
     margin: 30px;
 }
 
-.population p {
-    font-family: 'Segoe UI';
-    font-size: 30px;
+.stats {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-row-gap: .5em;
+    margin-top: 100px;
+    margin-left: 20px;
 }
 
-.startingup p {
-    color: #00ff55;
-    font-weight: bold;
-    font-family: 'Segoe UI';
-    font-size: 30px;
-    align-self: center
+.stats h2 {
+    text-align: left;
 }
 
-.taxes p {
+.business p {
     color: #c5ba1c;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.propertyreg p {
+.innovation p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.marketsize p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.financialsystem p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.labourmarket p {
     color: #c5ba1c;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.permits p {
+.productmarket p {
     color: #c5ba1c;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.electricity p {
-    color: #c5ba1c;
+.skills p {
+    color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.contracts p {
-    color: #c5ba1c;
+.health p {
+    color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
 }
 
-.credit p {
-    color: #c5ba1c;
+.marcoeconomicstability p {
+    color: #7cdd2d;
     font-weight: bold;
     font-family: 'Segoe UI';
     font-size: 30px;
-    align-self: center
+    text-align: start;
+}
+
+.ictadoption p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.infrastructure p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
+}
+
+.institutions p {
+    color: #ff0033;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    font-size: 30px;
+    text-align: start;
 }
 
 @media screen and (max-width: 600px) {
     .title {
-        height: 300px;
+        height: 240px;
         font-family: 'Segoe UI';
         margin-top: 1em;
         margin-right: 90px;
     }
     .attributes {
+        grid-template-columns: auto;
+    }
+    .stats {
         grid-template-columns: auto;
     }
     p {

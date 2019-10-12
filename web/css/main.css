@@ -230,3 +230,47 @@ filter {
     text-shadow: 2px 2px #3c795b;
     text-decoration: underline;
 }
+
+.humancapital {
+    background-color: rgb(236, 181, 0);
+    width: 10em;
+    height: 4em;
+    color: #fff;
+    font-size: 15px;
+    align-content: center;
+    font-family: 'Segoe UI';
+    border-radius: 25px;
+}
+
+.markets {
+    background-color: rgb(38, 1, 59);
+    width: 10em;
+    height: 4em;
+    color: #fff;
+    font-size: 15px;
+    align-content: center;
+    font-family: 'Segoe UI';
+    border-radius: 25px;
+}
+
+.enablingenvironment {
+    background-color: rgb(202, 65, 65);
+    width: 10em;
+    height: 4em;
+    color: #fff;
+    font-size: 15px;
+    align-content: center;
+    font-family: 'Segoe UI';
+    border-radius: 25px;
+}
+
+.innovationecosystem {
+    background-color: rgb(0, 236, 118);
+    width: 10em;
+    height: 4em;
+    color: #fff;
+    font-size: 15px;
+    align-content: center;
+    font-family: 'Segoe UI';
+    border-radius: 25px;
+}
