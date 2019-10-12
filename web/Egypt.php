@@ -18,7 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>Egypt</h1>
-            <h3>GDP: 250.895bn USD</h3>
+            <h3>Population: 97 Million</h3>
+            <h3>GDP per capita: 2,573.3 USD</h3>
             <h4>Major cities: Cairo, Alexandria, Giza</h4>
             <div class="investnow">
                 <a href="https://www.justlanded.com/english/Egypt/Egypt-Guide/Business/Starting-a-business">
@@ -129,7 +130,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-        <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from doingbusiness.org</h3>
+    <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
     </div>
 </body>
 </div>

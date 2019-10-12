@@ -18,7 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>Cote d'Ivoire</h1>
-            <h3>GDP: 43.007bn USD</h3>
+            <h3>Population: 25.6 Million</h3>
+            <h3>GDP per capita: 1,680.4 USD</h3>
             <h4>Major cities: Abidjan, Abobo, Bouaké</h4>
             <div class="investnow">
                 <a href="http://www.cepici.gouv.ci/en/?tmp=images-articles&p=the-one-stop-shop">
@@ -129,7 +130,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-        <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from doingbusiness.org</h3>
+    <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
     </div>
 </body>
 </div>

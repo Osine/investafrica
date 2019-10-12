@@ -18,9 +18,9 @@
     <div class="content">
         <div class="title">
             <h1>Rwanda</h1>
-            <h3>GDP: 9.501bn USD</h3>
+            <h3>Population: 12 Million</h3>
+            <h3>GDP per Capita: 791.3 USD</h3>
             <h4>Major cities: Kigali, Butare, Gitarama</h4>
-            <h3>Population: 12,208,407</h3>
             <div class="investnow">
                 <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/">
                     <button class="ctabusiness">Start a Business</button>
@@ -132,7 +132,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-    <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from doingbusiness.org</h3>
+    <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
     </div>
 </body>
 

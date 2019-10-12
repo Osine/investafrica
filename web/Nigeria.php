@@ -21,7 +21,8 @@
 
         <div class="title" style="background: url('lagos.jpg')">
             <h1>Nigeria</h1>
-            <h3>GDP: 397.30bn USD</h3>
+            <h3>Population: 193.9 Million</h3>
+            <h3>GDP per capita: 2049.1 USD</h3>
             <h4>Major cities: Lagos, Abuja, Ibadan</h4>
             <div class="investnow">
                 <a href="https://services.cac.gov.ng/">
@@ -134,7 +135,7 @@
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
         </div>
-        <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from doingbusiness.org</h3>
+        <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
     </div>
 </body>
 

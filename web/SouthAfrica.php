@@ -18,7 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>South Africa</h1>
-            <h3>GDP: 366.298bn USD</h3>
+            <h3>Population: 57.7 Million</h3>
+            <h3>GDP per capita: 6377.3 USD</h3>
             <h4>Major cities: Johannesburg, Cape Town, Ethekwini</h4>
             <div class="investnow">
                 <a href="https://www.gov.za/issues/starting-your-own-business-0">
@@ -129,7 +130,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-        <h3>All scores on investinafrica.com  are scored out of a hunderd and data is sourced from doingbusiness.org</h3>
+        <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
     </div>
     </body>
 

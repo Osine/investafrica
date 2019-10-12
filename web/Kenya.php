@@ -18,7 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>Kenya</h1>
-            <h3>GDP: 87.90bn USD</h3>
+            <h3>Population: 48 Million</h3>
+            <h3>GDP per capita: 1857.2 USD</h3>
             <h4>Major cities: Nairobi, Mombasa</h4>
             <div class="investnow">
                 <a href="http://www.invest.go.ke/starting-a-business-in-kenya/">
@@ -130,7 +131,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-        <h3>All scores on investinafrica.com  are scored out of a hundred and data is sourced from doingbusiness.org</h3>
+    <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
     </div>
 </body>
 

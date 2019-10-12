@@ -19,7 +19,8 @@
     <!-- <img src="images/flag_ghana.png" /> -->
         <div class="title">
             <h1>Ghana</h1>
-            <h3>GDP: 65.56bn USD</h3>
+            <h3>Population: 29.6 Million</h3>
+            <h3>GDP per capita: 2,205.8 USD</h3>
             <h4>Major cities: Accra, Kumasi, Sekondi-Takoradi</h4>
             <div class="investnow">
                 <a href="https://www.gipcghana.com/invest-in-ghana/doing-business-in-ghana/starting-a-business.html">
@@ -131,7 +132,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-        <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from doingbusiness.org</h3>
+    <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
     </div>
 </body>
 

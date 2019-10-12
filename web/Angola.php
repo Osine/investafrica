@@ -18,7 +18,8 @@
     <div class="content">
         <div class="title">
             <h1>Angola</h1>
-            <h3>GDP: 105.75bn USD</h3>
+            <h3>Population: 29.3 Million </h3>
+            <h3>GDP per capita: 3,668.9 USD</h3>
             <h4>Major city: Luanda</h4>
             <div class="investnow">
                 <a href="https://shieldgeo.com/setting-up-a-company-in-angola/">
@@ -129,7 +130,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-        <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from doingbusiness.org</h3>
+    <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
     </div>
 </body>
 
