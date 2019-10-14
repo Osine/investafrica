@@ -42,7 +42,7 @@
     </div> -->
         <div class="hero">
             <div class="cities">
-                <div class="gridview">
+                <ul class="gridview">
 
                 <li class="South Africa" style="background: url(images/joburg.jpg)">
                     <h2 class="rank">1</h2>
@@ -116,52 +116,9 @@
                             </h2>
                         </div>
                     </li>
-
-
-
-
-
-
-
-
-
-
-                    <!-- <li class="Mauritius" style="background: #00E">
-                    <div class="text">
-                        <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="cities/Casablanca.html" title="Invest in Casablanca, Morocco">Mauritius</a>
-                        </h2>
-                        <img title="Casablanca">
-                    </div>
-                    <div class="action">
-                    </div>
-                    <div class="attributes"></div>
-                </li> -->
-
-                <!-- <li class="Gabon" style="background: #00E">
-                    <div class="text">
-                        <h2 class="name" itemprop="name">
-                            <a itemprop="url" href="cities/Casablanca.html" title="Invest in Gabon">Gabon</a>
-                        </h2>
-                        <img title="Casablanca">
-                    </div>
-                    <div class="action">
-                    </div>
-                    <div class="attributes"></div>
-                </li> -->
                 </div>
             </div>
         </div>
 
-
-        <script src="" async defer></script>
-
-        
-
     </body>
-    <!-- <footer>
-    <p>Contact information: <a href="mailto:someone@example.com">
-        someone@example.com</a>.</p>
-</footer> -->
-
     </html>

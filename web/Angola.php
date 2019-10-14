@@ -27,7 +27,7 @@
                 </a>
             </div>
         </div>
- <!-- <div class="attributes">
+        <!-- <div class="attributes">
             <button class="enablingenvironment" onclick="myFunction">Enabling Environment</button>
 
             <button class="humancapital">Human Capital</button>

@@ -1,0 +1,19 @@
+body {
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Segoe UI';
+    text-decoration: underline;
+}
+
+body h2 {
+    text-align: start, left;
+    margin: 30px;
+}
+
+body p {
+    text-align: center;
+    font-family: 'Segoe UI';
+    margin: 30px;
+}

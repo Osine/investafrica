@@ -6,7 +6,7 @@
         <a class="active" href="index.php">Home</a>
         <a class="chat" href="https://expandafrica.slack.com">Chat</a>
         <!-- <a class="request" href="">Add a Country</a> -->
-        <a class="credits" href="">Credits</a>
+        <a class="help" href="help.php">Help</a>
         <!-- <a href="#about">About</a>
     <a class="login" href="#contact">Contact</a> -->
     </nav>
