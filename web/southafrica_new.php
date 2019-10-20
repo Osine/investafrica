@@ -31,7 +31,7 @@
         <div class="attributes">
             <div class="tabs" style="width: 70px">
                 <ul>
-                    <h3><a href=" ">Security</a></h3>
+                    <h3><a class="active" href=" ">Security</a></h3>
                     <h3><a href=" ">Legal</a></h3>
                     <h3><a href=" "> Governance </a></h3>
                     <h3><a href=" "> Property </a></h3>
@@ -63,8 +63,8 @@
             <div class="environment">
                 <div class="institutions">
 
-                    <div class="security_details" style="display: auto; text-align: center;">
-                        <h2>Security</h2>
+                    <div class="security_details" style="display: none;">
+                        <!-- <h2>Security</h2> -->
                         <h3>Organized Crime</h3>
                         <p>37.4 (low)</p>
                         <h3>Reliablility of Police Services</h3>
@@ -73,9 +73,9 @@
                         <p>97.0 (very low / barely any incidence)</p>
                     </div>
 
-                    <div class="legal_details" style="display: none;">
-                        <h2>Legal</h2>
-                        <h3>Judicial independence</h3>
+                    <div class="legal_details" style="display: none; ">
+                        <!-- <h2>Legal</h2> -->
+                        <h3>Judicial independence: </h3>
                         <p>65.8 (high/quite independent)</p>
                         <h3>Efficiency of legal framework in challenging regulations</h3>
                         <p>50.1 (medium efficiency)</p>
@@ -85,7 +85,7 @@
                         <p>42.4 (low/medium adaptability)</p>
                     </div>
 
-                    <div class="governance_details" style="display: none;">
+                    <div class="governance_details" style="display: none; ">
                         <h2>Governance</h2>
                         <h3>Burden of government regulation</h3>
                         <p>33.6 (3 on a scale of 0-7)</p>
@@ -111,7 +111,7 @@
                         <p>24 out 29 (very good)</p>
                     </div>
 
-                    <div class="property_details" style="display: none;">
+                    <div class="property_details " style="display: none; ">
                         <h2>Property</h2>
                         <h3>Property rights</h3>
                         <p>51.5 (medium)</p>
@@ -121,7 +121,7 @@
                         <p>50 (average/not good)</p>
                     </div>
 
-                    <div class="coporate_details" style="display: none;">
+                    <div class="coporate_details " style="display: auto; ">
                         <h2>Coporate Governance</h2>
                         <h3>Strength of auditing and accounting standards</h3>
                         <p>67.5 (high)</p>
@@ -131,9 +131,9 @@
                         <p>67.0 (medium/high)</p>
                     </div>
                 </div>
-                <div class="infrastructure">
+                <div class="infrastructure ">
 
-                    <diV class="transport_details" style="display: none;">
+                    <diV class="transport_details " style="display: none; ">
                         <h2>Transport Infrastructure</h2>
                         <h3>Road Connectivity</h3>
                         <p>96.2 out of 100</p>
@@ -148,7 +148,7 @@
                         <h3>Efficiency of Seaport Services</h3>
                     </diV>
 
-                    <div class="utility_details" style="display: none;">
+                    <div class="utility_details " style="display: none; ">
                         <h2>Utility Infrastructure</h2>
                         <h3>Electricity Access (% of Population)</h3>
                         <h3>Electricity Supply Quality</h3>
@@ -156,9 +156,9 @@
                         <h3>Reliablility of water supply</h3>
                     </div>
                 </div>
-                <div class="ictadoption">
+                <div class="ictadoption ">
 
-                    <div class="ict_details" style="display: none;">
+                    <div class="ict_details " style="display: none; ">
                         <h2>ICT Adoption</h2>
                         <h3>Mobile-celluar telephone subscriptions</h3>
                         <h3>Mobile Broadband Subscribers</h3>
@@ -167,27 +167,26 @@
                         <h3>Internet Users</h3>
                     </div>
                 </div>
-                <div class="marcoeconomicstability" style="display: none;">
+                <div class="marcoeconomicstability " style="display: none; ">
 
-                    <div class="marcoeconomic_details">
+                    <div class="marcoeconomic_details ">
                         <h2>Marcoeconomic stability</h2>
                         <h3>Inflation</h3>
                         <h3>Debt Dynamics</h3>
                     </div>
                 </div>
             </div>
-            <div class="peoplecapital">
-                <div class="health" style="display: none;">
+            <div class="peoplecapital ">
+                <div class="health " style="display: none; ">
 
-                    <div class="health_details">
+                    <div class="health_details ">
                         <h2>Health</h2>
                         <h3>Healthy Life Expectancy</h3>
                         <p>53.3</p>
                     </div>
                 </div>
                 <div class="skills">
-
-                    <div class="currentwork_details" style="display: none;">
+                    <div class="currentwork_details " style="display: none; ">
                         <h2>Current Workforce</h2>
                         <h3>Mean years of schooling</h3>
                         <h3>Extent of staff training</h3>
@@ -197,7 +196,7 @@
                         <h3>Ease of finding skilled employees</h3>
                     </div>
 
-                    <div class="futurework_details" style="display: none;">
+                    <div class="futurework_details " style="display: none; ">
                         <h2>Future Workforce</h2>
                         <h3>School Life Expectancy</h3>
                         <h3>Critical thinking in teaching</h3>
@@ -205,17 +204,16 @@
                     </div>
                 </div>
             </div>
-            <div class="market">
-                <div class="productmarket">
-
-                    <div class="domesticcomp_details" style="display: none;">
+            <div class="market ">
+                <div class="productmarket ">
+                    <div class="domesticcomp_details " style="display: none; ">
                         <h2>Domestic Competition</h2>
                         <h3>Distortive effect of taxes and subsidies on competition</h3>
                         <h3>Extent of Market dominance</h3>
                         <h3>Competition in Services</h3>
                     </div>
 
-                    <div class="trade_details" style="display: none;">
+                    <div class="trade_details " style="display: none; ">
                         <h2>Trade</h2>
                         <h3>Prevalence of non-taiff barriers</h3>
                         <h3>Trade Tarffis %</h3>
@@ -223,9 +221,8 @@
                         <h3>Border clearance efficiency</h3>
                     </div>
                 </div>
-                <div class="labourmarket">
-
-                    <div class="flexibility_details" style="display: none;">
+                <div class="labourmarket ">
+                    <div class="flexibility_details " style="display: none; ">
                         <h2>Flexibility</h2>
                         <h3>Redundancy costs (weeks of salary)</h3>
                         <h3>Hiring and Firing practices</h3>
@@ -237,7 +234,7 @@
                         <h3>Internal labour mobility</h3>
                     </div>
 
-                    <div class="incetives_details" style="display: none;">
+                    <div class="incentives_details " style="display: none; ">
                         <h2>Meritocracy and Incentivization</h2>
                         <h3>Reliance on professional management</h3>
                         <h3>Pay and Productivity</h3>
@@ -245,9 +242,9 @@
                         <h3>Labout tax rate</h3>
                     </div>
                 </div>
-                <div class="financialsystem">
+                <div class="financialsystem ">
 
-                    <div class="financialdepth_details" style="display: none;">
+                    <div class="financialdepth_details " style="display: none; ">
                         <h2>Financial Depth</h2>
                         <h3>Domestic credit to private sector</h3>
                         <h3>Financing of SMEs</h3>
@@ -256,7 +253,7 @@
                         <h3>Insurance premium</h3>
                     </div>
 
-                    <div class="financialstability_details" style="display: none;">
+                    <div class="financialstability_details " style="display: none; ">
                         <h2>Financial Stability</h2>
                         <h3>Soundness of banks</h3>
                         <h3>Non-performing loans</h3>
@@ -264,19 +261,19 @@
                         <h3>Banks' regulatory capital ratio</h3>
                     </div>
                 </div>
-                <div class="marketsize">
+                <div class="marketsize ">
 
-                    <div class="marketsize_details" style="display: none;">
+                    <div class="marketsize_details " style="display: none; ">
                         <h2>Market Size</h2>
                         <h3>Gross domestic product (PPP $ Billions)</h3>
                         <h3>Imports of goods and Services (% GDP)</h3>
                     </div>
                 </div>
             </div>
-            <div class="theinnovationecosystem">
-                <div class="business">
+            <div class="theinnovationecosystem ">
+                <div class="business ">
 
-                    <div class="admin_details" style="display: none;">
+                    <div class="admin_details " style="display: none; ">
                         <h2>Administrative Requirements</h2>
                         <h3>Cost of starting a business</h3>
                         <h3>Time to start a business</h3>
@@ -284,7 +281,7 @@
                         <h3>Insolvency regulatory framework</h3>
                     </div>
 
-                    <div class="culture_details" style="display: none;">
+                    <div class="culture_details " style="display: none; ">
                         <h2>Entrepreneurial Culture</h2>
                         <h3>Attitudes towards entrepreneurial risk</h3>
                         <h3>Willingness to delegate authority</h3>
@@ -292,23 +289,23 @@
                         <h3>Companies embracing distruptive ideas</h3>
                     </div>
                 </div>
-                <div class="innovation">
+                <div class="innovation ">
 
-                    <div class="interaction_details" style="display: none;">
+                    <div class="interaction_details " style="display: none; ">
                         <h2>Interaction and Diversity</h2>
                         <h3>Diversity of workforce</h3>
                         <h3>State of cluster development</h3>
                         <h3>International co-inventions</h3>
                         <h3>Multi-stakeholder collaboration</h3>
                     </div>
-                    <div class="randd_details" style="display: none;">
+                    <div class="randd_details " style="display: none; ">
                         <h2>Research and Development</h2>
                         <h3>Scientific Publications</h3>
                         <h3>Patent Applications</h3>
                         <h3>R&D expenditures</h3>
                         <h3>Research institutions prominence</h3>
                     </div>
-                    <div class="commerce_details" style="display: none;">
+                    <div class="commerce_details " style="display: none; ">
                         <h2>Commercialization</h2>
                         <h3>Buyer Sophistication</h3>
                         <h3>Trademark applications</h3>
@@ -318,7 +315,7 @@
 
         </div>
 
-        <script type="text/javascript">
+        <script type="text/javascript ">
             $(function() {
                 $('#attach_box').click(function() {
                     $('#sec_box').show();
@@ -345,7 +342,7 @@
                 (d.head || d.body).appendChild(s);
             })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript ">comments powered by Disqus.</a></noscript>
 
     </div>
     <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>

@@ -321,7 +321,7 @@ ul {
 
 .tabs h3 {
     display: inline-block;
-    font-size: 18px;
+    font-size: 15px;
     padding: .5em;
     overflow: scroll;
     white-space: nowrap;
@@ -345,22 +345,13 @@ h3 a:active {
     text-decoration-color: #109D58;
 }
 
+.stats h3,
+p {
+    padding-left: 1em;
+    display: inline-block;
+}
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-
-
-/* .active,
-.collapsible:hover {
-    background-color: #ccc;
-} */
-
-
-/* Style the collapsible content. Note: hidden by default */
-
-
-/* .content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-} */
+.attributes {
+    margin-top: 100px;
+    width: 20px;
+}
