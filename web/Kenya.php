@@ -42,7 +42,8 @@
         <div class="stats">
             <div class="environment">
                 <div class="institutions">
-                    <h2>Institutions</h2>
+                <a >
+                    <h2>Institutions</h2>>
                     <p>54.7</p>
                 </div>
                 <div class="infrastructure">

@@ -1,9 +1,18 @@
 <script src="javascript/myFunction.js"></script>
-<div class="topnav" style="height: 100px">
+<style>
+    .topnav{
+        position: fixed;
+    /* Set the navbar to fixed position */
+    top: 0;
+    /* Position the navbar at the top of the page */
+    width: 100%;
+    }
+    </style>
+<div class="topnav" style="height: 70px">
     <nav id="links">
         <a href="index.php"><img title="investafrica" src="images/investafrica.png" height="30px"></a>
         <!-- <input type="text" placeholder="Opportunity awaits..."> -->
-        <a class="active" href="index.php">Home</a>
+        <a class="home" href="index.php">Home</a>
         <a class="chat" href="https://expandafrica.slack.com">Chat</a>
         <!-- <a class="request" href="">Add a Country</a> -->
         <a class="help" href="help.php">Help</a>
