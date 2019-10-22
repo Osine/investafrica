@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="">
 </head>
 <?php include_once("header_city.php"); ?>
-<div class="content">
+<div class="content" style="text-align: center; margin-top: 100px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
     <h1> The Page you're looking for cannot be found </h1>
 </div>
 
