@@ -10,11 +10,6 @@
     background-size: 20%;
 }
 
-.attributes {
-    margin-top: 100px;
-    width: 20px;
-}
-
 img {
     height: 300px;
     width: auto;
@@ -35,7 +30,7 @@ button {
 
 button:hover {
     background: #fff;
-    border-color: rgb(247, 128, 0);
+    border-color: rgb(0, 29, 151);
     border-width: 1.2px;
     border: solid;
     color: #000;
@@ -43,118 +38,116 @@ button:hover {
 
 h2 {
     font-family: 'Segoe UI';
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+h3 {
+    font-family: 'Segoe UI';
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.stats h3,
+p {
+    padding-left: 1em;
+    display: inline-block;
+}
+
+p {
+    padding-left: 4em;
+    display: inline-block;
+}
+
+*/ p {
+    font-family: 'Segoe UI';
+    font-size: 20px;
 }
 
 .city_img {
     align-self: center;
 }
 
-.stats {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-row-gap: .5em;
+.attributes {
     margin-top: 100px;
-    margin-left: 20px;
+    width: 20px;
 }
 
-.stats h2 {
-    text-align: left;
+.stats {
+    margin-top: 0px;
+    z-index: 3000;
 }
 
 .business p {
-    color: #c5ba1c;
+    color: #a9ff62;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .innovation p {
     color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .marketsize p {
-    color: #ff0033;
+    color: #a9ff62;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .financialsystem p {
-    color: #ff0033;
+    color: #00ff55;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .labourmarket p {
-    color: #c5ba1c;
+    color: #a9ff62;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .productmarket p {
     color: #c5ba1c;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .skills p {
-    color: #ff0033;
+    color: #c5ba1c;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .health p {
-    color: #ff0033;
+    color: #c5ba1c;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .marcoeconomicstability p {
-    color: #7cdd2d;
+    color: #00ff55;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .ictadoption p {
     color: #ff0033;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .infrastructure p {
-    color: #ff0033;
+    color: #a9ff62;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 .institutions p {
-    color: #ff0033;
+    color: #c5ba1c;
     font-weight: bold;
     font-family: 'Segoe UI';
-    font-size: 30px;
-    text-align: start;
 }
 
 @media screen and (max-width: 600px) {
@@ -176,4 +169,16 @@ h2 {
     h2 {
         text-decoration: underline;
     }
+}
+
+.tabs h3 a:hover {
+    color: rgb(247, 128, 0);
+    text-decoration: underline;
+    text-decoration-color: rgb(247, 128, 0);
+}
+
+.tabs h3 a.active {
+    color: rgb(247, 128, 0);
+    text-decoration: underline;
+    text-decoration-color: rgb(247, 128, 0);
 }

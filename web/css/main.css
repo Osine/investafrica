@@ -157,6 +157,10 @@ body {
         width: 105px;
         height: 125px;
     }
+    .attributes {
+        width: 100%;
+        margin-top: 30px;
+    }
 }
 
 .hero a {
@@ -303,13 +307,15 @@ filter {
 } */
 
 .tabs {
-    width: 70px;
+    width: 100%;
+    height: auto;
 }
 
 .tabs ul {
     display: inline-block;
     /* background-color: #ff14ff; */
-    width: 1800px;
+    width: 1750%;
+    overflow-x: hidden;
 }
 
 ul {
@@ -322,7 +328,7 @@ ul {
 .tabs h3 {
     display: inline-block;
     font-size: 15px;
-    padding: .5em;
+    padding-right: .5em;
     overflow: scroll;
     white-space: nowrap;
 }
@@ -353,5 +359,7 @@ p {
 
 .attributes {
     margin-top: 100px;
+    margin-right: 1em;
     width: 20px;
+    font-family: 'Segoe UI';
 }

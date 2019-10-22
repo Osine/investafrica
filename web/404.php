@@ -1,19 +1,33 @@
-<html class="no-js">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>404 Error</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="">
+    <title>Hide Form</title>
+    <script type="text/javascript">
+        function showForm() {
+            var form = document.getElementById("hiddenform");
+            form.style.display = 'block'
+        }
+    </script>
+    <style>
+        #hiddenform {
+            display: none;
+        }
+    </style>
 </head>
 
-<div class="topnav">
-<a href="index.php"><img title="investafrica" src="images/investafrica.png" height="10px"></a>
-<h1> The Page you're looking for cannot be found </h1>
-</div>
+<body>
+    Bla bla this text is visible and all my content is here.
 
-</head>
+    <form>
+        <input type="radio" onclick="showForm();"><br />
+        <input type="radio" name="show" value="Off">Off
+    </form>
+
+    <div id="hiddenform">
+        <?php include("header.php"); ?>
+    </div>
+
+
+</body>
+
 </html>

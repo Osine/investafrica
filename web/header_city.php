@@ -1,4 +1,4 @@
-<script src="javascript/myFunction.js"></script>
+<script type="text/javascript" src="javascript/myFunction.js"></script>
 <style>
     .topnav{
         position: fixed;
@@ -6,6 +6,12 @@
     top: 0;
     /* Position the navbar at the top of the page */
     width: 100%;
+    }
+
+    @media screen and (max-width: 600px) {
+        .topnav{
+            position: relative;
+        }
     }
     </style>
 <div class="topnav" style="height: 70px">
