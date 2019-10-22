@@ -120,6 +120,15 @@ body {
     grid-row-gap: 1em;
 }
 
+@media screen and (max-width: 1800px) {
+    .tabs ul {
+        display: inline-block;
+        /* background-color: #ff14ff; */
+        width: 1750%;
+        overflow-x: scroll;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .topnav {
         height: 90px;
@@ -315,7 +324,6 @@ filter {
     display: inline-block;
     /* background-color: #ff14ff; */
     width: 1750%;
-    overflow-x: hidden;
 }
 
 ul {

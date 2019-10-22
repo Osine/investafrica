@@ -108,7 +108,7 @@
             <div class="environment">
                 <div class="institutions">
 
-                    <iframe id="iframe" src="southafrica_financial.php"></iframe>
+                    <!-- <iframe id="iframe" src="southafrica_financial.php"></iframe> -->
                     <div id="security_details" style="display: none;">
                         <!-- <h2>Security</h2> -->
                         <h3>Organized Crime</h3>
