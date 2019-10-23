@@ -1,6 +1,6 @@
 <div class="financialsystem ">
 
-    <div class="financialdepth_details " style="display: none; ">
+    <div class="financialdepth_details " style="display: auto; ">
         <!-- <h2>Financial Depth</h2> -->
         <h3>Domestic credit to private sector</h3>
         <p>100</p>

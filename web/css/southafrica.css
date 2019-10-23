@@ -48,10 +48,14 @@ h3 {
     text-decoration: none;
 }
 
-.stats h3,
-p {
+.stats h3 {
     padding-left: 1em;
-    display: inline-block;
+    width: 100%;
+    display: table-row-group;
+}
+
+.stats p {
+    display: table-row;
 }
 
 p {
@@ -183,7 +187,7 @@ p {
     text-decoration-color: rgb(0, 29, 151);
 }
 
-#iframe {
+.iframe {
     width: 100%;
     height: 100%;
     border: none;

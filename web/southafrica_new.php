@@ -8,6 +8,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="css/southafrica.css">
     <!-- <script type="text/javascript" src="javascript/statsexpand.js"></script> -->
     <script type="text/javascript">
@@ -30,25 +32,7 @@
         // var financialstability = document.getElementById();
 
         function showSecurityDiv() {
-            var security = document.getElementById("security_details");
-            var legal = document.getElementById("legal_details");
-            var governance = document.getElementById("governance_details");
-            var property = document.getElementById("property_details");
-            var coporate = document.getElementById("coporate_details");
-            var transport = document.getElementById("transport_details");
-            var utility = document.getElementById();
-            var ictadoption = document.getElementById();
-            var marcoeconomic = document.getElementById();
-            var health = document.getElementById();
-            var currentwork = document.getElementById();
-            var futurework = document.getElementById();
-            var domestic = document.getElementById();
-            var trade = document.getElementById();
-            var flexibility = document.getElementById();
-            var financialdepth = document.getElementById();
-            var financialstability = document.getElementById();
-            var div = document.getElementById("security_details");
-            div.style.display = ''
+            document.getElementById('iframe').src = southafrica_financial.php;
         }
 
         function showFinancialDiv() {
@@ -93,7 +77,7 @@
                     <h3><a href=" ">Trade</a></h3>
                     <h3><a href=" "> Flexibility </a></h3>
                     <h3><a href=" "> Meritocracy and Incentivization </a></h3>
-                    <h3><a href="">Financial</a></h3>
+                    <h3><a href="southafrica_financial.php" target="iframe">Financial</a></h3>
                     <h3><a href=" ">Market Size</a></h3>
                     <h3><a href=" ">Administrative Requirements</a></h3>
                     <h3><a href=" ">Entrepreneurial Culture</a></h3>
@@ -108,7 +92,7 @@
             <div class="environment">
                 <div class="institutions">
 
-                    <!-- <iframe id="iframe" src="southafrica_financial.php"></iframe> -->
+                    <iframe class="iframe" src=""></iframe>
                     <div id="security_details" style="display: none;">
                         <!-- <h2>Security</h2> -->
                         <h3>Organized Crime</h3>
