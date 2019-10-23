@@ -120,11 +120,19 @@
         grid-row-gap: 1em;
     }
     
-    @media screen and (max-width: 1440px) {
+    @media screen and (width: 1440px) {
         .tabs ul {
             display: inline-block;
             /* background-color: #ff14ff; */
-            width: 1050%;
+            width: 2050%;
+        }
+    }
+    
+    @media screen and (max-width: 1800px) {
+        .tabs ul {
+            display: inline-block;
+            /* background-color: #ff14ff; */
+            width: 1750%;
             overflow-x: scroll;
         }
     }

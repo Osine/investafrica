@@ -9,7 +9,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/ivorycoast.css">
-    <link rel="stylesheet" href="">
+    <script type="text/javascript">
+        function openMetric(evt, metric) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(metric).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </head>
 
 <?php include_once("header_city.php"); ?>
@@ -30,39 +51,36 @@
         <div class="attributes">
             <div class="tabs" style="width: 70px">
                 <ul>
-                    <h3><a class="active" href=" ">Security</a></h3>
-                    <h3><a href=" ">Legal</a></h3>
-                    <h3><a href=" "> Governance </a></h3>
-                    <h3><a href=" "> Property </a></h3>
-                    <h3><a href=" "> Coporate Governance </a></h3>
-                    <h3><a href=" ">Transport Infrastructure</a></h3>
-                    <h3><a href=" ">Utility Infrastructure </a></h3>
-                    <h3><a href=" ">ICT Adoption</a></h3>
-                    <h3><a href=" "> Marcoeconomic stability</a></h3>
-                    <h3><a href=" ">Health</a></h3>
-                    <h3><a href=" ">Current Workforce</a></h3>
-                    <h3><a href=" ">Future Workforce</a></h3>
-                    <h3><a href=" ">Domestic Competition</a></h3>
-                    <h3><a href=" ">Trade</a></h3>
-                    <h3><a href=" "> Flexibility </a></h3>
-                    <h3><a href=" "> Meritocracy and Incentivization </a></h3>
-                    <h3><a href=" ">Financial Depth</a></h3>
-                    <h3><a href=" ">Financial Stability</a></h3>
-                    <h3><a href=" ">Market Size</a></h3>
-                    <h3><a href=" ">Administrative Requirements</a></h3>
-                    <h3><a href=" ">Entrepreneurial Culture</a></h3>
-                    <h3><a href=" ">Interaction and Diversity</a></h3>
-                    <h3><a href=" ">Research and Development</a></h3>
-                    <h3><a href=" ">Commercialization</a></h3>
+                    <button id="security" class="tablinks" onclick="openMetric(event, 'security_details')">Security</button>
+                    <button class="tablinks" onclick="openMetric(event, 'legal_details')">Legal</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'governance_details')"> Governance </button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'property_details')"> Property </button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'transport_details')">Transport</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'utility_details')">Utilities</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'ict_details')">ICT Adoption</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'marcoeconomic_details')"> Marcoeconomics</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'health_details')">Health</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'currentwork_details')">Current Workforce</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'futurework_details')">Future Workforce</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'domesticcomp_details')">Competition</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'trade_details')">Trade</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'flexibility_details')"> Flexibility </button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'incentives_details')"> Meritocracy & Incentives </button>
+                    <button href="" class="tablinks" onclick="openMetric(event, 'financial_details')">Financial</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'marketsize_details')">Market Size</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'admin_details')">Business Administration</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'culture_details')">Culture</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'interaction_details')">Interaction and Diversity</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'randd_details')">R & D</button>
+                    <button href=" " class="tablinks" onclick="openMetric(event, 'commerce_details')">Commercialization</button>
                 </ul>
             </div>
         </div>
 
-        <div class="stats">
+        <div id="stats" class="stats">
             <div class="environment">
                 <div class="institutions">
-
-                    <div class="security_details" style="display: none;">
+                    <div id="security_details" class="tabcontent" style="display: none;">
                         <!-- <h2>Security</h2> -->
                         <h3>Organized Crime</h3>
                         <p>37.4 (low)</p>
@@ -72,7 +90,7 @@
                         <p>97.0 (very low / barely any incidence)</p>
                     </div>
 
-                    <div class="legal_details" style="display: none; ">
+                    <div id="legal_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Legal</h2> -->
                         <h3>Judicial independence: </h3>
                         <p>65.8 (high/quite independent)</p>
@@ -84,7 +102,7 @@
                         <p>42.4 (low/medium adaptability)</p>
                     </div>
 
-                    <div class="governance_details" style="display: none; ">
+                    <div id="governance_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Governance</h2> -->
                         <h3>Burden of government regulation</h3>
                         <p>33.6 (3 on a scale of 0-7)</p>
@@ -110,7 +128,7 @@
                         <p>24 out 29 (very good)</p>
                     </div>
 
-                    <div class="property_details " style="display: none; ">
+                    <div id="property_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Property</h2> -->
                         <h3>Property rights</h3>
                         <p>51.5 (medium)</p>
@@ -120,7 +138,7 @@
                         <p>50 (average/not good)</p>
                     </div>
 
-                    <div class="coporate_details " style="display: auto; ">
+                    <div id="coporate_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Coporate Governance</h2> -->
                         <h3>Strength of auditing and accounting standards</h3>
                         <p>67.5 (high)</p>
@@ -132,7 +150,7 @@
                 </div>
                 <div class="infrastructure ">
 
-                    <diV class="transport_details " style="display: none; ">
+                    <diV id="transport_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Transport Infrastructure</h2> -->
                         <h3>Road Connectivity</h3>
                         <p>96.2 out of 100</p>
@@ -141,146 +159,202 @@
                         <h3>Railroad Density</h3>
                         <p>17.3 km/1000km^2</p>
                         <h3>Efficiency of Train Services</h3>
+                        <p>5.5 out 7</p>
                         <h3>Airport Connectivity</h3>
+                        <p>63.5 out of 100</p>
                         <h3>Efficiency of Air Transport Services</h3>
+                        <p>5.5 out of 7</p>
                         <h3>Liner Shipping Connectivity</h3>
+                        <p>40.4 out of 100</p>
                         <h3>Efficiency of Seaport Services</h3>
+                        <p>4.5 of 7</p>
                     </diV>
 
-                    <div class="utility_details " style="display: none; ">
+                    <div id="utility_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Utility Infrastructure</h2> -->
                         <h3>Electricity Access (% of Population)</h3>
+                        <p>84.2% of the population</p>
                         <h3>Electricity Supply Quality</h3>
+                        <p>8.7% of the output (95.1 out of 100)</p>
                         <h3>Exposure to unsafe drinking water</h3>
+                        <p>27.8% of the population</p>
                         <h3>Reliablility of water supply</h3>
+                        <p>4.4 out 7</p>
                     </div>
                 </div>
                 <div class="ictadoption ">
 
-                    <div class="ict_details " style="display: none; ">
+                    <div id="ict_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>ICT Adoption</h2> -->
                         <h3>Mobile-celluar telephone subscriptions</h3>
+                        <p>100%</p>
                         <h3>Mobile Broadband Subscribers</h3>
+                        <p>76.0 per 100 population</p>
                         <h3>Fixed-Broadband Internet Subscribers</h3>
+                        <p>2.4 per 100 population</p>
                         <h3>Fibre Internet subscriptions</h3>
+                        <p>0.4 per 100 population</p>
                         <h3>Internet Users</h3>
+                        <p>56.2% of adult population</p>
                     </div>
                 </div>
-                <div class="marcoeconomicstability " style="display: none; ">
+                <div class="marcoeconomicstability ">
 
-                    <div class="marcoeconomic_details ">
+                    <div id="marcoeconomic_details" class="tabcontent" style="display: none;">
                         <!-- <h2>Marcoeconomic stability</h2> -->
                         <h3>Inflation</h3>
+                        <p>4.9%</p>
                         <h3>Debt Dynamics</h3>
+                        <p>79.4 out of 100</p>
                     </div>
                 </div>
             </div>
             <div class="peoplecapital ">
-                <div class="health " style="display: none; ">
+                <div class="health">
 
-                    <div class="health_details ">
+                    <div id="health_details" class="tabcontent" style="display: none;">
                         <!-- <h2>Health</h2> -->
                         <h3>Healthy Life Expectancy</h3>
-                        <p>53.3</p>
+                        <p>57.1 years/p>
                     </div>
                 </div>
                 <div class="skills">
-                    <div class="currentwork_details " style="display: none; ">
+                    <div id="currentwork_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Current Workforce</h2> -->
                         <h3>Mean years of schooling</h3>
+                        <p>10.1 years</p>
                         <h3>Extent of staff training</h3>
+                        <p>4.5 out of 5</p>
                         <h3>Quality of vocational training</h3>
+                        <p>3.5 out of 7</p>
                         <h3>Skillset of graduates</h3>
+                        <p>3.7 out of 7</p>
                         <h3>Digital skills among active population</h3>
+                        <p>3.3 out of 7</p>
                         <h3>Ease of finding skilled employees</h3>
+                        <p>3.9 out of 7</p>
                     </div>
 
-                    <div class="futurework_details " style="display: none; ">
+                    <div id="futurework_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Future Workforce</h2> -->
                         <h3>School Life Expectancy</h3>
+                        <p>13.7 years</p>
                         <h3>Critical thinking in teaching</h3>
+                        <p>3.2 out 7</p>
                         <h3>Pupil-to-teacher ratio in primary education</h3>
+                        <p>49.2 out of 100</p>
                     </div>
                 </div>
             </div>
-            <div class="market ">
+            <div class="market">
                 <div class="productmarket ">
-                    <div class="domesticcomp_details " style="display: none; ">
+                    <div id="domesticcomp_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Domestic Competition</h2> -->
                         <h3>Distortive effect of taxes and subsidies on competition</h3>
+                        <p>3.6 out of 7</p>
                         <h3>Extent of Market dominance</h3>
+                        <p>3.8 out of 7</p>
                         <h3>Competition in Services</h3>
+                        <p>5.2 out of 7</p>
                     </div>
 
-                    <div class="trade_details " style="display: none; ">
+                    <div id="trade_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Trade</h2> -->
                         <h3>Prevalence of non-taiff barriers</h3>
+                        <p>4.3 out of 7</p>
                         <h3>Trade Tarffis %</h3>
+                        <p>7.07%</p>
                         <h3>Complexity of Tariffs</h3>
+                        <p>4.9 out of 7</p>
                         <h3>Border clearance efficiency</h3>
+                        <p>3.2 out of 5</p>
                     </div>
                 </div>
                 <div class="labourmarket ">
-                    <div class="flexibility_details " style="display: none; ">
+                    <div id="flexibility_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Flexibility</h2> -->
                         <h3>Redundancy costs (weeks of salary)</h3>
+                        <p>9,3 weeks</p>
                         <h3>Hiring and Firing practices</h3>
+                        <p>2.9 out of 7</p>
                         <h3>Cooperation in labour-employer relations</h3>
+                        <p>3.2 out of 7</p>
                         <h3>Flexibility of wage determination</h3>
+                        <p>3.5 out of 7</p>
                         <h3>Active labour market policies</h3>
+                        <p>2.5 out of 7</p>
                         <h3>Workers' rights</h3>
+                        <p>86 out of 100</p>
                         <h3>Ease of hiring foreign labour</h3>
+                        <p>3.4 out of 7</p>
                         <h3>Internal labour mobility</h3>
+                        <p>5.1 out of 7</p>
                     </div>
 
-                    <div class="incentives_details " style="display: none; ">
+                    <div id="incentives_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Meritocracy and Incentivization</h2> -->
                         <h3>Reliance on professional management</h3>
+                        <p>4.6 out of 7</p>
                         <h3>Pay and Productivity</h3>
+                        <p>3.8 out of 7</p>
                         <h3>Ratio of wage and salaried female worker to male workers</h3>
+                        <p>0.79 (good)</p>
                         <h3>Labout tax rate</h3>
+                        <p>4.0%</p>
                     </div>
                 </div>
                 <div class="financialsystem ">
 
-                    <div class="financialdepth_details " style="display: none; ">
+                    <div id="financial_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Financial Depth</h2> -->
                         <h3>Domestic credit to private sector</h3>
+                        <p>100</p>
                         <h3>Financing of SMEs</h3>
+                        <p>3.6 out of 7</p>
                         <h3>Venture Capital availability</h3>
+                        <p>3.1 out of 7</p>
                         <h3>Market Captalization</h3>
+                        <p>100</p>
                         <h3>Insurance premium</h3>
-                    </div>
-
-                    <div class="financialstability_details " style="display: none; ">
+                        <p>100</p>
                         <!-- <h2>Financial Stability</h2> -->
                         <h3>Soundness of banks</h3>
+                        <p>5.7 out of 7</p>
                         <h3>Non-performing loans</h3>
+                        <p>2.9%</p>
                         <h3>Credit gap</h3>
+                        <p>-3.9%</p>
                         <h3>Banks' regulatory capital ratio</h3>
+                        <p>96.9</p>
                     </div>
                 </div>
                 <div class="marketsize ">
 
-                    <div class="marketsize_details " style="display: none; ">
+                    <div id="marketsize_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Market Size</h2> -->
                         <h3>Gross domestic product (PPP $ Billions)</h3>
+                        <p>702BN USD</p>
                         <h3>Imports of goods and Services (% GDP)</h3>
+                        <p>35.3% GDP</p>
                     </div>
                 </div>
             </div>
             <div class="theinnovationecosystem ">
                 <div class="business ">
 
-                    <div class="admin_details " style="display: none; ">
+                    <div id="admin_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Administrative Requirements</h2> -->
                         <h3>Cost of starting a business</h3>
+                        <p>0.2% GNI per capita</p>
                         <h3>Time to start a business</h3>
+                        <p>40 days</p>
                         <h3>Insolvency recovery rate</h3>
+                        <p>34.50USD</p>
                         <h3>Insolvency regulatory framework</h3>
+                        <p>11.5 out of 16</p>
                     </div>
 
-                    <div class="culture_details " style="display: none; ">
+                    <div id="culture_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Entrepreneurial Culture</h2> -->
                         <h3>Attitudes towards entrepreneurial risk</h3>
                         <h3>Willingness to delegate authority</h3>
@@ -290,21 +364,21 @@
                 </div>
                 <div class="innovation ">
 
-                    <div class="interaction_details " style="display: none; ">
+                    <div id="interaction_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Interaction and Diversity</h2> -->
                         <h3>Diversity of workforce</h3>
                         <h3>State of cluster development</h3>
                         <h3>International co-inventions</h3>
                         <h3>Multi-stakeholder collaboration</h3>
                     </div>
-                    <div class="randd_details " style="display: none; ">
+                    <div id="randd_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Research and Development</h2> -->
                         <h3>Scientific Publications</h3>
                         <h3>Patent Applications</h3>
                         <h3>R&D expenditures</h3>
                         <h3>Research institutions prominence</h3>
                     </div>
-                    <div class="commerce_details " style="display: none; ">
+                    <div id="commerce_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Commercialization</h2> -->
                         <h3>Buyer Sophistication</h3>
                         <h3>Trademark applications</h3>
@@ -314,16 +388,6 @@
 
         </div>
 
-        <script>
-            function myFunction() {
-                var x = document.getElementById('theinnovationecosytem');
-                if (x.style.display === 'none') {
-                    x.style.display = 'block';
-                } else {
-                    x.style.display = 'none';
-                }
-            }
-        </script>
         <div id="disqus_thread"></div>
         <script>
             /**
