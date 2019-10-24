@@ -54,14 +54,10 @@ h3 {
     text-decoration: none;
 }
 
-.stats h3 {
+.stats h3,
+p {
     padding-left: 1em;
-    width: 100%;
-    display: table-row-group;
-}
-
-.stats p {
-    display: table-row;
+    display: inline-block;
 }
 
 p {
