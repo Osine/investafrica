@@ -426,7 +426,7 @@
     </div>
     <h4>All scores and data on investinafrica.com is sourced from the WEF Global Competitiveness Report.</h4>
     </div>
-</body>
+</body> 
 </div>
 
 </html>
