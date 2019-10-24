@@ -47,7 +47,7 @@
                     <h2 class="rank">1</h2>
                         <div class="text">
                             <h2 class="name" itemprop="name">
-                                <a itemprop="url" href="southafrica_new" title="Invest in South Africa">South Africa</a>
+                                <a itemprop="url" href="SouthAfrica" title="Invest in South Africa">South Africa</a>
                             </h2>
                         </div>
                     </li>

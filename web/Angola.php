@@ -420,7 +420,7 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     </div>
-    <h3>All scores on investinafrica.com are scored out of a hundred and data is sourced from the WEF Global Competitiveness Report.</h3>
+    <h4>All scores and data on investinafrica.com is sourced from the WEF Global Competitiveness Report.</h4>
     </div>
 </body>
 
