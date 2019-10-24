@@ -36,6 +36,12 @@ button:hover {
     color: #000;
 }
 
+button.active {
+    background: #fff;
+    color: rgb(0, 29, 151);
+    ;
+}
+
 h2 {
     font-family: 'Segoe UI';
     font-size: 30px;
@@ -179,9 +185,15 @@ p {
     h2 {
         text-decoration: underline;
     }
+    button.active {
+        background: #fff;
+        color: rgb(0, 29, 151);
+        ;
+    }
 }
 
-.tabs button:hover {
+
+/* .tabs button:hover {
     color: rgb(0, 29, 151);
     text-decoration: underline;
     text-decoration-color: rgb(0, 29, 151);
@@ -191,9 +203,10 @@ p {
     color: rgb(0, 29, 151);
     text-decoration: underline;
     text-decoration-color: rgb(0, 29, 151);
-}
+} */
 
-.tabs button {
+
+/* .tabs button {
     background-color: inherit;
     color: darkgray;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -203,4 +216,4 @@ p {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-}
+} */

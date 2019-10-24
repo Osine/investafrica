@@ -28,6 +28,12 @@ button {
     border-radius: 25px;
 }
 
+button.active {
+    background: #fff;
+    color: rgb(0, 153, 0);
+    ;
+}
+
 button:hover {
     background: #fff;
     border-color: rgb(0, 29, 151);
@@ -168,6 +174,11 @@ p {
     }
     h2 {
         text-decoration: underline;
+    }
+    button.active {
+        background: #fff;
+        color: rgb(0, 153, 0);
+        ;
     }
 }
 

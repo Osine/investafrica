@@ -216,7 +216,7 @@
                     <div id="health_details" class="tabcontent" style="display: none;">
                         <!-- <h2>Health</h2> -->
                         <h3>Healthy Life Expectancy</h3>
-                        <p>60.8 years/p>
+                        <p>60.8 years</p>
                     </div>
                 </div>
                 <div class="skills">
