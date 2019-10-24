@@ -156,7 +156,7 @@
                         <h3>Road Connectivity</h3>
                         <p>46.6 out of 100</p>
                         <h3>Quality of Road Infrastructure</h3>
-                        <p>4.8 out of 5</p>
+                        <p>4.8 out of 7</p>
                         <h3>Railroad Density</h3>
                         <p>N/A</p>
                         <h3>Efficiency of Train Services</h3>
@@ -225,7 +225,7 @@
                         <h3>Mean years of schooling</h3>
                         <p>4.0 years</p>
                         <h3>Extent of staff training</h3>
-                        <p>3.8 out of 5</p>
+                        <p>3.8 out of 7</p>
                         <h3>Quality of vocational training</h3>
                         <p>4.0 out of 7</p>
                         <h3>Skillset of graduates</h3>
@@ -299,7 +299,7 @@
                         <h3>Pay and Productivity</h3>
                         <p>3.9 out of 7</p>
                         <h3>Ratio of wage and salaried female worker to male workers</h3>
-                        <p>0.54 (below medium)</p>
+                        <p>0.54%</p>
                         <h3>Labout tax rate</h3>
                         <p>6.0%</p>
                     </div>

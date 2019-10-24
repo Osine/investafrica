@@ -97,19 +97,19 @@
                         <h3>Efficiency of legal framework in challenging regulations</h3>
                         <p>3.2 out of 7</p>
                         <h3>Efficiency of legal framework in settling disputes</h3>
-                        <p>3.9 out 7</p>
+                        <p>3.9 out of 7</p>
                         <h3>Legal framework's adaptability to digital business models</h3>
-                        <p>3.7 out 7</p>
+                        <p>3.7 out of 7</p>
                     </div>
 
                     <div id="governance_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Governance</h2> -->
                         <h3>Burden of government regulation</h3>
-                        <p>3.4 out 7</p>
+                        <p>3.4 out of 7</p>
                         <h3>Budget transparency</h3>
                         <p>24 out of 100</p>
                         <h3>Judicial independence</h3>
-                        <p>2.7 out 7</p>
+                        <p>2.7 out of 7</p>
                         <h3>Freedom of the press</h3>
                         <p>29.5 out of 100</p>
                         <h3>E-Participation</h3>
@@ -155,11 +155,11 @@
                         <h3>Road Connectivity</h3>
                         <p>77.7 out of 100</p>
                         <h3>Quality of Road Infrastructure</h3>
-                        <p>3.6 out of 5</p>
+                        <p>3.6 out of 7</p>
                         <h3>Railroad Density</h3>
                         <p>2.0 km/1,000^2</p>
                         <h3>Efficiency of Train Services</h3>
-                        <p>2.9 out 7</p>
+                        <p>2.9 out of 7</p>
                         <h3>Airport Connectivity</h3>
                         <p>25.9 out of 100</p>
                         <h3>Efficiency of Air Transport Services</h3>
@@ -167,7 +167,7 @@
                         <h3>Liner Shipping Connectivity</h3>
                         <p>16.8 out of 100</p>
                         <h3>Efficiency of Seaport Services</h3>
-                        <p>4.0 of 7</p>
+                        <p>4.0 out of 7</p>
                     </diV>
 
                     <div id="utility_details" class="tabcontent" style="display: none; ">
@@ -179,7 +179,7 @@
                         <h3>Exposure to unsafe drinking water</h3>
                         <p>65.9% of the population</p>
                         <h3>Reliablility of water supply</h3>
-                        <p>3.9 out 7</p>
+                        <p>3.9 out of 7</p>
                     </div>
                 </div>
                 <div class="ictadoption ">
@@ -224,7 +224,7 @@
                         <h3>Mean years of schooling</h3>
                         <p>4.4 years</p>
                         <h3>Extent of staff training</h3>
-                        <p>4.2 out of 5</p>
+                        <p>4.2 out of 7</p>
                         <h3>Quality of vocational training</h3>
                         <p>3.8 out of 7</p>
                         <h3>Skillset of graduates</h3>
@@ -240,7 +240,7 @@
                         <h3>School Life Expectancy</h3>
                         <p>9.6 years</p>
                         <h3>Critical thinking in teaching</h3>
-                        <p>3.2 out 7</p>
+                        <p>3.2 out of 7</p>
                         <h3>Pupil-to-teacher ratio in primary education</h3>
                         <p>42.4</p>
                     </div>
@@ -298,7 +298,7 @@
                         <h3>Pay and Productivity</h3>
                         <p>3.3 out of 7</p>
                         <h3>Ratio of wage and salaried female worker to male workers</h3>
-                        <p>0.30 (low)</p>
+                        <p>0.30%</p>
                         <h3>Labout tax rate</h3>
                         <p>23.3%</p>
                     </div>

@@ -158,11 +158,11 @@
                         <h3>Road Connectivity</h3>
                         <p>77.5 out of 100</p>
                         <h3>Quality of Road Infrastructure</h3>
-                        <p>2.5 out of 5</p>
+                        <p>2.5 out of 7</p>
                         <h3>Railroad Density</h3>
                         <p>4.2 km/1,000^2</p>
                         <h3>Efficiency of Train Services</h3>
-                        <p>1.8 out 7</p>
+                        <p>1.8 out of 7</p>
                         <h3>Airport Connectivity</h3>
                         <p>43.2 out of 100</p>
                         <h3>Efficiency of Air Transport Services</h3>
@@ -170,7 +170,7 @@
                         <h3>Liner Shipping Connectivity</h3>
                         <p>19 out of 100</p>
                         <h3>Efficiency of Seaport Services</h3>
-                        <p>2.5 of 7</p>
+                        <p>2.5 out of 7</p>
                     </diV>
 
                     <div id="utility_details" class="tabcontent" style="display: none; ">
@@ -182,7 +182,7 @@
                         <h3>Exposure to unsafe drinking water</h3>
                         <p>75.6% of the population</p>
                         <h3>Reliablility of water supply</h3>
-                        <p>2.1 out 7</p>
+                        <p>2.1 out of 7</p>
                     </div>
                 </div>
                 <div class="ictadoption ">
@@ -227,7 +227,7 @@
                         <h3>Mean years of schooling</h3>
                         <p>6.9 years</p>
                         <h3>Extent of staff training</h3>
-                        <p>3.6 out of 5</p>
+                        <p>3.6 out of 7</p>
                         <h3>Quality of vocational training</h3>
                         <p>2.8 out of 7</p>
                         <h3>Skillset of graduates</h3>
@@ -243,7 +243,7 @@
                         <h3>School Life Expectancy</h3>
                         <p>8.7 years</p>
                         <h3>Critical thinking in teaching</h3>
-                        <p>2.4 out 7</p>
+                        <p>2.4 out of 7</p>
                         <h3>Pupil-to-teacher ratio in primary education</h3>
                         <p>37.6</p>
                     </div>
@@ -301,7 +301,7 @@
                         <h3>Pay and Productivity</h3>
                         <p>3.7 out of 7</p>
                         <h3>Ratio of wage and salaried female worker to male workers</h3>
-                        <p>0.49 (low)</p>
+                        <p>0.49%</p>
                         <h3>Labout tax rate</h3>
                         <p>13.5%</p>
                     </div>

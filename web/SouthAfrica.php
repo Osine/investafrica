@@ -160,7 +160,7 @@
                         <h3>Road Connectivity</h3>
                         <p>96.2 out of 100</p>
                         <h3>Quality of Road Infrastructure</h3>
-                        <p>4.5 out of 5</p>
+                        <p>4.5 out of 7</p>
                         <h3>Railroad Density</h3>
                         <p>17.3 km/1000km^2</p>
                         <h3>Efficiency of Train Services</h3>
@@ -229,7 +229,7 @@
                         <h3>Mean years of schooling</h3>
                         <p>10.1 years</p>
                         <h3>Extent of staff training</h3>
-                        <p>4.5 out of 5</p>
+                        <p>4.5 out of 7</p>
                         <h3>Quality of vocational training</h3>
                         <p>3.5 out of 7</p>
                         <h3>Skillset of graduates</h3>
@@ -279,7 +279,7 @@
                     <div id="flexibility_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Flexibility</h2> -->
                         <h3>Redundancy costs (weeks of salary)</h3>
-                        <p>9,3 weeks</p>
+                        <p>9.3 weeks</p>
                         <h3>Hiring and Firing practices</h3>
                         <p>2.9 out of 7</p>
                         <h3>Cooperation in labour-employer relations</h3>
@@ -354,7 +354,7 @@
                         <h3>Time to start a business</h3>
                         <p>40 days</p>
                         <h3>Insolvency recovery rate</h3>
-                        <p>34.50USD</p>
+                        <p>34.50 cents to dollars</p>
                         <h3>Insolvency regulatory framework</h3>
                         <p>11.5 out of 16</p>
                     </div>
@@ -406,20 +406,6 @@
             </div>
 
         </div>
-
-
-        <!-- <script type="text/javascript ">
-            function showSecurityDiv() {
-                var x = document.getElementById("security_details");
-                // var y = document.getElementById("security");
-                if (x.style.display === "none") {
-                    x.style.display = "auto";
-                    // y.className = "active";
-                } else {
-                    x.style.display = "none";
-                }
-            }
-        </script> -->
         <div id="disqus_thread"></div>
         <script>
             /**

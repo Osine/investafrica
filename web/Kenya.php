@@ -89,7 +89,7 @@
                         <h3>Reliablility of Police Services</h3>
                         <p>3.9 out of 7</p>
                         <h3>Terrorism Incidence</h3>
-                        <p>87 (very low)</p>
+                        <p>87 out of 100 (very low)</p>
                     </div>
 
                     <div id="legal_details" class="tabcontent" style="display: none; ">
@@ -99,19 +99,19 @@
                         <h3>Efficiency of legal framework in challenging regulations</h3>
                         <p>3.5 out of 7</p>
                         <h3>Efficiency of legal framework in settling disputes</h3>
-                        <p>3.9 out 7</p>
+                        <p>3.9 out of 7</p>
                         <h3>Legal framework's adaptability to digital business models</h3>
-                        <p>4.2 out 7</p>
+                        <p>4.2 out of 7</p>
                     </div>
 
                     <div id="governance_details" class="tabcontent" style="display: none; ">
                         <!-- <h2>Governance</h2> -->
                         <h3>Burden of government regulation</h3>
-                        <p>3.9 out 7</p>
+                        <p>3.9 out of 7</p>
                         <h3>Budget transparency</h3>
                         <p>46 out of 100</p>
                         <h3>Judicial independence</h3>
-                        <p>3.8 out 7</p>
+                        <p>3.8 out of 7</p>
                         <h3>Freedom of the press</h3>
                         <p>32.4 out of 100</p>
                         <h3>E-Participation</h3>
@@ -157,11 +157,11 @@
                         <h3>Road Connectivity</h3>
                         <p>72.1 out of 100</p>
                         <h3>Quality of Road Infrastructure</h3>
-                        <p>4.1 out of 5</p>
+                        <p>4.1 out of 7</p>
                         <h3>Railroad Density</h3>
                         <p>6.7 km/1,000^2</p>
                         <h3>Efficiency of Train Services</h3>
-                        <p>4.0 out 7</p>
+                        <p>4.0 out of 7</p>
                         <h3>Airport Connectivity</h3>
                         <p>44.1 out of 100</p>
                         <h3>Efficiency of Air Transport Services</h3>
@@ -169,7 +169,7 @@
                         <h3>Liner Shipping Connectivity</h3>
                         <p>21.2 out of 100</p>
                         <h3>Efficiency of Seaport Services</h3>
-                        <p>4.2 of 7</p>
+                        <p>4.2 out of 7</p>
                     </diV>
 
                     <div id="utility_details" class="tabcontent" style="display: none; ">
@@ -181,7 +181,7 @@
                         <h3>Exposure to unsafe drinking water</h3>
                         <p>61.9% of the population</p>
                         <h3>Reliablility of water supply</h3>
-                        <p>3.6 out 7</p>
+                        <p>3.6 out of 7</p>
                     </div>
                 </div>
                 <div class="ictadoption ">
@@ -226,7 +226,7 @@
                         <h3>Mean years of schooling</h3>
                         <p>8.4 years</p>
                         <h3>Extent of staff training</h3>
-                        <p>4.2 out of 5</p>
+                        <p>4.2 out of 7</p>
                         <h3>Quality of vocational training</h3>
                         <p>4.3 out of 7</p>
                         <h3>Skillset of graduates</h3>
@@ -242,7 +242,7 @@
                         <h3>School Life Expectancy</h3>
                         <p>N/A</p>
                         <h3>Critical thinking in teaching</h3>
-                        <p>3.4 out 7</p>
+                        <p>3.4 out of 7</p>
                         <h3>Pupil-to-teacher ratio in primary education</h3>
                         <p>30.7</p>
                     </div>
@@ -300,7 +300,7 @@
                         <h3>Pay and Productivity</h3>
                         <p>4.3 out of 7</p>
                         <h3>Ratio of wage and salaried female worker to male workers</h3>
-                        <p>0.41 (low)</p>
+                        <p>0.41%</p>
                         <h3>Labout tax rate</h3>
                         <p>1.9%</p>
                     </div>

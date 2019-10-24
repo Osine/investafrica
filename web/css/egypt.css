@@ -51,7 +51,7 @@ h3 {
 .stats h3,
 p {
     padding-left: 1em;
-    display: inline-block;
+    display: grid;
 }
 
 p {
