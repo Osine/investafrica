@@ -79,9 +79,10 @@ p {
     width: 20px;
 }
 
-.stats {
-    margin-top: 0px;
-    z-index: 3000;
+.stats h3,
+p {
+    padding-left: 1em;
+    display: inline-block;
 }
 
 .business p {
