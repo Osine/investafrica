@@ -38,10 +38,19 @@
 <body>
     <div class="content">
     <div class="title">
+        <table>
+            <tr>
+                <td>
             <h1>Rwanda</h1>
             <h3>Population: 12 Million</h3>
             <h3>GDP per Capita: 791.3 USD</h3>
             <h4>Major cities: Kigali, Butare, Gitarama</h4>
+    </td>
+    <td>
+    <img class="flag" src="images/flag_rwanda.png" />
+    </td>
+    </tr>
+    </table>
             <div class="investnow">
                 <a href="https://www.visitrwanda.com/investment/how-to-invest/starting-a-business/">
                     <button class="ctabusiness">Start a Business</button>

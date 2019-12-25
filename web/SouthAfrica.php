@@ -38,10 +38,19 @@
     <body>
     <div class="content">
     <div class="title">
+        <table>
+            <tr>
+                <td>
             <h1>South Africa</h1>
             <h3>Population: 57.7 Million</h3>
             <h3>GDP per capita: 6377.3 USD</h3>
             <h4>Major cities: Johannesburg, Cape Town, Ethekwini</h4>
+    </td>
+    <td>
+    <img class="flag" src="images/flag_southafrica.png" />
+    </td>
+            <tr>
+    </table>
             <div class="investnow">
                 <a href="https://www.gov.za/issues/starting-your-own-business-0">
                     <button>Start a Business</button>

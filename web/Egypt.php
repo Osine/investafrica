@@ -38,10 +38,19 @@
 <body>
     <div class="content">
     <div class="title">
+        <table>
+            <tr>
+                <td>
             <h1>Egypt</h1>
             <h3>Population: 97 Million</h3>
             <h3>GDP per capita: 2,573.3 USD</h3>
             <h4>Major cities: Cairo, Alexandria, Giza</h4>
+    </td>
+    <td>
+    <img class="flag" src="images/flag_egypt.png" />
+    </td>
+    </tr>
+    </table>
             <div class="investnow">
                 <a href="https://www.justlanded.com/english/Egypt/Egypt-Guide/Business/Starting-a-business">
                     <button>Start a Business</button>

@@ -39,10 +39,19 @@
     <div class="content">
     <!-- <img src="images/flag_ghana.png" /> -->
     <div class="title">
+        <table>
+            <tr>
+                <td>
             <h1>Ghana</h1>
             <h3>Population: 29.6 Million</h3>
             <h3>GDP per capita: 2,205.8 USD</h3>
             <h4>Major cities: Accra, Kumasi, Sekondi-Takoradi</h4>
+            </td>
+            <td>
+            <img class="flag" src="images/flag_ghana.png" />
+            </td>
+            </tr>
+    </table>
             <div class="investnow">
                 <a href="https://www.gipcghana.com/invest-in-ghana/doing-business-in-ghana/starting-a-business.html">
                     <button>Start a Business</button>

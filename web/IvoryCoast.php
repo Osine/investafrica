@@ -38,10 +38,17 @@
 <body>
     <div class="content">
     <div class="title">
+        <table>
+            <tr>
+                <td>
             <h1>Cote d'Ivoire</h1>
             <h3>Population: 25.6 Million</h3>
             <h3>GDP per capita: 1,680.4 USD</h3>
             <h4>Major cities: Abidjan, Abobo, Bouaké</h4>
+    </td>
+    <td><img class="flag" src="images/flag_ivory_coast.png" /></td>
+            <tr>
+            <table>
             <div class="investnow">
                 <a href="http://www.cepici.gouv.ci/en/?tmp=images-articles&p=the-one-stop-shop">
                     <button>Start a Business</button>

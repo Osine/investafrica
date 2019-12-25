@@ -41,41 +41,53 @@
         <!-- <img src="images/flag_nigeria.png" /> -->
 
         <div class="title" style="background: url('lagos.jpg')">
-            <h1>Nigeria</h1>
-            <h3>Population: 193.9 Million</h3>
-            <h3>GDP per capita: 2049.1 USD</h3>
-            <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+            <table>
+                <tr>
+                    <td>
+                        <h1>Nigeria</h1>
+                        <h3>Population: 193.9 Million</h3>
+                        <h3>GDP per capita: 2049.1 USD</h3>
+                        <h4>Major cities: Lagos, Abuja, Ibadan</h4>
+                    </td>
+                    <td>
+                        <img class="flag" src="images/flag_nigeria.png">
+                    </td>
+                </tr>
+            </table>
             <div class="investnow">
                 <a href="https://services.cac.gov.ng/">
                     <button>Start a Business</button>
                 </a>
             </div>
         </div>
+
         <div class="attributes">
-            <div class="tabs" style="width: 70px">
+            <div class="tabs" style="width: 70px;">
                 <ul>
-                    <button id="security" class="tablinks" onclick="openMetric(event, 'security_details')">Security</button>
-                    <button class="tablinks" onclick="openMetric(event, 'legal_details')">Legal</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'governance_details')"> Governance </button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'property_details')"> Property </button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'transport_details')">Transport</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'utility_details')">Utilities</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'ict_details')">ICT Adoption</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'marcoeconomic_details')"> Marcoeconomics</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'health_details')">Health</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'currentwork_details')">Current Workforce</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'futurework_details')">Future Workforce</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'domesticcomp_details')">Competition</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'trade_details')">Trade</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'flexibility_details')"> Flexibility </button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'incentives_details')"> Meritocracy & Incentives </button>
-                    <button href="" class="tablinks" onclick="openMetric(event, 'financial_details')">Financial</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'marketsize_details')">Market Size</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'admin_details')">Business Administration</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'culture_details')">Culture</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'interaction_details')">Interaction and Diversity</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'randd_details')">R & D</button>
-                    <button href=" " class="tablinks" onclick="openMetric(event, 'commerce_details')">Commercialization</button>
+                    <li>
+                        <button id="security" class="tablinks" onclick="openMetric(event, 'security_details')">Security</button>
+                        <button class="tablinks" onclick="openMetric(event, 'legal_details')">Legal</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'governance_details')"> Governance </button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'property_details')"> Property </button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'transport_details')">Transport</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'utility_details')">Utilities</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'ict_details')">ICT Adoption</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'marcoeconomic_details')"> Marcoeconomics</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'health_details')">Health</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'currentwork_details')">Current Workforce</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'futurework_details')">Future Workforce</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'domesticcomp_details')">Competition</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'trade_details')">Trade</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'flexibility_details')"> Flexibility </button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'incentives_details')"> Meritocracy & Incentives </button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'financial_details')">Financial</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'marketsize_details')">Market Size</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'admin_details')">Business Administration</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'culture_details')">Culture</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'interaction_details')">Interaction and Diversity</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'randd_details')">R & D</button>
+                        <button href=" " class="tablinks" onclick="openMetric(event, 'commerce_details')">Commercialization</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -406,31 +418,31 @@
 
 
         <div class="footer">
-        <div id="disqus_thread"></div>
-        
-        <script>
-            /**
-             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-            /*
-            var disqus_config = function () {
-            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
-            */
-            (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document,
-                    s = d.createElement('script');
-                s.src = 'https://investafrica.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <div id="disqus_thread"></div>
 
-    </div>
-            <h3>All scores on investinafrica.com are scored out of a hunderd and data is sourced from doingbusiness.org</h3>
+            <script>
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document,
+                        s = d.createElement('script');
+                    s.src = 'https://investafrica.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
         </div>
+        <h3>All scores on investinafrica.com are scored out of a hunderd and data is sourced from doingbusiness.org</h3>
+    </div>
 </body>
 
 </div>

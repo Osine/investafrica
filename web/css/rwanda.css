@@ -1,18 +1,25 @@
 .title {
     height: 170px;
     color: rgb(51, 153, 225);
-    font: outline;
-    outline-color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 6em;
-    text-align: center;
+    margin-top: 10em;
     background-repeat: no-repeat;
     background-size: 20%;
 }
 
-img {
+.title h1 {
+    font-family: Raleway, sans-serif;
+    text-align: left;
+}
+
+.title h3,
+h4 {
+    font-family: Raleway, sans-serif;
+}
+
+.flag {
     height: 300px;
     width: auto;
+    margin-left: 30vw;
     /* margin: 10px;
     border-radius: 15px; */
 }
@@ -75,7 +82,7 @@ p {
 }
 
 .attributes {
-    margin-top: 100px;
+    margin-top: 300px;
     width: 20px;
 }
 

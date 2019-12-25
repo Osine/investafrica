@@ -38,10 +38,19 @@
 <body>
     <div class="content">
         <div class="title">
+            <table>
+                <tr>
+                    <td>
             <h1>Kenya</h1>
             <h3>Population: 48 Million</h3>
             <h3>GDP per capita: 1857.2 USD</h3>
             <h4>Major cities: Nairobi, Mombasa</h4>
+    </td>
+    <td>
+    <img class="flag" src="images/flag_kenya.png" />
+    </td>
+    </tr>
+            <table>
             <div class="investnow">
                 <a href="http://www.invest.go.ke/starting-a-business-in-kenya/">
                     <button>Start a Business</button>

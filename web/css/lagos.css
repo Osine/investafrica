@@ -1,20 +1,26 @@
 .title {
     height: 170px;
     color: rgb(0, 136, 80);
-    font: outline;
-    outline-color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 6em;
-    text-align: center;
+    margin-top: 10em;
     background-repeat: no-repeat;
     background-size: 20%;
 }
 
-img {
+.title h1 {
+    font-family: Raleway, sans-serif;
+    text-align: left;
+}
+
+.title h3,
+h4 {
+    font-family: Raleway, sans-serif;
+}
+
+.flag {
     height: 300px;
     width: auto;
-    /* margin: 10px;
-    border-radius: 15px; */
+    margin-left: 30vw;
+    /* border-radius: 15px; */
 }
 
 button {
@@ -43,13 +49,13 @@ button:hover {
 }
 
 h2 {
-    font-family: 'Segoe UI';
+    font-family: Raleway, sans-serif;
     font-size: 30px;
     text-decoration: underline;
 }
 
 h3 {
-    font-family: 'Segoe UI';
+    font-family: Raleway, sans-serif;
     font-size: 22px;
     text-decoration: none;
 }
@@ -75,7 +81,7 @@ p {
 }
 
 .attributes {
-    margin-top: 100px;
+    margin-top: 300px;
     width: 20px;
 }
 

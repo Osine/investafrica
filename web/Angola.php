@@ -38,10 +38,19 @@
 <body>
     <div class="content">
     <div class="title">
+        <table>
+            <tr>
+                <td>
             <h1>Angola</h1>
             <h3>Population: 29.3 Million </h3>
             <h3>GDP per capita: 3,668.9 USD</h3>
             <h4>Major city: Luanda</h4>
+    </td>
+    <td>
+    <img class="flag" src="images/flag_angola.png" />
+    </td>
+    </tr>
+    </table>
             <div class="investnow">
                 <a href="https://shieldgeo.com/setting-up-a-company-in-angola/">
                     <button>Start a Business</button>
