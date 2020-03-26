@@ -85,9 +85,21 @@ p {
     width: 20px;
 }
 
-.stats {
+.tabcontent li {
+    /* width: auto;
+    height: auto; */
+    box-shadow: 0 0 0 0 rgba(0, 37, 17, 0.8);
+}
+
+.stats h3,
+p {
     margin-top: 0px;
     z-index: 3000;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: calc(3em - 3px);
+    vertical-align: middle;
+    border-bottom: 2px solid transparent
 }
 
 .business p {

@@ -11,7 +11,9 @@
     <a class="login" href="#contact">Contact</a> -->
     </nav>
     <div class="banner-text">
-        <p>Do Business across African Countries. Connect to African entrepreneurs and expand your business across Africa. </p>
+        <p> <strong> Do Business across African Countries. </strong>
+           
+        Connect to African entrepreneurs and expand your business across Africa. </p>
     </div>
     <div class="hero-image">
         <svg width="805" height="408" viewBox="-200 -80 745 678" fill="none" xmlns="http://www.w3.org/2000/svg">
